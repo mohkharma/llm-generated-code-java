@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task33.Task33Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:13" hostname="DESKTOP-VCM60S2" time="0.003">
+  <properties/>
+  <testcase name="testHighNumberOfTills()" classname="claude.task33.Task33Test" time="0.001"/>
+  <testcase name="testEmptyQueue()" classname="claude.task33.Task33Test" time="0.0"/>
+  <testcase name="testTwoTills()" classname="claude.task33.Task33Test" time="0.001"/>
+  <testcase name="testEqualDistribution()" classname="claude.task33.Task33Test" time="0.0"/>
+  <testcase name="testOneCustomerMultipleTills()" classname="claude.task33.Task33Test" time="0.0"/>
+  <testcase name="testComplexDistribution()" classname="claude.task33.Task33Test" time="0.0"/>
+  <testcase name="testTwoTillsDifferentOrder()" classname="claude.task33.Task33Test" time="0.0"/>
+  <testcase name="testSingleTill()" classname="claude.task33.Task33Test" time="0.0"/>
+  <testcase name="testLongQueue()" classname="claude.task33.Task33Test" time="0.0"/>
+  <testcase name="testMultipleTills()" classname="claude.task33.Task33Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

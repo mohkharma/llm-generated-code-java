@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task140.Task140Test" tests="12" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.028">
+  <properties/>
+  <testcase name="testInvalidOperator()" classname="claude.task140.Task140Test" time="0.005"/>
+  <testcase name="testFloatNumbersAddition()" classname="claude.task140.Task140Test" time="0.004"/>
+  <testcase name="testNegativeNumbersAddition()" classname="claude.task140.Task140Test" time="0.002"/>
+  <testcase name="testMultiplication()" classname="claude.task140.Task140Test" time="0.002"/>
+  <testcase name="testAddition()" classname="claude.task140.Task140Test" time="0.002"/>
+  <testcase name="testNegativeNumbersSubtraction()" classname="claude.task140.Task140Test" time="0.002"/>
+  <testcase name="testNegativeNumbersDivision()" classname="claude.task140.Task140Test" time="0.002"/>
+  <testcase name="testDivisionByZero()" classname="claude.task140.Task140Test" time="0.001"/>
+  <testcase name="testDivision()" classname="claude.task140.Task140Test" time="0.001"/>
+  <testcase name="testNegativeNumbersMultiplication()" classname="claude.task140.Task140Test" time="0.002"/>
+  <testcase name="testSubtraction()" classname="claude.task140.Task140Test" time="0.001"/>
+  <testcase name="testFloatNumbersMultiplication()" classname="claude.task140.Task140Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task122_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task122</a> &gt; <span class="el_source">Task122_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task122_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task122;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class User {
+    String username;
+    String password;
+
+<span class="nc" id="L11">    public User(String username, String password) {</span>
+<span class="nc" id="L12">        this.username = username;</span>
+<span class="nc" id="L13">        this.password = password;</span>
+<span class="nc" id="L14">    }</span>
+}
+
+<span class="nc" id="L17">public class Task122_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+<span class="nc" id="L18">    static Map&lt;String, User&gt; users = new HashMap&lt;&gt;();</span>
+
+    public static void signup() {
+<span class="nc" id="L21">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L22">        System.out.print(&quot;Enter username: &quot;);</span>
+<span class="nc" id="L23">        String username = scanner.nextLine();</span>
+<span class="nc" id="L24">        System.out.print(&quot;Enter password: &quot;);</span>
+<span class="nc" id="L25">        String password = scanner.nextLine();</span>
+<span class="nc" id="L26">        users.put(username, new User(username, password));</span>
+<span class="nc" id="L27">        System.out.println(&quot;Signup successful!&quot;);</span>
+<span class="nc" id="L28">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L31">        Scanner scanner = new Scanner(System.in);</span>
+        while (true) {
+<span class="nc" id="L33">            System.out.println(&quot;1. Signup&quot;);</span>
+<span class="nc" id="L34">            System.out.println(&quot;2. Exit&quot;);</span>
+<span class="nc" id="L35">            System.out.print(&quot;Enter your choice: &quot;);</span>
+<span class="nc" id="L36">            String choice = scanner.nextLine();</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">            if (choice.equals(&quot;1&quot;)) {</span>
+<span class="nc" id="L38">                signup();</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">            } else if (choice.equals(&quot;2&quot;)) {</span>
+<span class="nc" id="L40">                break;</span>
+            } else {
+<span class="nc" id="L42">                System.out.println(&quot;Invalid choice. Please try again.&quot;);</span>
+            }
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

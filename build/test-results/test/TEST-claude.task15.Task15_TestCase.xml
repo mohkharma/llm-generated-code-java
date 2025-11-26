@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task15.Task15_TestCase" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.007">
+  <properties/>
+  <testcase name="testTenFloors()" classname="claude.task15.Task15_TestCase" time="0.001"/>
+  <testcase name="testNineFloors()" classname="claude.task15.Task15_TestCase" time="0.0"/>
+  <testcase name="testOneFloor()" classname="claude.task15.Task15_TestCase" time="0.001"/>
+  <testcase name="testSixFloors()" classname="claude.task15.Task15_TestCase" time="0.0"/>
+  <testcase name="testSevenFloors()" classname="claude.task15.Task15_TestCase" time="0.001"/>
+  <testcase name="testThreeFloors()" classname="claude.task15.Task15_TestCase" time="0.0"/>
+  <testcase name="testFourFloors()" classname="claude.task15.Task15_TestCase" time="0.001"/>
+  <testcase name="testTwoFloors()" classname="claude.task15.Task15_TestCase" time="0.001"/>
+  <testcase name="testEightFloors()" classname="claude.task15.Task15_TestCase" time="0.001"/>
+  <testcase name="testFiveFloors()" classname="claude.task15.Task15_TestCase" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

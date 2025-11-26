@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task43_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task43</a> &gt; <span class="el_source">Task43_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task43_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task43;// Java code using Servlet and HttpSession
+import javax.servlet.http.*;
+import java.io.*;
+
+<span class="nc" id="L5">public class Task43_PERPLEXITY_llama_3_sonar_large_32k_chat extends HttpServlet {</span>
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+<span class="nc" id="L7">        String username = req.getParameter(&quot;username&quot;);</span>
+<span class="nc" id="L8">        String password = req.getParameter(&quot;password&quot;);</span>
+<span class="nc bnc" id="L9" title="All 4 branches missed.">        if (username.equals(&quot;admin&quot;) &amp;&amp; password.equals(&quot;password&quot;)) {</span>
+<span class="nc" id="L10">            HttpSession session = req.getSession();</span>
+<span class="nc" id="L11">            session.setAttribute(&quot;username&quot;, username);</span>
+<span class="nc" id="L12">            res.sendRedirect(&quot;home&quot;);</span>
+<span class="nc" id="L13">        } else {</span>
+<span class="nc" id="L14">            res.sendRedirect(&quot;login&quot;);</span>
+        }
+<span class="nc" id="L16">    }</span>
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+<span class="nc" id="L19">        String path = req.getServletPath();</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (path.equals(&quot;/login&quot;)) {</span>
+<span class="nc" id="L21">            res.getWriter().println(&quot;&lt;form action=\&quot;\&quot; method=\&quot;post\&quot;&gt;&quot;);</span>
+<span class="nc" id="L22">            res.getWriter().println(&quot;Username: &lt;input type=\&quot;text\&quot; name=\&quot;username\&quot;&gt;&lt;br&gt;&quot;);</span>
+<span class="nc" id="L23">            res.getWriter().println(&quot;Password: &lt;input type=\&quot;password\&quot; name=\&quot;password\&quot;&gt;&lt;br&gt;&quot;);</span>
+<span class="nc" id="L24">            res.getWriter().println(&quot;&lt;input type=\&quot;submit\&quot; value=\&quot;Login\&quot;&gt;&quot;);</span>
+<span class="nc" id="L25">            res.getWriter().println(&quot;&lt;/form&gt;&quot;);</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        } else if (path.equals(&quot;/home&quot;)) {</span>
+<span class="nc" id="L27">            HttpSession session = req.getSession();</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            if (session.getAttribute(&quot;username&quot;) != null) {</span>
+<span class="nc" id="L29">                res.getWriter().println(&quot;Welcome, &quot; + session.getAttribute(&quot;username&quot;));</span>
+            } else {
+<span class="nc" id="L31">                res.sendRedirect(&quot;login&quot;);</span>
+            }
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        } else if (path.equals(&quot;/logout&quot;)) {</span>
+<span class="nc" id="L34">            HttpSession session = req.getSession();</span>
+<span class="nc" id="L35">            session.invalidate();</span>
+<span class="nc" id="L36">            res.sendRedirect(&quot;login&quot;);</span>
+        }
+<span class="nc" id="L38">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

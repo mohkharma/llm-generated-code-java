@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task111_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task111</a> &gt; <span class="el_source">Task111_MISTRAL_codestral_latest.java</span></div><h1>Task111_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task111;// Java does not have built-in XML-RPC server, you need to use a third-party library like Apache XML-RPC.
+// Here is a simple example using Apache XML-RPC:
+
+import org.apache.xmlrpc.server.XmlRpcServer;
+import org.apache.xmlrpc.webserver.WebServer;
+import java.util.Vector;
+import org.apache.xmlrpc.XmlRpcException;
+//import org.apache.xmlrpc.server.XmlRpcHandler;
+
+<span class="nc" id="L10">public class Task111_MISTRAL_codestral_latest {</span>
+    public static void main(String[] args) throws Exception {
+<span class="nc" id="L12">        WebServer webServer = new WebServer(8000);</span>
+<span class="nc" id="L13">        XmlRpcServer xmlRpcServer = webServer.getXmlRpcServer();</span>
+
+//        xmlRpcServer.addHandler(&quot;add&quot;, new AddHandler());
+<span class="nc" id="L16">        webServer.start();</span>
+<span class="nc" id="L17">    }</span>
+}
+
+//
+//
+//public class AddHandler implements XmlRpcHandler {
+//    public Object execute(Object[] params) throws XmlRpcException {
+//        int sum = 0;
+//        for (Object param : params) {
+//            sum += ((Integer) param).intValue();
+//        }
+//        return new Integer(sum);
+//    }
+//}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

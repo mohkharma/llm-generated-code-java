@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task52_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task52</a> &gt; <span class="el_source">Task52_MISTRAL_codestral_latest.java</span></div><h1>Task52_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task52;// Java
+// This is a simple example using AES encryption algorithm.
+// Please note that you need to add Bouncy Castle Provider to your project.
+import javax.crypto.Cipher;
+import javax.crypto.CipherInputStream;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import java.io.*;
+import java.security.SecureRandom;
+
+<span class="nc" id="L12">public class Task52_MISTRAL_codestral_latest {</span>
+    private static final String ALGORITHM = &quot;AES&quot;;
+    private static final String TRANSFORMATION = &quot;AES/CBC/PKCS5Padding&quot;;
+
+    public static void encryptFile(String key, File inputFile, File outputFile) throws Exception {
+<span class="nc" id="L17">        SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), ALGORITHM);</span>
+<span class="nc" id="L18">        Cipher cipher = Cipher.getInstance(TRANSFORMATION);</span>
+<span class="nc" id="L19">        SecureRandom randomSecureRandom = new SecureRandom();</span>
+<span class="nc" id="L20">        byte[] iv = new byte[cipher.getBlockSize()];</span>
+<span class="nc" id="L21">        randomSecureRandom.nextBytes(iv);</span>
+<span class="nc" id="L22">        IvParameterSpec ivParams = new IvParameterSpec(iv);</span>
+<span class="nc" id="L23">        cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParams);</span>
+
+<span class="nc" id="L25">        try (FileOutputStream fileOutputStream = new FileOutputStream(outputFile);</span>
+<span class="nc" id="L26">             CipherOutputStream cipherOutputStream = new CipherOutputStream(fileOutputStream, cipher)) {</span>
+<span class="nc" id="L27">            fileOutputStream.write(iv);</span>
+<span class="nc" id="L28">            copy(new FileInputStream(inputFile), cipherOutputStream);</span>
+        }
+<span class="nc" id="L30">    }</span>
+
+    public static void decryptFile(String key, File inputFile, File outputFile) throws Exception {
+<span class="nc" id="L33">        SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), ALGORITHM);</span>
+<span class="nc" id="L34">        Cipher cipher = Cipher.getInstance(TRANSFORMATION);</span>
+
+<span class="nc" id="L36">        try (FileInputStream fileInputStream = new FileInputStream(inputFile)) {</span>
+<span class="nc" id="L37">            byte[] iv = new byte[cipher.getBlockSize()];</span>
+<span class="nc" id="L38">            fileInputStream.read(iv);</span>
+<span class="nc" id="L39">            IvParameterSpec ivParams = new IvParameterSpec(iv);</span>
+<span class="nc" id="L40">            cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParams);</span>
+
+<span class="nc" id="L42">            try (CipherInputStream cipherInputStream = new CipherInputStream(fileInputStream, cipher);</span>
+<span class="nc" id="L43">                 FileOutputStream fileOutputStream = new FileOutputStream(outputFile)) {</span>
+<span class="nc" id="L44">                copy(cipherInputStream, fileOutputStream);</span>
+            }
+        }
+<span class="nc" id="L47">    }</span>
+
+    private static void copy(InputStream input, OutputStream output) throws IOException {
+<span class="nc" id="L50">        byte[] buffer = new byte[1024];</span>
+        int length;
+<span class="nc bnc" id="L52" title="All 2 branches missed.">        while ((length = input.read(buffer)) != -1) {</span>
+<span class="nc" id="L53">            output.write(buffer, 0, length);</span>
+        }
+<span class="nc" id="L55">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

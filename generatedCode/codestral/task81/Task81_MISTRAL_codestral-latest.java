@@ -1,1 +1,0 @@
-package codestral.task81;// Java code not provided as it doesn't have built-in support for SSL certificate hashing

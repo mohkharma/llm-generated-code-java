@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task181.Task181Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.011">
+  <properties/>
+  <testcase name="testOpenAccountWithExistingAccountNumber()" classname="claude.task181.Task181Test" time="0.003"/>
+  <testcase name="testCloseNonExistingAccount()" classname="claude.task181.Task181Test" time="0.0"/>
+  <testcase name="testCloseAccount()" classname="claude.task181.Task181Test" time="0.0"/>
+  <testcase name="testWithdrawInsufficientFunds()" classname="claude.task181.Task181Test" time="0.001"/>
+  <testcase name="testWithdraw()" classname="claude.task181.Task181Test" time="0.0"/>
+  <testcase name="testDepositToClosedAccount()" classname="claude.task181.Task181Test" time="0.0"/>
+  <testcase name="testOpenAccountSuccess()" classname="claude.task181.Task181Test" time="0.001"/>
+  <testcase name="testDeposit()" classname="claude.task181.Task181Test" time="0.001"/>
+  <testcase name="testWithdrawNegativeAmount()" classname="claude.task181.Task181Test" time="0.0"/>
+  <testcase name="testConcurrentAccess()" classname="claude.task181.Task181Test" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

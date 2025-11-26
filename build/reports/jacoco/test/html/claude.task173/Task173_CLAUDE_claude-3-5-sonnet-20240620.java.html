@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task173_CLAUDE_claude-3-5-sonnet-20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task173</a> &gt; <span class="el_source">Task173_CLAUDE_claude-3-5-sonnet-20240620.java</span></div><h1>Task173_CLAUDE_claude-3-5-sonnet-20240620.java</h1><pre class="source lang-java linenums">package claude.task173;
+
+import java.util.HashSet;
+import java.util.Set;
+
+<span class="fc" id="L6">class Solution {</span>
+    public String longestDupSubstring(String s) {
+<span class="fc" id="L8">        int left = 0, right = s.length();</span>
+<span class="fc" id="L9">        String result = &quot;&quot;;</span>
+<span class="fc bfc" id="L10" title="All 2 branches covered.">        while (left &lt; right) {</span>
+<span class="fc" id="L11">            int mid = left + (right - left) / 2;</span>
+<span class="fc" id="L12">            String candidate = rabinKarp(s, mid);</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">            if (candidate != null) {</span>
+<span class="fc" id="L14">                left = mid + 1;</span>
+<span class="fc" id="L15">                result = candidate;</span>
+            } else {
+<span class="fc" id="L17">                right = mid;</span>
+            }
+<span class="fc" id="L19">        }</span>
+<span class="fc" id="L20">        return result;</span>
+    }
+
+    private String rabinKarp(String s, int length) {
+<span class="fc" id="L24">        long q = (1L &lt;&lt; 31) - 1;</span>
+<span class="fc" id="L25">        long h = 0;</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L27">            h = (h * 26 + s.charAt(i) - 'a') % q;</span>
+        }
+
+<span class="fc" id="L30">        Set&lt;Long&gt; seen = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L31">        seen.add(h);</span>
+<span class="fc" id="L32">        long aL = 1;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L34">            aL = (aL * 26) % q;</span>
+        }
+
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for (int start = 1; start &lt;= s.length() - length; start++) {</span>
+<span class="fc" id="L38">            h = (h * 26 - (s.charAt(start - 1) - 'a') * aL % q + q) % q;</span>
+<span class="fc" id="L39">            h = (h + s.charAt(start + length - 1) - 'a') % q;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            if (seen.contains(h)) {</span>
+<span class="fc" id="L41">                return s.substring(start, start + length);</span>
+            }
+<span class="fc" id="L43">            seen.add(h);</span>
+        }
+
+<span class="fc" id="L46">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

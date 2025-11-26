@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task129_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task129</a> &gt; <span class="el_source">Task129_MISTRAL_codestral_latest.java</span></div><h1>Task129_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task129;// Java
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.util.Scanner;
+
+<span class="nc" id="L9">public class Task129_MISTRAL_codestral_latest {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L11">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L12">        System.out.println(&quot;Enter the file name: &quot;);</span>
+<span class="nc" id="L13">        String fileName = scanner.nextLine();</span>
+<span class="nc" id="L14">        String url = &quot;http://example.com/&quot; + fileName;</span>
+
+        try {
+<span class="nc" id="L17">            downloadFile(url, fileName);</span>
+<span class="nc" id="L18">        } catch (IOException e) {</span>
+<span class="nc" id="L19">            e.printStackTrace();</span>
+<span class="nc" id="L20">        }</span>
+<span class="nc" id="L21">    }</span>
+
+    private static void downloadFile(String urlStr, String fileName) throws IOException {
+<span class="nc" id="L24">        URL url = new URL(urlStr);</span>
+<span class="nc" id="L25">        ReadableByteChannel rbc = Channels.newChannel(url.openStream());</span>
+<span class="nc" id="L26">        FileOutputStream fos = new FileOutputStream(fileName);</span>
+<span class="nc" id="L27">        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);</span>
+<span class="nc" id="L28">        fos.close();</span>
+<span class="nc" id="L29">        rbc.close();</span>
+<span class="nc" id="L30">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

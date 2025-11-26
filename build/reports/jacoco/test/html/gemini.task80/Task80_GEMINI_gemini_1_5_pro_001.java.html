@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task80_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task80</a> &gt; <span class="el_source">Task80_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task80_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task80;
+
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import java.io.IOException;
+
+<span class="nc" id="L7">public class Task80_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static SSLSocket createSSLClientSocketIPv6(String hostname, int port) throws IOException {
+        // Get the default SSL socket factory
+<span class="nc" id="L11">        SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();</span>
+
+        // Create an SSL socket using IPv6
+<span class="nc" id="L14">        SSLSocket sslSocket = (SSLSocket) sslSocketFactory.createSocket(hostname, port);</span>
+
+<span class="nc" id="L16">        return sslSocket;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

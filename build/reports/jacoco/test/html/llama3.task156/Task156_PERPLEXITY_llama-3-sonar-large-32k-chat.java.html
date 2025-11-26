@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task156_PERPLEXITY_llama-3-sonar-large-32k-chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task156</a> &gt; <span class="el_source">Task156_PERPLEXITY_llama-3-sonar-large-32k-chat.java</span></div><h1>Task156_PERPLEXITY_llama-3-sonar-large-32k-chat.java</h1><pre class="source lang-java linenums">package llama3.task156;
+
+class Node {
+    int data;
+    Node left, right;
+
+<span class="nc" id="L7">    Node(int item) {</span>
+<span class="nc" id="L8">        data = item;</span>
+<span class="nc" id="L9">        left = right = null;</span>
+<span class="nc" id="L10">    }</span>
+}
+
+<span class="nc" id="L13">class BinaryTree {</span>
+    Node root;
+
+    void preorder_traversal(Node node) {
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        if (node == null)</span>
+<span class="nc" id="L18">            return;</span>
+<span class="nc" id="L19">        System.out.print(node.data + &quot; &quot;);</span>
+<span class="nc" id="L20">        preorder_traversal(node.left);</span>
+<span class="nc" id="L21">        preorder_traversal(node.right);</span>
+<span class="nc" id="L22">    }</span>
+
+    void inorder_traversal(Node node) {
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (node == null)</span>
+<span class="nc" id="L26">            return;</span>
+<span class="nc" id="L27">        inorder_traversal(node.left);</span>
+<span class="nc" id="L28">        System.out.print(node.data + &quot; &quot;);</span>
+<span class="nc" id="L29">        inorder_traversal(node.right);</span>
+<span class="nc" id="L30">    }</span>
+
+    void postorder_traversal(Node node) {
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if (node == null)</span>
+<span class="nc" id="L34">            return;</span>
+<span class="nc" id="L35">        postorder_traversal(node.left);</span>
+<span class="nc" id="L36">        postorder_traversal(node.right);</span>
+<span class="nc" id="L37">        System.out.print(node.data + &quot; &quot;);</span>
+<span class="nc" id="L38">    }</span>
+
+    public static void main(String args[]) {
+<span class="nc" id="L41">        BinaryTree tree = new BinaryTree();</span>
+<span class="nc" id="L42">        tree.root = new Node(1);</span>
+<span class="nc" id="L43">        tree.root.left = new Node(2);</span>
+<span class="nc" id="L44">        tree.root.right = new Node(3);</span>
+<span class="nc" id="L45">        tree.root.left.left = new Node(4);</span>
+<span class="nc" id="L46">        tree.root.left.right = new Node(5);</span>
+
+<span class="nc" id="L48">        System.out.print(&quot;Preorder traversal: &quot;);</span>
+<span class="nc" id="L49">        tree.preorder_traversal(tree.root);</span>
+<span class="nc" id="L50">        System.out.print(&quot;\nInorder traversal: &quot;);</span>
+<span class="nc" id="L51">        tree.inorder_traversal(tree.root);</span>
+<span class="nc" id="L52">        System.out.print(&quot;\nPostorder traversal: &quot;);</span>
+<span class="nc" id="L53">        tree.postorder_traversal(tree.root);</span>
+<span class="nc" id="L54">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

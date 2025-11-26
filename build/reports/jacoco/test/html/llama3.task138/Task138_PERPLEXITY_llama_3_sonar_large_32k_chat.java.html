@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task138_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task138</a> &gt; <span class="el_source">Task138_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task138_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task138;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class User {
+    private String username;
+    private String password;
+    private String[] privileges;
+
+    //invalid code, getPassword was not defined
+    public String getPassword() {
+<span class="nc" id="L13">        return password;</span>
+    }
+
+<span class="nc" id="L16">    public User(String username, String password, String[] privileges) {</span>
+<span class="nc" id="L17">        this.username = username;</span>
+<span class="nc" id="L18">        this.password = password;</span>
+<span class="nc" id="L19">        this.privileges = privileges;</span>
+<span class="nc" id="L20">    }</span>
+
+    public boolean hasPrivilege(String privilege) {
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        for (String p : privileges) {</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">            if (p.equals(privilege)) {</span>
+<span class="nc" id="L25">                return true;</span>
+            }
+        }
+<span class="nc" id="L28">        return false;</span>
+    }
+}
+
+public class Task138_PERPLEXITY_llama_3_sonar_large_32k_chat {
+    private Map&lt;String, User&gt; users;
+
+<span class="nc" id="L35">    public Task138_PERPLEXITY_llama_3_sonar_large_32k_chat() {</span>
+<span class="nc" id="L36">        this.users = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L37">    }</span>
+
+    public void addUser(String username, String password, String[] privileges) {
+<span class="nc" id="L40">        users.put(username, new User(username, password, privileges));</span>
+<span class="nc" id="L41">    }</span>
+
+    public User authenticate(String username, String password) {
+        //invalid code, getPassword was not defined
+//        if (users.containsKey(username) &amp;&amp; users.get(username).password.equals(password)) {
+<span class="nc bnc" id="L46" title="All 4 branches missed.">        if (users.containsKey(username) &amp;&amp; users.get(username).getPassword().equals(password)) {</span>
+<span class="nc" id="L47">            return users.get(username);</span>
+        } else {
+<span class="nc" id="L49">            return null;</span>
+        }
+    }
+
+    public boolean checkPrivilege(String username, String password, String privilege) {
+<span class="nc" id="L54">        User user = authenticate(username, password);</span>
+<span class="nc bnc" id="L55" title="All 4 branches missed.">        if (user != null &amp;&amp; user.hasPrivilege(privilege)) {</span>
+<span class="nc" id="L56">            return true;</span>
+        } else {
+<span class="nc" id="L58">            return false;</span>
+        }
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L63">        Task138_PERPLEXITY_llama_3_sonar_large_32k_chat manager = new Task138_PERPLEXITY_llama_3_sonar_large_32k_chat();</span>
+<span class="nc" id="L64">        manager.addUser(&quot;admin&quot;, &quot;password&quot;, new String[] {&quot;read&quot;, &quot;write&quot;, &quot;execute&quot;});</span>
+<span class="nc" id="L65">        manager.addUser(&quot;user&quot;, &quot;password&quot;, new String[] {&quot;read&quot;});</span>
+
+<span class="nc" id="L67">        System.out.println(manager.checkPrivilege(&quot;admin&quot;, &quot;password&quot;, &quot;write&quot;));  // true</span>
+<span class="nc" id="L68">        System.out.println(manager.checkPrivilege(&quot;user&quot;, &quot;password&quot;, &quot;write&quot;));  // false</span>
+<span class="nc" id="L69">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

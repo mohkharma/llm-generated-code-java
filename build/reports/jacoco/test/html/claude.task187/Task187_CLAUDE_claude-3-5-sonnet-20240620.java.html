@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task187_CLAUDE_claude-3-5-sonnet-20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task187</a> &gt; <span class="el_source">Task187_CLAUDE_claude-3-5-sonnet-20240620.java</span></div><h1>Task187_CLAUDE_claude-3-5-sonnet-20240620.java</h1><pre class="source lang-java linenums">package claude.task187;
+
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.CyclicBarrier;
+
+class H2O {
+<span class="nc" id="L7">    private Semaphore hydrogenSemaphore = new Semaphore(2);</span>
+<span class="nc" id="L8">    private Semaphore oxygenSemaphore = new Semaphore(1);</span>
+<span class="nc" id="L9">    private CyclicBarrier barrier = new CyclicBarrier(3);</span>
+
+<span class="nc" id="L11">    public H2O() {}</span>
+
+    public void hydrogen(Runnable releaseHydrogen) throws InterruptedException {
+<span class="nc" id="L14">        hydrogenSemaphore.acquire();</span>
+        try {
+<span class="nc" id="L16">            barrier.await();</span>
+<span class="nc" id="L17">            releaseHydrogen.run();</span>
+<span class="nc" id="L18">        } catch (Exception e) {</span>
+<span class="nc" id="L19">            e.printStackTrace();</span>
+        } finally {
+<span class="nc" id="L21">            hydrogenSemaphore.release();</span>
+        }
+<span class="nc" id="L23">    }</span>
+
+    public void oxygen(Runnable releaseOxygen) throws InterruptedException {
+<span class="nc" id="L26">        oxygenSemaphore.acquire();</span>
+        try {
+<span class="nc" id="L28">            barrier.await();</span>
+<span class="nc" id="L29">            releaseOxygen.run();</span>
+<span class="nc" id="L30">        } catch (Exception e) {</span>
+<span class="nc" id="L31">            e.printStackTrace();</span>
+        } finally {
+<span class="nc" id="L33">            oxygenSemaphore.release();</span>
+        }
+<span class="nc" id="L35">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

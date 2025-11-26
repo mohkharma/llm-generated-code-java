@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task173_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task173</a> &gt; <span class="el_source">Task173_OPENAI_gpt_4o.java</span></div><h1>Task173_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task173;// Java code
+import java.util.*;
+
+<span class="nc" id="L4">public class Task173_OPENAI_gpt_4o {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L6">        System.out.println(longestDupSubstring(&quot;banana&quot;));  // Output: &quot;ana&quot;</span>
+<span class="nc" id="L7">        System.out.println(longestDupSubstring(&quot;abcd&quot;));    // Output: &quot;&quot;</span>
+<span class="nc" id="L8">    }</span>
+
+    public static String longestDupSubstring(String s) {
+<span class="nc" id="L11">        int left = 1, right = s.length() - 1;</span>
+<span class="nc" id="L12">        String result = &quot;&quot;;</span>
+        
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        while (left &lt;= right) {</span>
+<span class="nc" id="L15">            int mid = left + (right - left) / 2;</span>
+<span class="nc" id="L16">            String duplicate = searchSubstring(s, mid);</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">            if (!duplicate.isEmpty()) {</span>
+<span class="nc" id="L18">                result = duplicate;</span>
+<span class="nc" id="L19">                left = mid + 1;</span>
+            } else {
+<span class="nc" id="L21">                right = mid - 1;</span>
+            }
+<span class="nc" id="L23">        }</span>
+        
+<span class="nc" id="L25">        return result;</span>
+    }
+
+    private static String searchSubstring(String s, int length) {
+<span class="nc" id="L29">        Map&lt;Long, List&lt;Integer&gt;&gt; hashes = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L30">        long p = 31, m = (long) (1e9 + 7);</span>
+<span class="nc" id="L31">        long pPow = 1, currHash = 0;</span>
+
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        for (int i = 0; i &lt; length; ++i) {</span>
+<span class="nc" id="L34">            currHash = (currHash + (s.charAt(i) - 'a' + 1) * pPow) % m;</span>
+<span class="nc" id="L35">            pPow = (pPow * p) % m;</span>
+        }
+<span class="nc" id="L37">        hashes.put(currHash, new ArrayList&lt;&gt;(Arrays.asList(0)));</span>
+        
+<span class="nc" id="L39">        pPow = 1;</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        for (int j = 1; j &lt; length; ++j) pPow = (pPow * p) % m;</span>
+
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        for (int i = 1; i &lt;= s.length() - length; ++i) {</span>
+<span class="nc" id="L43">            currHash = (currHash - (s.charAt(i - 1) - 'a' + 1) * pPow % m + m) % m;</span>
+<span class="nc" id="L44">            currHash = (currHash * p + (s.charAt(i + length - 1) - 'a' + 1)) % m;</span>
+            
+<span class="nc bnc" id="L46" title="All 2 branches missed.">            if (hashes.containsKey(currHash)) {</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">                for (int start : hashes.get(currHash)) {</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">                    if (s.substring(start, start + length).equals(s.substring(i, i + length))) {</span>
+<span class="nc" id="L49">                        return s.substring(start, start + length);</span>
+                    }
+<span class="nc" id="L51">                }</span>
+            }
+
+<span class="nc" id="L54">            hashes.computeIfAbsent(currHash, k -&gt; new ArrayList&lt;&gt;()).add(i);</span>
+        }
+<span class="nc" id="L56">        return &quot;&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

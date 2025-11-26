@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task121_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task121</a> &gt; <span class="el_source">Task121_OPENAI_gpt_4o.java</span></div><h1>Task121_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task121;// Java - File upload using Spring Boot framework:
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+@SpringBootApplication
+<span class="nc" id="L17">public class Task121_OPENAI_gpt_4o {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L20">        SpringApplication.run(Task121_OPENAI_gpt_4o.class, args);</span>
+<span class="nc" id="L21">    }</span>
+
+    @Bean
+    CommandLineRunner run() {
+<span class="nc" id="L25">        return args -&gt; {};</span>
+    }
+}
+
+@Controller
+<span class="nc" id="L30">class FileUploadController {</span>
+
+    @PostMapping(&quot;/upload&quot;)
+    public String handleFileUpload(@RequestParam(&quot;file&quot;) MultipartFile file,
+                                   RedirectAttributes redirectAttributes) {
+
+<span class="nc" id="L36">        String uploadDir = &quot;/path/to/the/uploads&quot;;</span>
+
+        try {
+<span class="nc" id="L39">            File uploadFile = new File(uploadDir, file.getOriginalFilename());</span>
+<span class="nc" id="L40">            try (FileOutputStream fos = new FileOutputStream(uploadFile)) {</span>
+<span class="nc" id="L41">                fos.write(file.getBytes());</span>
+            }
+<span class="nc" id="L43">            redirectAttributes.addFlashAttribute(&quot;message&quot;, &quot;You successfully uploaded &quot; + file.getOriginalFilename() + &quot;!&quot;);</span>
+<span class="nc" id="L44">        } catch (IOException e) {</span>
+<span class="nc" id="L45">            redirectAttributes.addFlashAttribute(&quot;message&quot;, &quot;File upload failed: &quot; + e.getMessage());</span>
+<span class="nc" id="L46">        }</span>
+
+<span class="nc" id="L48">        return &quot;redirect:/&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

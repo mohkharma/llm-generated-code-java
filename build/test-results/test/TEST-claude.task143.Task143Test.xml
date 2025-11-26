@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task143.Task143Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.005">
+  <properties/>
+  <testcase name="test_mixed_integers_and_floats()" classname="claude.task143.Task143Test" time="0.001"/>
+  <testcase name="test_all_elements_same()" classname="claude.task143.Task143Test" time="0.001"/>
+  <testcase name="test_single_element()" classname="claude.task143.Task143Test" time="0.0"/>
+  <testcase name="test_negative_numbers()" classname="claude.task143.Task143Test" time="0.001"/>
+  <testcase name="test_already_sorted()" classname="claude.task143.Task143Test" time="0.0"/>
+  <testcase name="test_empty_input()" classname="claude.task143.Task143Test" time="0.0"/>
+  <testcase name="test_mixed_positive_and_negative()" classname="claude.task143.Task143Test" time="0.0"/>
+  <testcase name="test_float_numbers()" classname="claude.task143.Task143Test" time="0.0"/>
+  <testcase name="test_large_numbers()" classname="claude.task143.Task143Test" time="0.0"/>
+  <testcase name="test_basic()" classname="claude.task143.Task143Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

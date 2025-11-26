@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task195_PERPLEXITY_llama-3-sonar-large-32k-chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task195</a> &gt; <span class="el_source">Task195_PERPLEXITY_llama-3-sonar-large-32k-chat.java</span></div><h1>Task195_PERPLEXITY_llama-3-sonar-large-32k-chat.java</h1><pre class="source lang-java linenums">package llama3.task195;
+
+import java.util.*;
+
+class MedianFinder {
+    private PriorityQueue&lt;Integer&gt; lower;
+    private PriorityQueue&lt;Integer&gt; higher;
+
+<span class="nc" id="L9">    public MedianFinder() {</span>
+<span class="nc" id="L10">        lower = new PriorityQueue&lt;&gt;((a, b) -&gt; b - a);</span>
+<span class="nc" id="L11">        higher = new PriorityQueue&lt;&gt;();</span>
+<span class="nc" id="L12">    }</span>
+
+    public void addNum(int num) {
+<span class="nc bnc" id="L15" title="All 4 branches missed.">        if (lower.isEmpty() || num &lt;= lower.peek()) {</span>
+<span class="nc" id="L16">            lower.offer(num);</span>
+        } else {
+<span class="nc" id="L18">            higher.offer(num);</span>
+        }
+        
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        if (lower.size() &gt; higher.size() + 1) {</span>
+<span class="nc" id="L22">            higher.offer(lower.poll());</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        } else if (higher.size() &gt; lower.size()) {</span>
+<span class="nc" id="L24">            lower.offer(higher.poll());</span>
+        }
+<span class="nc" id="L26">    }</span>
+
+    public double findMedian() {
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if (lower.size() == higher.size()) {</span>
+<span class="nc" id="L30">            return (lower.peek() + higher.peek()) / 2.0;</span>
+        } else {
+<span class="nc" id="L32">            return lower.peek();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

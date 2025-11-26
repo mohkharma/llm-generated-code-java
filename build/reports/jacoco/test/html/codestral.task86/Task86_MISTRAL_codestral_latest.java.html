@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task86_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task86</a> &gt; <span class="el_source">Task86_MISTRAL_codestral_latest.java</span></div><h1>Task86_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task86;// Java does not have built-in support for downloading and executing files directly.
+// This example uses the Apache Commons IO library to download the file.
+
+import org.apache.commons.io.FileUtils;
+import java.io.File;
+import java.net.URL;
+import java.io.IOException;
+
+<span class="nc" id="L9">public class Task86_MISTRAL_codestral_latest {</span>
+    public static void main(String[] args) throws IOException {
+<span class="nc" id="L11">        String url = &quot;http://example.com/program.exe&quot;;</span>
+<span class="nc" id="L12">        String filename = &quot;program.exe&quot;;</span>
+
+        // Download the EXE file
+<span class="nc" id="L15">        FileUtils.copyURLToFile(new URL(url), new File(filename));</span>
+
+        // Execute the downloaded EXE program
+<span class="nc" id="L18">        Runtime.getRuntime().exec(filename);</span>
+<span class="nc" id="L19">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

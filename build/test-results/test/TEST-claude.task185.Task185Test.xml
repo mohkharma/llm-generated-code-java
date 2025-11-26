@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task185.Task185Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.004">
+  <properties/>
+  <testcase name="testFirstMuchSmaller()" classname="claude.task185.Task185Test" time="0.0"/>
+  <testcase name="testBothSameLength()" classname="claude.task185.Task185Test" time="0.001"/>
+  <testcase name="testExample1()" classname="claude.task185.Task185Test" time="0.0"/>
+  <testcase name="testExample2()" classname="claude.task185.Task185Test" time="0.0"/>
+  <testcase name="testSecondMuchSmaller()" classname="claude.task185.Task185Test" time="0.0"/>
+  <testcase name="testFirstEmpty()" classname="claude.task185.Task185Test" time="0.0"/>
+  <testcase name="testSecondEmpty()" classname="claude.task185.Task185Test" time="0.001"/>
+  <testcase name="testEqualElements()" classname="claude.task185.Task185Test" time="0.0"/>
+  <testcase name="testLargeNumbers()" classname="claude.task185.Task185Test" time="0.0"/>
+  <testcase name="testNegativeNumbers()" classname="claude.task185.Task185Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

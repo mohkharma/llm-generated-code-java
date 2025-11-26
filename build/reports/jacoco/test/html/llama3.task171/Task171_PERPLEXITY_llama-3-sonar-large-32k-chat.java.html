@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task171_PERPLEXITY_llama-3-sonar-large-32k-chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task171</a> &gt; <span class="el_source">Task171_PERPLEXITY_llama-3-sonar-large-32k-chat.java</span></div><h1>Task171_PERPLEXITY_llama-3-sonar-large-32k-chat.java</h1><pre class="source lang-java linenums">package llama3.task171;
+
+<span class="nc" id="L3">class Solution {</span>
+    public int reversePairs(int[] nums) {
+<span class="nc" id="L5">        return mergeSort(nums, 0, nums.length - 1);</span>
+    }
+
+    private int mergeSort(int[] nums, int left, int right) {
+<span class="nc bnc" id="L9" title="All 2 branches missed.">        if (left &gt;= right) {</span>
+<span class="nc" id="L10">            return 0;</span>
+        }
+<span class="nc" id="L12">        int mid = left + (right - left) / 2;</span>
+<span class="nc" id="L13">        int left_count = mergeSort(nums, left, mid);</span>
+<span class="nc" id="L14">        int right_count = mergeSort(nums, mid + 1, right);</span>
+<span class="nc" id="L15">        int merged_count = merge(nums, left, mid, right);</span>
+<span class="nc" id="L16">        return left_count + right_count + merged_count;</span>
+    }
+
+    private int merge(int[] nums, int left, int mid, int right) {
+<span class="nc" id="L20">        int[] temp = new int[right - left + 1];</span>
+<span class="nc" id="L21">        int left_index = left, right_index = mid + 1, temp_index = 0, count = 0;</span>
+<span class="nc bnc" id="L22" title="All 4 branches missed.">        while (left_index &lt;= mid &amp;&amp; right_index &lt;= right) {</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">            if (nums[left_index] &lt;= 2 * nums[right_index]) {</span>
+<span class="nc" id="L24">                temp[temp_index++] = nums[left_index++];</span>
+            } else {
+<span class="nc" id="L26">                temp[temp_index++] = nums[right_index++];</span>
+<span class="nc" id="L27">                count += mid - left_index + 1;</span>
+            }
+        }
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        while (left_index &lt;= mid) {</span>
+<span class="nc" id="L31">            temp[temp_index++] = nums[left_index++];</span>
+        }
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        while (right_index &lt;= right) {</span>
+<span class="nc" id="L34">            temp[temp_index++] = nums[right_index++];</span>
+        }
+<span class="nc" id="L36">        System.arraycopy(temp, 0, nums, left, right - left + 1);</span>
+<span class="nc" id="L37">        return count;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

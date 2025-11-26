@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task75_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task75</a> &gt; <span class="el_source">Task75_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task75_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task75;
+
+import java.io.IOException;
+
+<span class="nc" id="L5">public class Task75_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static void main(String[] args) {
+<span class="pc bpc" id="L7" title="1 of 2 branches missed.">        if (args.length != 1) {</span>
+<span class="nc" id="L8">            System.out.println(&quot;Usage: java Task75_CLAUDE_claude_3_5_sonnet_20240620 &lt;PID&gt;&quot;);</span>
+<span class="nc" id="L9">            System.exit(1);</span>
+        }
+
+        try {
+<span class="fc" id="L13">            int pid = Integer.parseInt(args[0]);</span>
+<span class="fc" id="L14">            Process process = Runtime.getRuntime().exec(&quot;taskkill /F /PID &quot; + pid);</span>
+<span class="fc" id="L15">            int exitCode = process.waitFor();</span>
+            
+<span class="fc bfc" id="L17" title="All 2 branches covered.">            if (exitCode == 0) {</span>
+<span class="fc" id="L18">                System.out.println(&quot;Process with PID &quot; + pid + &quot; has been terminated.&quot;);</span>
+            } else {
+<span class="fc" id="L20">                System.out.println(&quot;Failed to terminate process with PID &quot; + pid);</span>
+            }
+<span class="fc" id="L22">        } catch (NumberFormatException e) {</span>
+<span class="fc" id="L23">            System.out.println(&quot;Invalid PID. Please provide a valid integer.&quot;);</span>
+<span class="nc" id="L24">        } catch (IOException e) {</span>
+<span class="nc" id="L25">            System.out.println(&quot;An I/O error occurred: &quot; + e.getMessage());</span>
+<span class="nc" id="L26">        } catch (InterruptedException e) {</span>
+<span class="nc" id="L27">            System.out.println(&quot;The operation was interrupted: &quot; + e.getMessage());</span>
+<span class="pc" id="L28">        }</span>
+<span class="fc" id="L29">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

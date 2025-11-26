@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task32.Task32Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:13" hostname="DESKTOP-VCM60S2" time="0.005">
+  <properties/>
+  <testcase name="testLongTermInvestment()" classname="claude.task32.Task32Test" time="0.002"/>
+  <testcase name="testNoTax()" classname="claude.task32.Task32Test" time="0.001"/>
+  <testcase name="testHighPrincipalAndDesiredSum()" classname="claude.task32.Task32Test" time="0.001"/>
+  <testcase name="testLowInterestHighTax()" classname="claude.task32.Task32Test" time="0.0"/>
+  <testcase name="testZeroYears()" classname="claude.task32.Task32Test" time="0.0"/>
+  <testcase name="testHighTax()" classname="claude.task32.Task32Test" time="0.0"/>
+  <testcase name="testMinimalInterest()" classname="claude.task32.Task32Test" time="0.0"/>
+  <testcase name="testSmallIncreaseOneYear()" classname="claude.task32.Task32Test" time="0.0"/>
+  <testcase name="testExactThreeYears()" classname="claude.task32.Task32Test" time="0.0"/>
+  <testcase name="testHighInterestLowTax()" classname="claude.task32.Task32Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

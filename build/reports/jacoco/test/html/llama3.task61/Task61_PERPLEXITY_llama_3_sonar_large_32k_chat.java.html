@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task61_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task61</a> &gt; <span class="el_source">Task61_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task61_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task61;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+<span class="nc" id="L8">public class Task61_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    public static void main(String[] args) throws Exception {
+<span class="nc" id="L10">        String xmlString = &quot;&lt;root&gt;&lt;person&gt;&lt;name&gt;John&lt;/name&gt;&lt;age&gt;30&lt;/age&gt;&lt;/person&gt;&lt;/root&gt;&quot;;</span>
+<span class="nc" id="L11">        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();</span>
+<span class="nc" id="L12">        DocumentBuilder builder = factory.newDocumentBuilder();</span>
+        //invalid code, no suitable method found for parse(javax.xml.transform.stream.StreamSource)
+//        Document doc = builder.parse(new javax.xml.transform.stream.StreamSource(new java.io.StringReader(xmlString)));
+//        Element root = doc.getDocumentElement();
+//        System.out.println(root.getTagName(root));
+<span class="nc" id="L17">    }</span>
+
+    public static String rootTagName(Element root) {
+<span class="nc" id="L20">        return root.getTagName();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

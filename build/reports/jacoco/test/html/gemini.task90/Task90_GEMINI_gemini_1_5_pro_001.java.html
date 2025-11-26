@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task90_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task90</a> &gt; <span class="el_source">Task90_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task90_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task90;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.HashSet;
+import java.util.Set;
+
+<span class="nc" id="L12">public class Task90_GEMINI_gemini_1_5_pro_001 {</span>
+    private static final int PORT = 65432;
+<span class="nc" id="L14">    private static final Set&lt;ClientHandler&gt; clients = new HashSet&lt;&gt;();</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L17">        try (ServerSocket serverSocket = new ServerSocket(PORT)) {</span>
+<span class="nc" id="L18">            System.out.println(&quot;Server started on port &quot; + PORT);</span>
+            while (true) {
+<span class="nc" id="L20">                Socket clientSocket = serverSocket.accept();</span>
+<span class="nc" id="L21">                ClientHandler clientHandler = new ClientHandler(clientSocket);</span>
+<span class="nc" id="L22">                clients.add(clientHandler);</span>
+<span class="nc" id="L23">                new Thread(clientHandler).start();</span>
+<span class="nc" id="L24">            }</span>
+<span class="nc" id="L25">        } catch (IOException e) {</span>
+<span class="nc" id="L26">            System.err.println(&quot;Error starting server: &quot; + e.getMessage());</span>
+        }
+<span class="nc" id="L28">    }</span>
+
+    private static class ClientHandler implements Runnable {
+        private final Socket clientSocket;
+        private String username;
+        private BufferedReader in;
+        private PrintWriter out;
+
+<span class="nc" id="L36">        public ClientHandler(Socket socket) {</span>
+<span class="nc" id="L37">            this.clientSocket = socket;</span>
+<span class="nc" id="L38">        }</span>
+
+        @Override
+        public void run() {
+            try {
+<span class="nc" id="L43">                in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));</span>
+<span class="nc" id="L44">                out = new PrintWriter(clientSocket.getOutputStream(), true);</span>
+<span class="nc" id="L45">                out.println(&quot;Enter your username:&quot;);</span>
+<span class="nc" id="L46">                username = in.readLine();</span>
+<span class="nc" id="L47">                broadcast(username + &quot; has joined the chat.&quot;);</span>
+                String message;
+<span class="nc bnc" id="L49" title="All 2 branches missed.">                while ((message = in.readLine()) != null) {</span>
+<span class="nc" id="L50">                    broadcast(username + &quot;: &quot; + message);</span>
+                }
+<span class="nc" id="L52">            } catch (IOException e) {</span>
+<span class="nc" id="L53">                System.err.println(&quot;Error handling client: &quot; + e.getMessage());</span>
+            } finally {
+<span class="nc" id="L55">                clients.remove(this);</span>
+<span class="nc" id="L56">                broadcast(username + &quot; has left the chat.&quot;);</span>
+                try {
+<span class="nc" id="L58">                    clientSocket.close();</span>
+<span class="nc" id="L59">                } catch (IOException e) {</span>
+                    // Ignore
+<span class="nc" id="L61">                }</span>
+            }
+<span class="nc" id="L63">        }</span>
+
+        public void sendMessage(String message) {
+<span class="nc" id="L66">            out.println(message);</span>
+<span class="nc" id="L67">        }</span>
+    }
+
+    private static synchronized void broadcast(String message) {
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        for (ClientHandler client : clients) {</span>
+<span class="nc" id="L72">            client.sendMessage(message);</span>
+<span class="nc" id="L73">        }</span>
+<span class="nc" id="L74">        System.out.println(message);</span>
+<span class="nc" id="L75">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

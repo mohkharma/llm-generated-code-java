@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task54_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task54</a> &gt; <span class="el_source">Task54_MISTRAL_codestral_latest.java</span></div><h1>Task54_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task54;
+
+import java.util.Random;
+
+<span class="nc" id="L5">public class Task54_MISTRAL_codestral_latest {</span>
+    private static final String CHARACTERS = &quot;0123456789&quot;;
+    private static final int OTP_LENGTH = 6;
+
+    public static String generateOTP() {
+<span class="nc" id="L10">        StringBuilder otp = new StringBuilder();</span>
+<span class="nc" id="L11">        Random random = new Random();</span>
+<span class="nc bnc" id="L12" title="All 2 branches missed.">        for (int i = 0; i &lt; OTP_LENGTH; i++) {</span>
+<span class="nc" id="L13">            otp.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));</span>
+        }
+<span class="nc" id="L15">        return otp.toString();</span>
+    }
+
+    public static String login(String username, String password, String otp) {
+        // Here you would normally check the username and password against a database
+        // For this example, we'll just assume they're correct
+<span class="nc bnc" id="L21" title="All 4 branches missed.">        if (username.equals(&quot;user&quot;) &amp;&amp; password.equals(&quot;password&quot;)) {</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">            if (otp.equals(generateOTP())) {</span>
+<span class="nc" id="L23">                return &quot;Login successful&quot;;</span>
+            } else {
+<span class="nc" id="L25">                return &quot;Invalid OTP&quot;;</span>
+            }
+        } else {
+<span class="nc" id="L28">            return &quot;Invalid username or password&quot;;</span>
+        }
+    }
+
+    // Example usage:
+    public static void main(String[] args) {
+<span class="nc" id="L34">        System.out.println(login(&quot;user&quot;, &quot;password&quot;, generateOTP()));</span>
+<span class="nc" id="L35">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

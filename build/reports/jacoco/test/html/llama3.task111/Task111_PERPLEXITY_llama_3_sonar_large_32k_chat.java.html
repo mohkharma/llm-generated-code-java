@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task111_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task111</a> &gt; <span class="el_source">Task111_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task111_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task111;
+
+ 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.xmlrpc.XmlRpcException;
+import org.apache.xmlrpc.server.PropertyHandlerMapping;
+import org.apache.xmlrpc.server.XmlRpcServer;
+import org.apache.xmlrpc.server.XmlRpcServerConfigImpl;
+import org.apache.xmlrpc.webserver.WebServer;
+
+<span class="nc" id="L14">public class Task111_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    public static void main(String[] args) throws IOException, XmlRpcException {
+<span class="nc" id="L16">        WebServer webServer = new WebServer(8080);</span>
+<span class="nc" id="L17">        XmlRpcServer xmlRpcServer = webServer.getXmlRpcServer();</span>
+<span class="nc" id="L18">        PropertyHandlerMapping phm = new PropertyHandlerMapping();</span>
+<span class="nc" id="L19">        phm.addHandler(&quot;example&quot;, ExampleHandler.class);</span>
+<span class="nc" id="L20">        xmlRpcServer.setHandlerMapping(phm);</span>
+<span class="nc" id="L21">        XmlRpcServerConfigImpl config = (XmlRpcServerConfigImpl) xmlRpcServer.getConfig();</span>
+<span class="nc" id="L22">        config.setEnabledForExtensions(true);</span>
+<span class="nc" id="L23">        config.setContentLengthOptional(false);</span>
+<span class="nc" id="L24">        webServer.start();</span>
+<span class="nc" id="L25">    }</span>
+}
+
+<span class="nc" id="L28">class ExampleHandler {</span>
+    public int add(int a, int b) {
+<span class="nc" id="L30">        return a + b;</span>
+    }
+
+    public int subtract(int a, int b) {
+<span class="nc" id="L34">        return a - b;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

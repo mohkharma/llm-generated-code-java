@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task30.Task30Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:13" hostname="DESKTOP-VCM60S2" time="0.006">
+  <properties/>
+  <testcase name="testRepeatedCharacters()" classname="claude.task30.Task30Test" time="0.001"/>
+  <testcase name="testEmptyStrings()" classname="claude.task30.Task30Test" time="0.0"/>
+  <testcase name="testOneEmptyString()" classname="claude.task30.Task30Test" time="0.0"/>
+  <testcase name="testDistinctCharacters()" classname="claude.task30.Task30Test" time="0.0"/>
+  <testcase name="testSingleCharacterStrings()" classname="claude.task30.Task30Test" time="0.0"/>
+  <testcase name="testIdenticalStrings()" classname="claude.task30.Task30Test" time="0.0"/>
+  <testcase name="testNoOverlappingCharacters()" classname="claude.task30.Task30Test" time="0.001"/>
+  <testcase name="testCaseInsensitive()" classname="claude.task30.Task30Test" time="0.0"/>
+  <testcase name="testLongStrings()" classname="claude.task30.Task30Test" time="0.001"/>
+  <testcase name="testAllOverlappingCharacters()" classname="claude.task30.Task30Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

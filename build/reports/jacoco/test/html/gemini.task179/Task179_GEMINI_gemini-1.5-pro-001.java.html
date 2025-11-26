@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task179_GEMINI_gemini-1.5-pro-001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task179</a> &gt; <span class="el_source">Task179_GEMINI_gemini-1.5-pro-001.java</span></div><h1>Task179_GEMINI_gemini-1.5-pro-001.java</h1><pre class="source lang-java linenums">package gemini.task179;
+
+<span class="nc" id="L3">class Solution {</span>
+    public int[] maxSlidingWindow(int[] nums, int k) {
+<span class="nc bnc" id="L5" title="All 2 branches missed.">        if (nums.length == 0) {</span>
+<span class="nc" id="L6">            return new int[0];</span>
+        }
+<span class="nc bnc" id="L8" title="All 2 branches missed.">        if (k == 1) {</span>
+<span class="nc" id="L9">            return nums;</span>
+        }
+        
+<span class="nc" id="L12">        int n = nums.length;</span>
+<span class="nc" id="L13">        int[] max_left = new int[n];</span>
+<span class="nc" id="L14">        int[] max_right = new int[n];</span>
+<span class="nc" id="L15">        max_left[0] = nums[0];</span>
+<span class="nc" id="L16">        max_right[n - 1] = nums[n - 1];</span>
+
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        for (int i = 1; i &lt; n; i++) {</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">            max_left[i] = (i % k == 0) ? nums[i] : Math.max(max_left[i - 1], nums[i]);</span>
+<span class="nc" id="L20">            int j = n - i - 1;</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">            max_right[j] = ((j + 1) % k == 0) ? nums[j] : Math.max(max_right[j + 1], nums[j]);</span>
+        }
+
+<span class="nc" id="L24">        int[] result = new int[n - k + 1];</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        for (int i = 0; i &lt; n - k + 1; i++) {</span>
+<span class="nc" id="L26">            result[i] = Math.max(max_right[i], max_left[i + k - 1]);</span>
+        }
+
+<span class="nc" id="L29">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

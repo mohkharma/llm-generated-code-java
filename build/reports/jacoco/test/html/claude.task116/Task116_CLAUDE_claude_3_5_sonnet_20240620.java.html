@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task116_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task116</a> &gt; <span class="el_source">Task116_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task116_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task116;
+
+import java.io.Console;
+import java.io.IOException;
+
+<span class="nc" id="L6">public class Task116_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static void main(String[] args) {
+<span class="nc bnc" id="L8" title="All 2 branches missed.">        if (System.getProperty(&quot;user.name&quot;).equals(&quot;root&quot;)) {</span>
+<span class="nc" id="L9">            Console console = System.console();</span>
+<span class="nc bnc" id="L10" title="All 2 branches missed.">            if (console == null) {</span>
+<span class="nc" id="L11">                System.err.println(&quot;No console available&quot;);</span>
+<span class="nc" id="L12">                System.exit(1);</span>
+            }
+
+<span class="nc" id="L15">            String username = console.readLine(&quot;Enter username to change password: &quot;);</span>
+<span class="nc" id="L16">            char[] passwordArray = console.readPassword(&quot;Enter new password: &quot;);</span>
+<span class="nc" id="L17">            String password = new String(passwordArray);</span>
+
+            try {
+<span class="nc" id="L20">                changePassword(username, password);</span>
+<span class="nc" id="L21">                System.out.println(&quot;Dropping privileges...&quot;);</span>
+<span class="nc" id="L22">                dropPrivileges();</span>
+<span class="nc" id="L23">                System.out.println(&quot;Privileges dropped. Continuing with reduced permissions.&quot;);</span>
+<span class="nc" id="L24">            } catch (IOException | InterruptedException e) {</span>
+<span class="nc" id="L25">                System.err.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="nc" id="L26">                System.exit(1);</span>
+<span class="nc" id="L27">            }</span>
+
+            // Rest of the program runs with reduced privileges
+<span class="nc" id="L30">            System.out.println(&quot;Program continues with reduced privileges...&quot;);</span>
+<span class="nc" id="L31">        } else {</span>
+<span class="nc" id="L32">            System.out.println(&quot;This program must be run as root.&quot;);</span>
+<span class="nc" id="L33">            System.exit(1);</span>
+        }
+<span class="nc" id="L35">    }</span>
+
+    private static void changePassword(String username, String password) throws IOException, InterruptedException {
+<span class="nc" id="L38">        ProcessBuilder pb = new ProcessBuilder(&quot;passwd&quot;, username);</span>
+<span class="nc" id="L39">        pb.redirectErrorStream(true);</span>
+<span class="nc" id="L40">        Process process = pb.start();</span>
+
+<span class="nc" id="L42">        process.getOutputStream().write((password + &quot;\\n&quot; + password + &quot;\\n&quot;).getBytes());</span>
+<span class="nc" id="L43">        process.getOutputStream().flush();</span>
+<span class="nc" id="L44">        process.getOutputStream().close();</span>
+
+<span class="nc" id="L46">        int exitCode = process.waitFor();</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (exitCode == 0) {</span>
+<span class="nc" id="L48">            System.out.println(&quot;Password changed successfully.&quot;);</span>
+        } else {
+<span class="nc" id="L50">            System.out.println(&quot;Failed to change password.&quot;);</span>
+        }
+<span class="nc" id="L52">    }</span>
+
+    private static void dropPrivileges() {
+        // Note: Java does not provide a direct way to drop privileges.
+        // This would typically involve JNI or system-specific calls.
+<span class="nc" id="L57">        System.out.println(&quot;Warning: Privilege dropping not implemented in Java.&quot;);</span>
+<span class="nc" id="L58">        System.out.println(&quot;In a real implementation, you would use JNI to call setuid/setgid.&quot;);</span>
+<span class="nc" id="L59">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

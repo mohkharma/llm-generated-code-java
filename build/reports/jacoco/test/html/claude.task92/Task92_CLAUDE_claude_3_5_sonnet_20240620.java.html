@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task92_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task92</a> &gt; <span class="el_source">Task92_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task92_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task92;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+class SharedResource {
+<span class="nc" id="L7">    private int currentCounter = 0;</span>
+    private final int maxCounter;
+<span class="nc" id="L9">    private final Lock lock = new ReentrantLock();</span>
+
+<span class="nc" id="L11">    public SharedResource(int maxCounter) {</span>
+<span class="nc" id="L12">        this.maxCounter = maxCounter;</span>
+<span class="nc" id="L13">    }</span>
+
+    public boolean accessResource(int threadId) {
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        if (currentCounter &lt;= maxCounter) {</span>
+<span class="nc" id="L17">            lock.lock();</span>
+            try {
+<span class="nc bnc" id="L19" title="All 2 branches missed.">                if (currentCounter &lt;= maxCounter) {</span>
+<span class="nc" id="L20">                    currentCounter++;</span>
+<span class="nc" id="L21">                    System.out.println(&quot;Thread &quot; + threadId + &quot; accessing. Current counter: &quot; + currentCounter);</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">                    return currentCounter &lt;= maxCounter;</span>
+                }
+            } finally {
+<span class="nc" id="L25">                lock.unlock();</span>
+            }
+        }
+<span class="nc" id="L28">        return false;</span>
+    }
+}
+
+class ResourceAccessThread extends Thread {
+    private final SharedResource sharedResource;
+    private final int threadId;
+
+<span class="nc" id="L36">    public ResourceAccessThread(SharedResource sharedResource, int threadId) {</span>
+<span class="nc" id="L37">        this.sharedResource = sharedResource;</span>
+<span class="nc" id="L38">        this.threadId = threadId;</span>
+<span class="nc" id="L39">    }</span>
+
+    @Override
+    public void run() {
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        while (sharedResource.accessResource(threadId)) {</span>
+            // Continue accessing the resource
+        }
+<span class="nc" id="L46">    }</span>
+}
+
+<span class="nc" id="L49">public class Task92_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L51">        int maxCounter = 10;</span>
+<span class="nc" id="L52">        int numThreads = 5;</span>
+<span class="nc" id="L53">        SharedResource sharedResource = new SharedResource(maxCounter);</span>
+
+<span class="nc" id="L55">        Thread[] threads = new Thread[numThreads];</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        for (int i = 0; i &lt; numThreads; i++) {</span>
+<span class="nc" id="L57">            threads[i] = new ResourceAccessThread(sharedResource, i);</span>
+<span class="nc" id="L58">            threads[i].start();</span>
+        }
+
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        for (Thread thread : threads) {</span>
+            try {
+<span class="nc" id="L63">                thread.join();</span>
+<span class="nc" id="L64">            } catch (InterruptedException e) {</span>
+<span class="nc" id="L65">                e.printStackTrace();</span>
+<span class="nc" id="L66">            }</span>
+        }
+<span class="nc" id="L68">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task186_CLAUDE_claude-3-5-sonnet-20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task186</a> &gt; <span class="el_source">Task186_CLAUDE_claude-3-5-sonnet-20240620.java</span></div><h1>Task186_CLAUDE_claude-3-5-sonnet-20240620.java</h1><pre class="source lang-java linenums">package claude.task186;
+
+class ListNode {
+    int val;
+    ListNode next;
+<span class="nc" id="L6">    ListNode() {}</span>
+<span class="fc" id="L7">    ListNode(int val) { this.val = val; }</span>
+<span class="nc" id="L8">    ListNode(int val, ListNode next) { this.val = val; this.next = next; }</span>
+}
+
+<span class="fc" id="L11">class Solution {</span>
+    public ListNode mergeKLists(ListNode[] lists) {
+<span class="pc bpc" id="L13" title="1 of 4 branches missed.">        if (lists == null || lists.length == 0) {</span>
+<span class="fc" id="L14">            return null;</span>
+        }
+        
+<span class="fc" id="L17">        return mergeKListsHelper(lists, 0, lists.length - 1);</span>
+    }
+    
+    private ListNode mergeKListsHelper(ListNode[] lists, int start, int end) {
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (start == end) {</span>
+<span class="fc" id="L22">            return lists[start];</span>
+        }
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (start + 1 == end) {</span>
+<span class="fc" id="L25">            return mergeTwoLists(lists[start], lists[end]);</span>
+        }
+        
+<span class="fc" id="L28">        int mid = start + (end - start) / 2;</span>
+<span class="fc" id="L29">        ListNode left = mergeKListsHelper(lists, start, mid);</span>
+<span class="fc" id="L30">        ListNode right = mergeKListsHelper(lists, mid + 1, end);</span>
+<span class="fc" id="L31">        return mergeTwoLists(left, right);</span>
+    }
+    
+    private ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+<span class="fc" id="L35">        ListNode dummy = new ListNode(0);</span>
+<span class="fc" id="L36">        ListNode curr = dummy;</span>
+        
+<span class="fc bfc" id="L38" title="All 4 branches covered.">        while (l1 != null &amp;&amp; l2 != null) {</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            if (l1.val &lt;= l2.val) {</span>
+<span class="fc" id="L40">                curr.next = l1;</span>
+<span class="fc" id="L41">                l1 = l1.next;</span>
+            } else {
+<span class="fc" id="L43">                curr.next = l2;</span>
+<span class="fc" id="L44">                l2 = l2.next;</span>
+            }
+<span class="fc" id="L46">            curr = curr.next;</span>
+        }
+        
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        curr.next = (l1 != null) ? l1 : l2;</span>
+<span class="fc" id="L50">        return dummy.next;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

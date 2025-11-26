@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task181_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task181</a> &gt; <span class="el_source">Task181_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task181_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task181;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+class BankAccount {
+    private final String accountNumber;
+    private double balance;
+    private boolean isOpen;
+    private final Lock lock;
+
+<span class="fc" id="L14">    public BankAccount(String accountNumber, double initialBalance) {</span>
+<span class="fc" id="L15">        this.accountNumber = accountNumber;</span>
+<span class="fc" id="L16">        this.balance = initialBalance;</span>
+<span class="fc" id="L17">        this.isOpen = true;</span>
+<span class="fc" id="L18">        this.lock = new ReentrantLock();</span>
+<span class="fc" id="L19">    }</span>
+
+    public boolean deposit(double amount) {
+<span class="fc" id="L22">        lock.lock();</span>
+        try {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">            if (!isOpen) {</span>
+<span class="fc" id="L25">                return false;</span>
+            }
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">            if (amount &lt;= 0) {</span>
+<span class="nc" id="L28">                return false;</span>
+            }
+<span class="fc" id="L30">            balance += amount;</span>
+<span class="fc" id="L31">            return true;</span>
+        } finally {
+<span class="fc" id="L33">            lock.unlock();</span>
+        }
+    }
+
+    public boolean withdraw(double amount) {
+<span class="fc" id="L38">        lock.lock();</span>
+        try {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            if (!isOpen) {</span>
+<span class="fc" id="L41">                return false;</span>
+            }
+<span class="fc bfc" id="L43" title="All 4 branches covered.">            if (amount &lt;= 0 || amount &gt; balance) {</span>
+<span class="fc" id="L44">                return false;</span>
+            }
+<span class="fc" id="L46">            balance -= amount;</span>
+<span class="fc" id="L47">            return true;</span>
+        } finally {
+<span class="fc" id="L49">            lock.unlock();</span>
+        }
+    }
+
+    public boolean close() {
+<span class="fc" id="L54">        lock.lock();</span>
+        try {
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">            if (!isOpen) {</span>
+<span class="nc" id="L57">                return false;</span>
+            }
+<span class="fc" id="L59">            isOpen = false;</span>
+<span class="fc" id="L60">            return true;</span>
+        } finally {
+<span class="fc" id="L62">            lock.unlock();</span>
+        }
+    }
+
+    public double getBalance() {
+<span class="fc" id="L67">        return balance;</span>
+    }
+}
+
+class Bank {
+    private final Map&lt;String, BankAccount&gt; accounts;
+    private final Lock lock;
+
+<span class="fc" id="L75">    public Bank() {</span>
+<span class="fc" id="L76">        accounts = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L77">        lock = new ReentrantLock();</span>
+<span class="fc" id="L78">    }</span>
+
+    public boolean openAccount(String accountNumber, double initialBalance) {
+<span class="fc" id="L81">        lock.lock();</span>
+        try {
+<span class="fc bfc" id="L83" title="All 2 branches covered.">            if (accounts.containsKey(accountNumber)) {</span>
+<span class="fc" id="L84">                return false;</span>
+            }
+<span class="fc" id="L86">            accounts.put(accountNumber, new BankAccount(accountNumber, initialBalance));</span>
+<span class="fc" id="L87">            return true;</span>
+        } finally {
+<span class="fc" id="L89">            lock.unlock();</span>
+        }
+    }
+
+    public boolean closeAccount(String accountNumber) {
+<span class="fc" id="L94">        lock.lock();</span>
+        try {
+<span class="fc" id="L96">            BankAccount account = accounts.get(accountNumber);</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">            if (account == null) {</span>
+<span class="fc" id="L98">                return false;</span>
+            }
+<span class="fc" id="L100">            return account.close();</span>
+        } finally {
+<span class="fc" id="L102">            lock.unlock();</span>
+        }
+    }
+
+    public boolean deposit(String accountNumber, double amount) {
+<span class="fc" id="L107">        lock.lock();</span>
+        try {
+<span class="fc" id="L109">            BankAccount account = accounts.get(accountNumber);</span>
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">            if (account == null) {</span>
+<span class="nc" id="L111">                return false;</span>
+            }
+<span class="fc" id="L113">            return account.deposit(amount);</span>
+        } finally {
+<span class="fc" id="L115">            lock.unlock();</span>
+        }
+    }
+
+    public boolean withdraw(String accountNumber, double amount) {
+<span class="fc" id="L120">        lock.lock();</span>
+        try {
+<span class="fc" id="L122">            BankAccount account = accounts.get(accountNumber);</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">            if (account == null) {</span>
+<span class="nc" id="L124">                return false;</span>
+            }
+<span class="fc" id="L126">            return account.withdraw(amount);</span>
+        } finally {
+<span class="fc" id="L128">            lock.unlock();</span>
+        }
+    }
+
+    public BankAccount getAccount(String accountNumber) {
+<span class="fc" id="L133">        return accounts.get(accountNumber);</span>
+    }
+}
+
+<span class="nc" id="L137">public class Task181_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static void main(String[] args) throws InterruptedException {
+<span class="nc" id="L139">        Bank bank = new Bank();</span>
+<span class="nc" id="L140">        bank.openAccount(&quot;123&quot;, 1000);</span>
+<span class="nc" id="L141">        bank.openAccount(&quot;456&quot;, 500);</span>
+
+<span class="nc" id="L143">        Thread thread1 = new Thread(() -&gt; {</span>
+<span class="nc" id="L144">            bank.deposit(&quot;123&quot;, 200);</span>
+<span class="nc" id="L145">            bank.withdraw(&quot;456&quot;, 100);</span>
+<span class="nc" id="L146">        });</span>
+
+<span class="nc" id="L148">        Thread thread2 = new Thread(() -&gt; {</span>
+<span class="nc" id="L149">            bank.withdraw(&quot;123&quot;, 300);</span>
+<span class="nc" id="L150">            bank.deposit(&quot;456&quot;, 150);</span>
+<span class="nc" id="L151">        });</span>
+
+<span class="nc" id="L153">        thread1.start();</span>
+<span class="nc" id="L154">        thread2.start();</span>
+
+<span class="nc" id="L156">        thread1.join();</span>
+<span class="nc" id="L157">        thread2.join();</span>
+
+<span class="nc" id="L159">        System.out.println(&quot;Account 123 balance: &quot; + bank.getAccount(&quot;123&quot;).getBalance());</span>
+<span class="nc" id="L160">        System.out.println(&quot;Account 456 balance: &quot; + bank.getAccount(&quot;456&quot;).getBalance());</span>
+<span class="nc" id="L161">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

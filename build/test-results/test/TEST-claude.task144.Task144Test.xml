@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task144.Task144Test" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.008">
+  <properties/>
+  <testcase name="test_reverse_order_arrays()" classname="claude.task144.Task144Test" time="0.003"/>
+  <testcase name="test_all_elements_same()" classname="claude.task144.Task144Test" time="0.001"/>
+  <testcase name="test_empty_arrays()" classname="claude.task144.Task144Test" time="0.0"/>
+  <testcase name="test_interleaving_elements()" classname="claude.task144.Task144Test" time="0.0"/>
+  <testcase name="test_single_element_arrays()" classname="claude.task144.Task144Test" time="0.0"/>
+  <testcase name="test_some_overlapping_elements()" classname="claude.task144.Task144Test" time="0.001"/>
+  <testcase name="test_one_empty_array()" classname="claude.task144.Task144Test" time="0.0"/>
+  <testcase name="test_large_element_diff()" classname="claude.task144.Task144Test" time="0.0"/>
+  <testcase name="test_different_sizes_with_all_smaller_elements()" classname="claude.task144.Task144Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

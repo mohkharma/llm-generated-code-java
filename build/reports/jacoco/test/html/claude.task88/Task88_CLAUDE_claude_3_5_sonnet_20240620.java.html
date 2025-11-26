@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task88_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task88</a> &gt; <span class="el_source">Task88_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task88_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task88;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Random;
+
+<span class="nc" id="L9">public class Task88_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static String createTempFileWithUnicode() throws IOException {
+        // Create a temporary file
+<span class="fc" id="L12">        File tempFile = File.createTempFile(&quot;temp&quot;, &quot;.txt&quot;);</span>
+        
+        // Generate a random string
+<span class="fc" id="L15">        String randomString = generateRandomString(10);</span>
+        
+        // Convert the string to Unicode
+<span class="fc" id="L18">        String unicodeString = convertToUnicode(randomString);</span>
+        
+        // Write the Unicode string to the file
+<span class="fc" id="L21">        try (FileWriter writer = new FileWriter(tempFile, StandardCharsets.UTF_8)) {</span>
+<span class="fc" id="L22">            writer.write(unicodeString);</span>
+        }
+        
+<span class="fc" id="L25">        return tempFile.getAbsolutePath();</span>
+    }
+    
+    private static String generateRandomString(int length) {
+<span class="fc" id="L29">        String chars = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&quot;;</span>
+<span class="fc" id="L30">        StringBuilder sb = new StringBuilder();</span>
+<span class="fc" id="L31">        Random random = new Random();</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L33">            sb.append(chars.charAt(random.nextInt(chars.length())));</span>
+        }
+<span class="fc" id="L35">        return sb.toString();</span>
+    }
+
+    private static String convertToUnicode(String input) {
+<span class="fc" id="L39">        StringBuilder sb = new StringBuilder();</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (char c : input.toCharArray()) {</span>
+<span class="fc" id="L41">            sb.append(String.format(&quot;\\u%04x&quot;, (int) c));</span>
+        }
+<span class="fc" id="L43">        return sb.toString();</span>
+    }
+
+    
+    public static void main(String[] args) {
+        try {
+<span class="nc" id="L49">            System.out.println(createTempFileWithUnicode());</span>
+<span class="nc" id="L50">        } catch (IOException e) {</span>
+<span class="nc" id="L51">            e.printStackTrace();</span>
+<span class="nc" id="L52">        }</span>
+<span class="nc" id="L53">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

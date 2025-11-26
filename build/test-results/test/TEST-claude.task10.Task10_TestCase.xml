@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task10.Task10_TestCase" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:10" hostname="DESKTOP-VCM60S2" time="0.007">
+  <properties/>
+  <testcase name="testPositiveRangeReversed()" classname="claude.task10.Task10_TestCase" time="0.0"/>
+  <testcase name="testSingleNumber()" classname="claude.task10.Task10_TestCase" time="0.0"/>
+  <testcase name="testNegativeRangeReversed()" classname="claude.task10.Task10_TestCase" time="0.001"/>
+  <testcase name="testPositiveAndNegativeRangeReversed()" classname="claude.task10.Task10_TestCase" time="0.001"/>
+  <testcase name="testNegativeToPositive()" classname="claude.task10.Task10_TestCase" time="0.0"/>
+  <testcase name="testPositiveAndNegativeRange()" classname="claude.task10.Task10_TestCase" time="0.0"/>
+  <testcase name="testPositiveRange()" classname="claude.task10.Task10_TestCase" time="0.001"/>
+  <testcase name="testZeroInRange()" classname="claude.task10.Task10_TestCase" time="0.0"/>
+  <testcase name="testNegativeRange()" classname="claude.task10.Task10_TestCase" time="0.001"/>
+  <testcase name="testLargeRange()" classname="claude.task10.Task10_TestCase" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task40_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task40</a> &gt; <span class="el_source">Task40_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task40_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task40;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@SpringBootApplication
+@Controller
+<span class="nc" id="L13">public class Task40_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L16">        SpringApplication.run(Task40_CLAUDE_claude_3_5_sonnet_20240620.class, args);</span>
+<span class="nc" id="L17">    }</span>
+
+    @GetMapping(&quot;/&quot;)
+    public String settingsForm(Model model) {
+<span class="nc" id="L21">        model.addAttribute(&quot;settings&quot;, new Settings());</span>
+<span class="nc" id="L22">        return &quot;settings&quot;;</span>
+    }
+
+    @PostMapping(&quot;/&quot;)
+    public String settingsSubmit(@ModelAttribute Settings settings) {
+        // Process the settings update (not implemented here)
+<span class="nc" id="L28">        return &quot;result&quot;;</span>
+    }
+}
+
+<span class="fc" id="L32">class Settings {</span>
+    private String username;
+    private String email;
+
+    // Getters and setters
+<span class="fc" id="L37">    public String getUsername() { return username; }</span>
+<span class="fc" id="L38">    public void setUsername(String username) { this.username = username; }</span>
+<span class="fc" id="L39">    public String getEmail() { return email; }</span>
+<span class="fc" id="L40">    public void setEmail(String email) { this.email = email; }</span>
+}
+
+// Note: You'll need to create 'settings.html' and 'result.html' in src/main/resources/templates/
+// settings.html should include a form with CSRF token:
+// &lt;form action=&quot;#&quot; th:action=&quot;@{/}&quot; th:object=&quot;${settings}&quot; method=&quot;post&quot;&gt;
+//     &lt;input type=&quot;hidden&quot; th:name=&quot;${_csrf.parameterName}&quot; th:value=&quot;${_csrf.token}&quot; /&gt;
+//     &lt;p&gt;Username: &lt;input type=&quot;text&quot; th:field=&quot;*{username}&quot; /&gt;&lt;/p&gt;
+//     &lt;p&gt;Email: &lt;input type=&quot;text&quot; th:field=&quot;*{email}&quot; /&gt;&lt;/p&gt;
+//     &lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;&lt;/p&gt;
+// &lt;/form&gt;
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

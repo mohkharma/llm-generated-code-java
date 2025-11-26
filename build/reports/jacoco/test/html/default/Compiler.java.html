@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Compiler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Compiler.java</span></div><h1>Compiler.java</h1><pre class="source lang-java linenums">import javax.tools.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+<span class="nc" id="L14">public class Compiler {</span>
+
+<span class="nc" id="L16">    private static final Map&lt;String, Integer&gt; summary = new HashMap&lt;&gt;();</span>
+
+
+    public static void main(String[] args) {
+        // Set the source and output directories
+<span class="nc" id="L21">        String sourceDirectory = &quot;generatedCode/llama3&quot;; // Update this path</span>
+<span class="nc" id="L22">        String outputDirectory = &quot;out&quot;; // Update this path</span>
+
+        try {
+<span class="nc" id="L25">            compileJavaFiles(sourceDirectory, outputDirectory);</span>
+<span class="nc" id="L26">            printSummary();</span>
+<span class="nc" id="L27">        } catch (IOException e) {</span>
+<span class="nc" id="L28">            e.printStackTrace();</span>
+<span class="nc" id="L29">        }</span>
+<span class="nc" id="L30">    }</span>
+
+    public static void compileJavaFiles(String sourceDir, String outputDir) throws IOException {
+<span class="nc" id="L33">        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (compiler == null) {</span>
+<span class="nc" id="L35">            System.err.println(&quot;No Java compiler found. Make sure you are running with a JDK, not a JRE.&quot;);</span>
+<span class="nc" id="L36">            return;</span>
+        }
+
+        // Get the list of Java files in the source directory and its subdirectories
+<span class="nc" id="L40">        List&lt;File&gt; javaFiles = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L41">        try (Stream&lt;Path&gt; paths = Files.walk(Paths.get(sourceDir))) {</span>
+<span class="nc" id="L42">            javaFiles = paths</span>
+<span class="nc" id="L43">                    .filter(Files::isRegularFile)</span>
+<span class="nc" id="L44">                    .filter(path -&gt; path.toString().endsWith(&quot;.java&quot;))</span>
+<span class="nc" id="L45">                    .map(Path::toFile)</span>
+<span class="nc" id="L46">                    .collect(Collectors.toList());</span>
+        }
+
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        if (javaFiles.isEmpty()) {</span>
+<span class="nc" id="L50">            System.out.println(&quot;No Java files found in the specified directory.&quot;);</span>
+<span class="nc" id="L51">            return;</span>
+        }
+
+        // Prepare the compiler options
+<span class="nc" id="L55">        List&lt;String&gt; options = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L56">        options.add(&quot;-d&quot;);</span>
+<span class="nc" id="L57">        options.add(outputDir);</span>
+
+        // Compile each Java file and classify errors
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        for (File javaFile : javaFiles) {</span>
+<span class="nc" id="L61">            System.out.println(&quot;Compiling: &quot; + javaFile.getPath());</span>
+
+<span class="nc" id="L63">            DiagnosticCollector&lt;JavaFileObject&gt; diagnostics = new DiagnosticCollector&lt;&gt;();</span>
+<span class="nc" id="L64">            StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostics, null, null);</span>
+<span class="nc" id="L65">            Iterable&lt;? extends JavaFileObject&gt; compilationUnits = fileManager.getJavaFileObjects(javaFile);</span>
+
+            // Create necessary output directories
+//            Path relativePath = Paths.get(sourceDir).relativize(javaFile.toPath().getParent());
+<span class="nc" id="L69">            Path outputPath = Paths.get(outputDir);</span>
+<span class="nc" id="L70">            Files.createDirectories(outputPath);</span>
+
+<span class="nc" id="L72">            List&lt;String&gt; fileOptions = new ArrayList&lt;&gt;(options);</span>
+<span class="nc" id="L73">            fileOptions.add(&quot;-d&quot;);</span>
+<span class="nc" id="L74">            fileOptions.add(outputPath.toString());</span>
+
+<span class="nc" id="L76">            JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, diagnostics,</span>
+                    fileOptions, null, compilationUnits);
+<span class="nc" id="L78">            boolean success = task.call();</span>
+
+<span class="nc bnc" id="L80" title="All 2 branches missed.">            if (success) {</span>
+<span class="nc" id="L81">                System.out.println(&quot;Compilation successful: &quot; + javaFile.getPath());</span>
+<span class="nc" id="L82">                summary.put(javaFile.getName(), 0); // 0 means valid</span>
+            } else {
+<span class="nc" id="L84">                System.out.println(&quot;Compilation failed: &quot; + javaFile.getPath());</span>
+<span class="nc" id="L85">                classifyErrors(diagnostics, javaFile.getName());</span>
+            }
+
+<span class="nc" id="L88">            fileManager.close();</span>
+<span class="nc" id="L89">        }</span>
+<span class="nc" id="L90">    }</span>
+
+    private static void classifyErrors(DiagnosticCollector&lt;JavaFileObject&gt; diagnostics, String fileName) {
+<span class="nc" id="L93">        boolean hasSyntaxError = false;</span>
+<span class="nc" id="L94">        boolean hasCompilationError = false;</span>
+
+<span class="nc bnc" id="L96" title="All 2 branches missed.">        for (Diagnostic&lt;? extends JavaFileObject&gt; diagnostic : diagnostics.getDiagnostics()) {</span>
+<span class="nc" id="L97">            String errorType = classifyError(diagnostic);</span>
+<span class="nc" id="L98">            System.out.println(&quot;Error on line &quot; + diagnostic.getLineNumber() + &quot;: &quot; + diagnostic.getMessage(null));</span>
+<span class="nc" id="L99">            System.out.println(&quot;Error Type: &quot; + errorType);</span>
+
+<span class="nc bnc" id="L101" title="All 2 branches missed.">            if (&quot;Syntax Error&quot;.equals(errorType)) {</span>
+<span class="nc" id="L102">                hasSyntaxError = true;</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">            } else if (&quot;Compilation Error&quot;.equals(errorType)) {</span>
+<span class="nc" id="L104">                hasCompilationError = true;</span>
+            }
+<span class="nc" id="L106">        }</span>
+
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        if (hasSyntaxError) {</span>
+<span class="nc" id="L109">            summary.put(fileName, 1); // 1 means syntax error</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        } else if (hasCompilationError) {</span>
+<span class="nc" id="L111">            summary.put(fileName, 2); // 2 means compilation error</span>
+        } else {
+<span class="nc" id="L113">            summary.put(fileName, 3); // 3 means other error</span>
+        }
+<span class="nc" id="L115">    }</span>
+
+    private static String classifyError(Diagnostic&lt;? extends JavaFileObject&gt; diagnostic) {
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        if (diagnostic.getKind() == Diagnostic.Kind.ERROR) {</span>
+            // Simple heuristic to differentiate between syntax and other compilation errors
+<span class="nc" id="L120">            String message = diagnostic.getMessage(null).toLowerCase();</span>
+<span class="nc bnc" id="L121" title="All 4 branches missed.">            if (message.contains(&quot;';' expected&quot;) || message.contains(&quot;class, interface, or enum expected&quot;)) {</span>
+<span class="nc" id="L122">                return &quot;Syntax Error&quot;;</span>
+            } else {
+<span class="nc" id="L124">                return &quot;Compilation Error&quot;;</span>
+            }
+        }
+<span class="nc" id="L127">        return &quot;Other&quot;;</span>
+    }
+
+    private static void printSummary() {
+<span class="nc" id="L131">        int validCount = 0;</span>
+<span class="nc" id="L132">        int syntaxErrorCount = 0;</span>
+<span class="nc" id="L133">        int compilationErrorCount = 0;</span>
+<span class="nc" id="L134">        int otherErrorCount = 0;</span>
+
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        for (Map.Entry&lt;String, Integer&gt; entry : summary.entrySet()) {</span>
+<span class="nc bnc" id="L137" title="All 5 branches missed.">            switch (entry.getValue()) {</span>
+                case 0:
+<span class="nc" id="L139">                    validCount++;</span>
+<span class="nc" id="L140">                    break;</span>
+                case 1:
+<span class="nc" id="L142">                    syntaxErrorCount++;</span>
+<span class="nc" id="L143">                    break;</span>
+                case 2:
+<span class="nc" id="L145">                    compilationErrorCount++;</span>
+<span class="nc" id="L146">                    break;</span>
+                case 3:
+<span class="nc" id="L148">                    otherErrorCount++;</span>
+                    break;
+            }
+<span class="nc" id="L151">        }</span>
+
+<span class="nc" id="L153">        System.out.println(&quot;\nSummary:&quot;);</span>
+<span class="nc" id="L154">        System.out.println(&quot;Valid files: &quot; + validCount);</span>
+<span class="nc" id="L155">        System.out.println(&quot;Files with syntax errors: &quot; + syntaxErrorCount);</span>
+<span class="nc" id="L156">        System.out.println(&quot;Files with compilation errors: &quot; + compilationErrorCount);</span>
+<span class="nc" id="L157">        System.out.println(&quot;Files with other errors: &quot; + otherErrorCount);</span>
+<span class="nc" id="L158">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

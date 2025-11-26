@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task186_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task186</a> &gt; <span class="el_source">Task186_OPENAI_gpt_4o.java</span></div><h1>Task186_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task186;// Java code for merging k sorted linked lists
+import java.util.PriorityQueue;
+
+class ListNode {
+    int val;
+    ListNode next;
+<span class="nc" id="L7">    ListNode() {}</span>
+<span class="nc" id="L8">    ListNode(int val) { this.val = val; }</span>
+<span class="nc" id="L9">    ListNode(int val, ListNode next) { this.val = val; this.next = next; }</span>
+}
+
+<span class="nc" id="L12">public class Task186_OPENAI_gpt_4o {</span>
+    public ListNode mergeKLists(ListNode[] lists) {
+<span class="nc" id="L14">        PriorityQueue&lt;Integer&gt; heap = new PriorityQueue&lt;&gt;();</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">        for (ListNode l : lists) {</span>
+<span class="nc bnc" id="L16" title="All 2 branches missed.">            while (l != null) {</span>
+<span class="nc" id="L17">                heap.add(l.val);</span>
+<span class="nc" id="L18">                l = l.next;</span>
+            }
+        }
+        
+<span class="nc" id="L22">        ListNode dummy = new ListNode();</span>
+<span class="nc" id="L23">        ListNode curr = dummy;</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        while (!heap.isEmpty()) {</span>
+<span class="nc" id="L25">            curr.next = new ListNode(heap.poll());</span>
+<span class="nc" id="L26">            curr = curr.next;</span>
+        }
+        
+<span class="nc" id="L29">        return dummy.next;</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L33">        ListNode[] lists = new ListNode[3];</span>
+<span class="nc" id="L34">        lists[0] = new ListNode(1, new ListNode(4, new ListNode(5)));</span>
+<span class="nc" id="L35">        lists[1] = new ListNode(1, new ListNode(3, new ListNode(4)));</span>
+<span class="nc" id="L36">        lists[2] = new ListNode(2, new ListNode(6));</span>
+        
+<span class="nc" id="L38">        Task186_OPENAI_gpt_4o obj = new Task186_OPENAI_gpt_4o();</span>
+<span class="nc" id="L39">        ListNode merged = obj.mergeKLists(lists);</span>
+<span class="nc" id="L40">        printList(merged);</span>
+<span class="nc" id="L41">    }</span>
+
+    public static void printList(ListNode node) {
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        while (node != null) {</span>
+<span class="nc" id="L45">            System.out.print(node.val + &quot; &quot;);</span>
+<span class="nc" id="L46">            node = node.next;</span>
+        }
+<span class="nc" id="L48">        System.out.println();</span>
+<span class="nc" id="L49">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

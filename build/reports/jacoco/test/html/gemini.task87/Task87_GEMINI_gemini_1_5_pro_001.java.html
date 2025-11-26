@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task87_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task87</a> &gt; <span class="el_source">Task87_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task87_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task87;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+import java.util.Random;
+
+<span class="nc" id="L10">public class Task87_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static void main(String[] args) {
+        // Generate a sorted array of 1 million random integers
+<span class="nc" id="L14">        int[] array = generateSortedArray(1000000);</span>
+
+        // Choose a random target value from the array
+<span class="nc" id="L17">        Random random = new Random();</span>
+<span class="nc" id="L18">        int target = array[random.nextInt(array.length)];</span>
+
+        // Start the timer
+<span class="nc" id="L21">        long startTime = System.nanoTime();</span>
+
+        // Perform binary search
+<span class="nc" id="L24">        int index = binarySearch(array, target);</span>
+
+        // Stop the timer
+<span class="nc" id="L27">        long endTime = System.nanoTime();</span>
+
+        // Calculate execution time in milliseconds
+<span class="nc" id="L30">        double executionTime = (endTime - startTime) / 1000000.0;</span>
+
+        // Store execution time in a temporary file
+        try {
+<span class="nc" id="L34">            String output = &quot;Binary search execution time: &quot; + executionTime + &quot; ms&quot;;</span>
+<span class="nc" id="L35">            Files.writeString(Path.of(&quot;temp.txt&quot;), output, StandardOpenOption.CREATE);</span>
+<span class="nc" id="L36">        } catch (IOException e) {</span>
+<span class="nc" id="L37">            System.err.println(&quot;Error writing to file: &quot; + e.getMessage());</span>
+<span class="nc" id="L38">        }</span>
+<span class="nc" id="L39">    }</span>
+
+    // Performs binary search on a sorted array
+    public static int binarySearch(int[] array, int target) {
+<span class="nc" id="L43">        int left = 0;</span>
+<span class="nc" id="L44">        int right = array.length - 1;</span>
+
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        while (left &lt;= right) {</span>
+<span class="nc" id="L47">            int mid = left + (right - left) / 2;</span>
+
+<span class="nc bnc" id="L49" title="All 2 branches missed.">            if (array[mid] == target) {</span>
+<span class="nc" id="L50">                return mid;</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">            } else if (array[mid] &lt; target) {</span>
+<span class="nc" id="L52">                left = mid + 1;</span>
+            } else {
+<span class="nc" id="L54">                right = mid - 1;</span>
+            }
+<span class="nc" id="L56">        }</span>
+
+<span class="nc" id="L58">        return -1;</span>
+    }
+
+    // Generates a sorted array of random integers
+    public static int[] generateSortedArray(int size) {
+<span class="nc" id="L63">        Random random = new Random();</span>
+<span class="nc" id="L64">        int[] array = new int[size];</span>
+
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        for (int i = 0; i &lt; size; i++) {</span>
+<span class="nc" id="L67">            array[i] = random.nextInt();</span>
+        }
+
+<span class="nc" id="L70">        Arrays.sort(array);</span>
+<span class="nc" id="L71">        return array;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

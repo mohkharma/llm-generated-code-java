@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task149_GEMINI_gemini-1.5-pro-001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task149</a> &gt; <span class="el_source">Task149_GEMINI_gemini-1.5-pro-001.java</span></div><h1>Task149_GEMINI_gemini-1.5-pro-001.java</h1><pre class="source lang-java linenums">package gemini.task149;
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int d)
+<span class="nc" id="L8">    {</span>
+<span class="nc" id="L9">        data = d;</span>
+<span class="nc" id="L10">        next = null;</span>
+<span class="nc" id="L11">    }</span>
+}
+
+class Queue {
+    Node front, rear;
+
+    public Queue()
+<span class="nc" id="L18">    {</span>
+<span class="nc" id="L19">        front = rear = null;</span>
+<span class="nc" id="L20">    }</span>
+
+    void enqueue(int d)
+    {
+<span class="nc" id="L24">        Node newNode = new Node(d);</span>
+
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (rear == null) {</span>
+<span class="nc" id="L27">            front = rear = newNode;</span>
+<span class="nc" id="L28">            return;</span>
+        }
+<span class="nc" id="L30">        rear.next = newNode;</span>
+<span class="nc" id="L31">        rear = newNode;</span>
+<span class="nc" id="L32">    }</span>
+
+    int dequeue()
+    {
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if (front == null)</span>
+<span class="nc" id="L37">            return Integer.MIN_VALUE;</span>
+<span class="nc" id="L38">        Node temp = front;</span>
+<span class="nc" id="L39">        front = temp.next;</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (front == null)</span>
+<span class="nc" id="L41">            rear = null;</span>
+<span class="nc" id="L42">        return temp.data;</span>
+    }
+
+    int peek()
+    {
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (front == null)</span>
+<span class="nc" id="L48">            return Integer.MIN_VALUE;</span>
+<span class="nc" id="L49">        return front.data;</span>
+    }
+
+    boolean isEmpty(){
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        return front == null;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

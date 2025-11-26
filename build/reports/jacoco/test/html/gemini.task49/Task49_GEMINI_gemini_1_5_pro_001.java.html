@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task49_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task49</a> &gt; <span class="el_source">Task49_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task49_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task49;
+
+import java.sql.*;
+import static spark.Spark.*;
+
+<span class="nc" id="L6">public class Task49_GEMINI_gemini_1_5_pro_001 {</span>
+    public static void main(String[] args) throws ClassNotFoundException {
+<span class="nc" id="L8">        Class.forName(&quot;org.sqlite.JDBC&quot;);</span>
+<span class="nc" id="L9">        String url = &quot;jdbc:sqlite:users.db&quot;;</span>
+
+<span class="nc" id="L11">        try (Connection conn = DriverManager.getConnection(url)) {</span>
+<span class="nc bnc" id="L12" title="All 2 branches missed.">            if (conn != null) {</span>
+<span class="nc" id="L13">                System.out.println(&quot;Connected to the database&quot;);</span>
+
+                // Create a table for users if it doesn't exist
+<span class="nc" id="L16">                Statement stmt = conn.createStatement();</span>
+<span class="nc" id="L17">                stmt.execute(&quot;&quot;&quot;</span>
+                        CREATE TABLE IF NOT EXISTS users (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            name TEXT NOT NULL,
+                            email TEXT NOT NULL UNIQUE
+                        )
+                        &quot;&quot;&quot;);
+
+<span class="nc" id="L25">                post(&quot;/users&quot;, (req, res) -&gt; {</span>
+<span class="nc" id="L26">                    String name = req.queryParams(&quot;name&quot;);</span>
+<span class="nc" id="L27">                    String email = req.queryParams(&quot;email&quot;);</span>
+
+<span class="nc bnc" id="L29" title="All 4 branches missed.">                    if (name == null || email == null) {</span>
+<span class="nc" id="L30">                        res.status(400);</span>
+<span class="nc" id="L31">                        return &quot;Name and email are required&quot;;</span>
+                    }
+
+<span class="nc" id="L34">                    try (PreparedStatement pstmt = conn.prepareStatement(&quot;INSERT INTO users (name, email) VALUES (?, ?)&quot;)) {</span>
+<span class="nc" id="L35">                        pstmt.setString(1, name);</span>
+<span class="nc" id="L36">                        pstmt.setString(2, email);</span>
+<span class="nc" id="L37">                        pstmt.executeUpdate();</span>
+<span class="nc" id="L38">                        res.status(201);</span>
+<span class="nc" id="L39">                        return &quot;User created successfully&quot;;</span>
+<span class="nc" id="L40">                    } catch (SQLException e) {</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">                        if (e.getSQLState().equals(&quot;23505&quot;)) { // Unique constraint violation</span>
+<span class="nc" id="L42">                            res.status(400);</span>
+<span class="nc" id="L43">                            return &quot;Email already exists&quot;;</span>
+                        } else {
+<span class="nc" id="L45">                            throw new RuntimeException(e);</span>
+                        }
+                    }
+                });
+            }
+<span class="nc" id="L50">        } catch (SQLException e) {</span>
+<span class="nc" id="L51">            System.out.println(e.getMessage());</span>
+<span class="nc" id="L52">        }</span>
+<span class="nc" id="L53">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

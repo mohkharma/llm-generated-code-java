@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task148_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task148</a> &gt; <span class="el_source">Task148_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task148_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task148;
+
+import java.util.ArrayList;
+import java.util.Stack;
+
+public class Task148_CLAUDE_claude_3_5_sonnet_20240620&lt;T&gt; {
+    private ArrayList&lt;T&gt; items;
+
+<span class="fc" id="L9">    public Task148_CLAUDE_claude_3_5_sonnet_20240620() {</span>
+<span class="fc" id="L10">        items = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L11">    }</span>
+
+    public void push(T item) {
+<span class="fc" id="L14">        items.add(item);</span>
+<span class="fc" id="L15">    }</span>
+
+    public T pop() {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (!isEmpty()) {</span>
+<span class="fc" id="L19">            return items.remove(items.size() - 1);</span>
+        }
+<span class="fc" id="L21">        return null;</span>
+    }
+
+    public T peek() {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (!isEmpty()) {</span>
+<span class="fc" id="L26">            return items.get(items.size() - 1);</span>
+        }
+<span class="fc" id="L28">        return null;</span>
+    }
+
+    public boolean isEmpty() {
+<span class="fc" id="L32">        return items.isEmpty();</span>
+    }
+
+    public int size() {
+<span class="fc" id="L36">        return items.size();</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L40">        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();</span>
+<span class="nc" id="L41">        stack.push(1);</span>
+<span class="nc" id="L42">        stack.push(2);</span>
+<span class="nc" id="L43">        stack.push(3);</span>
+<span class="nc" id="L44">        System.out.println(&quot;Top element: &quot; + stack.peek());</span>
+<span class="nc" id="L45">        System.out.println(&quot;Popped: &quot; + stack.pop());</span>
+<span class="nc" id="L46">        System.out.println(&quot;Size: &quot; + stack.size());</span>
+<span class="nc" id="L47">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

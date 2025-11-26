@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task137_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task137</a> &gt; <span class="el_source">Task137_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task137_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task137;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+<span class="nc" id="L7">public class Task137_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L10">        Map&lt;String, Map&lt;String, Object&gt;&gt; products = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L11">        products.put(&quot;001&quot;, Map.of(&quot;name&quot;, &quot;Apple&quot;, &quot;price&quot;, 1.00, &quot;stock&quot;, 100));</span>
+<span class="nc" id="L12">        products.put(&quot;002&quot;, Map.of(&quot;name&quot;, &quot;Banana&quot;, &quot;price&quot;, 0.50, &quot;stock&quot;, 50));</span>
+<span class="nc" id="L13">        products.put(&quot;003&quot;, Map.of(&quot;name&quot;, &quot;Orange&quot;, &quot;price&quot;, 1.20, &quot;stock&quot;, 75));</span>
+
+<span class="nc" id="L15">        Scanner scanner = new Scanner(System.in);</span>
+        while (true) {
+<span class="nc" id="L17">            System.out.print(&quot;Enter product ID (or 'q' to quit): &quot;);</span>
+<span class="nc" id="L18">            String productId = scanner.nextLine();</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">            if (productId.equals(&quot;q&quot;)) {</span>
+<span class="nc" id="L20">                break;</span>
+            }
+<span class="nc" id="L22">            System.out.println(getProductDetails(products, productId));</span>
+<span class="nc" id="L23">        }</span>
+<span class="nc" id="L24">    }</span>
+
+    private static String getProductDetails(Map&lt;String, Map&lt;String, Object&gt;&gt; products, String productId) {
+<span class="nc" id="L27">        Map&lt;String, Object&gt; product = products.get(productId);</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if (product != null) {</span>
+<span class="nc" id="L29">            return String.format(&quot;Product Name: %s\nPrice: $%.2f\nStock: %d&quot;,</span>
+<span class="nc" id="L30">                    product.get(&quot;name&quot;), product.get(&quot;price&quot;), product.get(&quot;stock&quot;));</span>
+        } else {
+<span class="nc" id="L32">            return &quot;Product not found.&quot;;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

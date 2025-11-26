@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task180_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task180</a> &gt; <span class="el_source">Task180_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task180_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task180;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+<span class="nc" id="L7">public class Task180_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static int[] reparentTree(int[] parentOf, int root) {
+<span class="nc" id="L10">        int n = parentOf.length;</span>
+<span class="nc" id="L11">        int[] newParentOf = new int[n];</span>
+<span class="nc" id="L12">        Arrays.fill(newParentOf, -1);</span>
+<span class="nc" id="L13">        boolean[] visited = new boolean[n];</span>
+
+<span class="nc" id="L15">        dfs(parentOf, newParentOf, visited, root);</span>
+<span class="nc" id="L16">        return newParentOf;</span>
+    }
+
+    private static void dfs(int[] parentOf, int[] newParentOf, boolean[] visited, int node) {
+<span class="nc" id="L20">        visited[node] = true;</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        for (int child = 0; child &lt; parentOf.length; child++) {</span>
+<span class="nc bnc" id="L22" title="All 4 branches missed.">            if (parentOf[child] == node &amp;&amp; !visited[child]) {</span>
+<span class="nc" id="L23">                newParentOf[child] = node;</span>
+<span class="nc" id="L24">                dfs(parentOf, newParentOf, visited, child);</span>
+            }
+        }
+        //invalid code, below lines are commented
+//        if (node != root) {
+//            newParentOf[node] = parentOf[node];
+//        }
+<span class="nc" id="L31">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L34">        int[] parentOf = {-1, 0, 0, 0, 1, 1, 2, 2, 3, 3};</span>
+<span class="nc" id="L35">        int newRoot = 6;</span>
+<span class="nc" id="L36">        int[] newParentOf = reparentTree(parentOf, newRoot);</span>
+<span class="nc" id="L37">        System.out.println(Arrays.toString(newParentOf)); // Output: [2, 0, 6, 0, 1, 1, -1, 2, 3, 3]</span>
+<span class="nc" id="L38">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

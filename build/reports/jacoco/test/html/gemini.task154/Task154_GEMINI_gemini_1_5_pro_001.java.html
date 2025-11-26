@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task154_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task154</a> &gt; <span class="el_source">Task154_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task154_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task154;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
+
+<span class="nc" id="L11">public class Task154_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static void depthFirstSearch(Map&lt;Character, List&lt;Character&gt;&gt; graph, char startNode) {
+<span class="nc" id="L14">        Set&lt;Character&gt; visited = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L15">        Stack&lt;Character&gt; stack = new Stack&lt;&gt;();</span>
+<span class="nc" id="L16">        stack.push(startNode);</span>
+
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        while (!stack.isEmpty()) {</span>
+<span class="nc" id="L19">            char node = stack.pop();</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">            if (!visited.contains(node)) {</span>
+<span class="nc" id="L21">                visited.add(node);</span>
+<span class="nc" id="L22">                System.out.print(node + &quot; &quot;); // Process the node here</span>
+
+                // Push unvisited neighbors onto the stack
+<span class="nc" id="L25">                List&lt;Character&gt; neighbors = graph.get(node);</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">                for (int i = neighbors.size() - 1; i &gt;= 0; i--) {</span>
+<span class="nc" id="L27">                    char neighbor = neighbors.get(i);</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">                    if (!visited.contains(neighbor)) {</span>
+<span class="nc" id="L29">                        stack.push(neighbor);</span>
+                    }
+                }
+            }
+<span class="nc" id="L33">        }</span>
+<span class="nc" id="L34">    }</span>
+
+    public static void main(String[] args) {
+        // Example graph represented as an adjacency list
+<span class="nc" id="L38">        Map&lt;Character, List&lt;Character&gt;&gt; graph = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L39">        graph.put('A', List.of('B', 'C'));</span>
+<span class="nc" id="L40">        graph.put('B', List.of('D', 'E'));</span>
+<span class="nc" id="L41">        graph.put('C', List.of('F'));</span>
+<span class="nc" id="L42">        graph.put('D', new ArrayList&lt;&gt;());</span>
+<span class="nc" id="L43">        graph.put('E', List.of('F'));</span>
+<span class="nc" id="L44">        graph.put('F', new ArrayList&lt;&gt;());</span>
+
+<span class="nc" id="L46">        char startNode = 'A';</span>
+<span class="nc" id="L47">        depthFirstSearch(graph, startNode);</span>
+<span class="nc" id="L48">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

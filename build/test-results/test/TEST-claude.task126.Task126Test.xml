@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task126.Task126Test" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:11" hostname="DESKTOP-VCM60S2" time="0.387">
+  <properties/>
+  <testcase name="testChoice2_YouTube()" classname="claude.task126.Task126Test" time="0.344"/>
+  <testcase name="testInvalidChoice()" classname="claude.task126.Task126Test" time="0.001"/>
+  <testcase name="testChoice3_Wikipedia()" classname="claude.task126.Task126Test" time="0.013"/>
+  <testcase name="testChoice1_Google()" classname="claude.task126.Task126Test" time="0.028"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

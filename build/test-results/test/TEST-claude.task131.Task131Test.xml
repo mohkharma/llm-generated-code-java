@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task131.Task131Test" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.469">
+  <properties/>
+  <testcase name="testArrayJsonInput()" classname="claude.task131.Task131Test" time="0.454"/>
+  <testcase name="testValidJsonInput()" classname="claude.task131.Task131Test" time="0.008"/>
+  <testcase name="testInvalidJsonInput()" classname="claude.task131.Task131Test" time="0.004"/>
+  <testcase name="testEmptyJsonObject()" classname="claude.task131.Task131Test" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

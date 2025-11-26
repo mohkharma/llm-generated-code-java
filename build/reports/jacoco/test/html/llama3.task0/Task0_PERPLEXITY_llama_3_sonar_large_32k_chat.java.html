@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task0_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task0</a> &gt; <span class="el_source">Task0_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task0_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task0;
+
+import java.io.File;
+import java.io.FileReader;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+class FileProcessor implements Runnable {
+    private String fileName;
+
+<span class="nc" id="L11">    public FileProcessor(String fileName) {</span>
+<span class="nc" id="L12">        this.fileName = fileName;</span>
+<span class="nc" id="L13">    }</span>
+
+    @Override
+    public void run() {
+<span class="nc" id="L17">        synchronized (this) {</span>
+<span class="nc" id="L18">            System.out.println(&quot;Processing file: &quot; + fileName);</span>
+<span class="nc" id="L19">            try (FileReader fileReader = new FileReader(fileName)) {</span>
+<span class="nc" id="L20">                char[] buffer = new char[1024];</span>
+                int bytesRead;
+<span class="nc bnc" id="L22" title="All 2 branches missed.">                while ((bytesRead = fileReader.read(buffer)) != -1) {</span>
+<span class="nc" id="L23">                    System.out.println(&quot;File content: &quot; + new String(buffer, 0, bytesRead));</span>
+                }
+<span class="nc" id="L25">            } catch (Exception e) {</span>
+<span class="nc" id="L26">                e.printStackTrace();</span>
+<span class="nc" id="L27">            }</span>
+<span class="nc" id="L28">            System.out.println(&quot;Finished processing file: &quot; + fileName);</span>
+<span class="nc" id="L29">        }</span>
+<span class="nc" id="L30">    }</span>
+}
+
+<span class="nc" id="L33">public class Task0_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L35">        String directory = &quot;./files&quot;;</span>
+<span class="nc" id="L36">        File dir = new File(directory);</span>
+<span class="nc" id="L37">        File[] files = dir.listFiles();</span>
+<span class="nc" id="L38">        ExecutorService executor = Executors.newFixedThreadPool(5);</span>
+
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        for (File file : files) {</span>
+<span class="nc" id="L41">            executor.execute(new FileProcessor(file.getAbsolutePath()));</span>
+        }
+
+<span class="nc" id="L44">        executor.shutdown();</span>
+<span class="nc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task46_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task46</a> &gt; <span class="el_source">Task46_MISTRAL_codestral_latest.java</span></div><h1>Task46_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task46;// Java code using SQLite JDBC
+import java.sql.*;
+
+<span class="nc" id="L4">public class Task46_MISTRAL_codestral_latest {</span>
+    private Connection connect() {
+        // SQLite connection string
+<span class="nc" id="L7">        String url = &quot;jdbc:sqlite:user_database.db&quot;;</span>
+<span class="nc" id="L8">        Connection conn = null;</span>
+        try {
+<span class="nc" id="L10">            conn = DriverManager.getConnection(url);</span>
+<span class="nc" id="L11">        } catch (SQLException e) {</span>
+<span class="nc" id="L12">            System.out.println(e.getMessage());</span>
+<span class="nc" id="L13">        }</span>
+<span class="nc" id="L14">        return conn;</span>
+    }
+
+    public void registerUser(String name, String email, String password) {
+<span class="nc" id="L18">        String sql = &quot;INSERT INTO users(name, email, password) VALUES(?,?,?)&quot;;</span>
+
+<span class="nc" id="L20">        try (Connection conn = this.connect();</span>
+<span class="nc" id="L21">                PreparedStatement pstmt = conn.prepareStatement(sql)) {</span>
+<span class="nc" id="L22">            pstmt.setString(1, name);</span>
+<span class="nc" id="L23">            pstmt.setString(2, email);</span>
+<span class="nc" id="L24">            pstmt.setString(3, password);</span>
+<span class="nc" id="L25">            pstmt.executeUpdate();</span>
+<span class="nc" id="L26">        } catch (SQLException e) {</span>
+<span class="nc" id="L27">            System.out.println(e.getMessage());</span>
+<span class="nc" id="L28">        }</span>
+<span class="nc" id="L29">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L32">        Task46_MISTRAL_codestral_latest app = new Task46_MISTRAL_codestral_latest();</span>
+<span class="nc" id="L33">        app.registerUser(&quot;John Doe&quot;, &quot;johndoe@example.com&quot;, &quot;password123&quot;);</span>
+<span class="nc" id="L34">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task188_MISTRAL_codestral-latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task188</a> &gt; <span class="el_source">Task188_MISTRAL_codestral-latest.java</span></div><h1>Task188_MISTRAL_codestral-latest.java</h1><pre class="source lang-java linenums">package codestral.task188;
+
+import java.util.concurrent.Semaphore;
+
+class FooBar {
+    private int n;
+    private Semaphore fooSemaphore;
+    private Semaphore barSemaphore;
+
+<span class="nc" id="L10">    public FooBar(int n) {</span>
+<span class="nc" id="L11">        this.n = n;</span>
+<span class="nc" id="L12">        this.fooSemaphore = new Semaphore(1);</span>
+<span class="nc" id="L13">        this.barSemaphore = new Semaphore(0);</span>
+<span class="nc" id="L14">    }</span>
+
+    public void foo(Runnable printFoo) throws InterruptedException {
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="nc" id="L18">            fooSemaphore.acquire();</span>
+<span class="nc" id="L19">            printFoo.run();</span>
+<span class="nc" id="L20">            barSemaphore.release();</span>
+        }
+<span class="nc" id="L22">    }</span>
+
+    public void bar(Runnable printBar) throws InterruptedException {
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="nc" id="L26">            barSemaphore.acquire();</span>
+<span class="nc" id="L27">            printBar.run();</span>
+<span class="nc" id="L28">            fooSemaphore.release();</span>
+        }
+<span class="nc" id="L30">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

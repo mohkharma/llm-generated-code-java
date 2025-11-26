@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task154_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task154</a> &gt; <span class="el_source">Task154_MISTRAL_codestral_latest.java</span></div><h1>Task154_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task154;// Java
+
+import java.util.*;
+
+<span class="nc" id="L5">public class Task154_MISTRAL_codestral_latest {</span>
+    private static void dfs(Map&lt;Character, List&lt;Character&gt;&gt; graph, char node, Set&lt;Character&gt; visited) {
+<span class="nc bnc" id="L7" title="All 2 branches missed.">        if (!visited.contains(node)) {</span>
+<span class="nc" id="L8">            visited.add(node);</span>
+<span class="nc" id="L9">            System.out.print(node + &quot; &quot;);</span>
+<span class="nc bnc" id="L10" title="All 2 branches missed.">            for (char neighbour : graph.get(node)) {</span>
+<span class="nc" id="L11">                dfs(graph, neighbour, visited);</span>
+<span class="nc" id="L12">            }</span>
+        }
+<span class="nc" id="L14">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L17">        Map&lt;Character, List&lt;Character&gt;&gt; graph = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L18">        graph.put('A', Arrays.asList('B', 'C'));</span>
+<span class="nc" id="L19">        graph.put('B', Arrays.asList('A', 'D', 'E'));</span>
+<span class="nc" id="L20">        graph.put('C', Arrays.asList('A', 'F'));</span>
+<span class="nc" id="L21">        graph.put('D', Arrays.asList('B'));</span>
+<span class="nc" id="L22">        graph.put('E', Arrays.asList('B', 'F'));</span>
+<span class="nc" id="L23">        graph.put('F', Arrays.asList('C', 'E'));</span>
+
+<span class="nc" id="L25">        Set&lt;Character&gt; visited = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L26">        dfs(graph, 'A', visited);</span>
+<span class="nc" id="L27">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

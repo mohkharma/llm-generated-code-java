@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task152.Task152Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.009">
+  <properties/>
+  <testcase name="testDeleteAllElements()" classname="claude.task152.Task152Test" time="0.002"/>
+  <testcase name="testHandleCollisions()" classname="claude.task152.Task152Test" time="0.0"/>
+  <testcase name="testDeleteElementWithCollision()" classname="claude.task152.Task152Test" time="0.0"/>
+  <testcase name="testInsertAndSearchMultipleElements()" classname="claude.task152.Task152Test" time="0.0"/>
+  <testcase name="testSearchNonExistentElement()" classname="claude.task152.Task152Test" time="0.0"/>
+  <testcase name="testDeleteElement()" classname="claude.task152.Task152Test" time="0.0"/>
+  <testcase name="testInsertAndSearchLargeNumberOfElements()" classname="claude.task152.Task152Test" time="0.003"/>
+  <testcase name="testUpdateExistingElement()" classname="claude.task152.Task152Test" time="0.001"/>
+  <testcase name="testInsertAndSearchSingleElement()" classname="claude.task152.Task152Test" time="0.0"/>
+  <testcase name="testDeleteNonExistentElement()" classname="claude.task152.Task152Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

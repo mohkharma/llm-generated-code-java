@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task129_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task129</a> &gt; <span class="el_source">Task129_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task129_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task129;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
+<span class="nc" id="L11">public class Task129_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L14">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L15">        System.out.print(&quot;Enter the file name to download: &quot;);</span>
+<span class="nc" id="L16">        String fileName = scanner.nextLine();</span>
+
+        try {
+<span class="nc" id="L19">            downloadFile(fileName);</span>
+<span class="nc" id="L20">            System.out.println(&quot;File '&quot; + fileName + &quot;' downloaded successfully.&quot;);</span>
+<span class="nc" id="L21">        } catch (IOException e) {</span>
+<span class="nc" id="L22">            System.err.println(&quot;Error downloading file: &quot; + e.getMessage());</span>
+<span class="nc" id="L23">        }</span>
+<span class="nc" id="L24">    }</span>
+
+    private static void downloadFile(String fileName) throws IOException {
+<span class="nc" id="L27">        String fileUrl = &quot;https://example.com/files/&quot; + fileName; // Replace with actual server URL</span>
+<span class="nc" id="L28">        URL url = new URL(fileUrl);</span>
+<span class="nc" id="L29">        HttpURLConnection connection = (HttpURLConnection) url.openConnection();</span>
+<span class="nc" id="L30">        connection.setRequestMethod(&quot;GET&quot;);</span>
+
+<span class="nc" id="L32">        try (InputStream inputStream = connection.getInputStream()) {</span>
+<span class="nc" id="L33">            Files.copy(inputStream, Paths.get(fileName));</span>
+        }
+<span class="nc" id="L35">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

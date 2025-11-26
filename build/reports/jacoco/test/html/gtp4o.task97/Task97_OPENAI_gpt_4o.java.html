@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task97_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task97</a> &gt; <span class="el_source">Task97_OPENAI_gpt_4o.java</span></div><h1>Task97_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task97;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathFactory;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathConstants;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+import java.io.File;
+
+<span class="nc" id="L14">public class Task97_OPENAI_gpt_4o {</span>
+    public static void main(String[] args) {
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        if (args.length != 2) {</span>
+<span class="nc" id="L17">            System.out.println(&quot;Usage: java Task97_OPENAI_gpt_4o &lt;xpath&gt; &lt;xmlfile&gt;&quot;);</span>
+<span class="nc" id="L18">            return;</span>
+        }
+
+<span class="nc" id="L21">        String xpathExpression = args[0];</span>
+<span class="nc" id="L22">        String xmlfile = args[1];</span>
+        
+        try {
+<span class="nc" id="L25">            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();</span>
+<span class="nc" id="L26">            DocumentBuilder builder = factory.newDocumentBuilder();</span>
+<span class="nc" id="L27">            Document doc = builder.parse(new File(xmlfile));</span>
+
+<span class="nc" id="L29">            XPathFactory xPathfactory = XPathFactory.newInstance();</span>
+<span class="nc" id="L30">            XPath xpath = xPathfactory.newXPath();</span>
+<span class="nc" id="L31">            XPathExpression expr = xpath.compile(xpathExpression);</span>
+<span class="nc" id="L32">            Node result = (Node) expr.evaluate(doc, XPathConstants.NODE);</span>
+            
+<span class="nc bnc" id="L34" title="All 2 branches missed.">            if (result != null) {</span>
+<span class="nc" id="L35">                System.out.println(nodeToString(result));</span>
+            } else {
+<span class="nc" id="L37">                System.out.println(&quot;No result found for the XPath query.&quot;);</span>
+            }
+<span class="nc" id="L39">        } catch (Exception e) {</span>
+<span class="nc" id="L40">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="nc" id="L41">        }</span>
+<span class="nc" id="L42">    }</span>
+
+    private static String nodeToString(Node node) {
+<span class="nc" id="L45">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L46">        Element element = (Element) node;</span>
+<span class="nc" id="L47">        sb.append(&quot;&lt;&quot;).append(element.getTagName());</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if (element.hasAttributes()) {</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">            for (int i = 0; i &lt; element.getAttributes().getLength(); i++) {</span>
+<span class="nc" id="L50">                sb.append(&quot; &quot;).append(element.getAttributes().item(i).getNodeName())</span>
+<span class="nc" id="L51">                  .append(&quot;=\&quot;&quot;).append(element.getAttributes().item(i).getNodeValue()).append(&quot;\&quot;&quot;);</span>
+            }
+        }
+<span class="nc" id="L54">        sb.append(&quot;&gt;&quot;);</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        if (element.getTextContent() != null) {</span>
+<span class="nc" id="L56">            sb.append(element.getTextContent());</span>
+        }
+<span class="nc" id="L58">        sb.append(&quot;&lt;/&quot;).append(element.getTagName()).append(&quot;&gt;&quot;);</span>
+<span class="nc" id="L59">        return sb.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task0_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task0</a> &gt; <span class="el_source">Task0_MISTRAL_codestral_latest.java</span></div><h1>Task0_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task0;
+
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+<span class="nc" id="L9">public class Task0_MISTRAL_codestral_latest {</span>
+<span class="nc" id="L10">    private static final Lock lock = new ReentrantLock();</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L13">        ExecutorService executor = Executors.newFixedThreadPool(10);</span>
+<span class="nc" id="L14">        File directory = new File(&quot;testing/task0/shared_directory&quot;);</span>
+<span class="nc" id="L15">        File[] files = directory.listFiles();</span>
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        if (files != null) {</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">            for (File file : files) {</span>
+<span class="nc" id="L18">                executor.submit(() -&gt; processFile(file));</span>
+            }
+        }
+<span class="nc" id="L21">        executor.shutdown();</span>
+<span class="nc" id="L22">    }</span>
+
+    private static void processFile(File file) {
+<span class="nc" id="L25">        lock.lock();</span>
+        try {
+<span class="nc" id="L27">            System.out.println(&quot;Processing file: &quot; + file.getName());</span>
+            // Add your file processing logic here
+        } finally {
+<span class="nc" id="L30">            lock.unlock();</span>
+        }
+<span class="nc" id="L32">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

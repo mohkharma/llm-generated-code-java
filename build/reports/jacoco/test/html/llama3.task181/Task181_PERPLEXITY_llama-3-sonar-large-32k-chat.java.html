@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task181_PERPLEXITY_llama-3-sonar-large-32k-chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task181</a> &gt; <span class="el_source">Task181_PERPLEXITY_llama-3-sonar-large-32k-chat.java</span></div><h1>Task181_PERPLEXITY_llama-3-sonar-large-32k-chat.java</h1><pre class="source lang-java linenums">package llama3.task181;
+
+ 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+class BankAccount {
+    private double balance;
+    private boolean closed;
+<span class="nc" id="L10">    private final Lock lock = new ReentrantLock();</span>
+
+<span class="nc" id="L12">    public BankAccount(double initialBalance) {</span>
+<span class="nc" id="L13">        this.balance = initialBalance;</span>
+<span class="nc" id="L14">        this.closed = false;</span>
+<span class="nc" id="L15">    }</span>
+
+    public void openAccount() {
+<span class="nc" id="L18">        this.closed = false;</span>
+<span class="nc" id="L19">    }</span>
+
+    public void closeAccount() {
+<span class="nc" id="L22">        this.closed = true;</span>
+<span class="nc" id="L23">    }</span>
+
+    public boolean deposit(double amount) {
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (this.closed) {</span>
+<span class="nc" id="L27">            return false;</span>
+        }
+<span class="nc" id="L29">        lock.lock();</span>
+        try {
+<span class="nc" id="L31">            this.balance += amount;</span>
+<span class="nc" id="L32">            return true;</span>
+        } finally {
+<span class="nc" id="L34">            lock.unlock();</span>
+        }
+    }
+
+    public boolean withdraw(double amount) {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (this.closed) {</span>
+<span class="nc" id="L40">            return false;</span>
+        }
+<span class="nc" id="L42">        lock.lock();</span>
+        try {
+<span class="nc bnc" id="L44" title="All 2 branches missed.">            if (amount &gt; this.balance) {</span>
+<span class="nc" id="L45">                return false;</span>
+            }
+<span class="nc" id="L47">            this.balance -= amount;</span>
+<span class="nc" id="L48">            return true;</span>
+        } finally {
+<span class="nc" id="L50">            lock.unlock();</span>
+        }
+    }
+
+    public double getBalance() {
+<span class="nc" id="L55">        lock.lock();</span>
+        try {
+<span class="nc" id="L57">            return this.balance;</span>
+        } finally {
+<span class="nc" id="L59">            lock.unlock();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

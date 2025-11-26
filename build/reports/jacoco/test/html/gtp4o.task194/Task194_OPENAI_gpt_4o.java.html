@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task194_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task194</a> &gt; <span class="el_source">Task194_OPENAI_gpt_4o.java</span></div><h1>Task194_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task194;
+
+import java.util.*;
+
+class Master {
+    private String secret;
+    private int guessCount;
+
+<span class="nc" id="L9">    public Master(String secret) {</span>
+<span class="nc" id="L10">        this.secret = secret;</span>
+<span class="nc" id="L11">    }</span>
+
+    public int guess(String word) {
+<span class="nc" id="L14">        guessCount++;</span>
+
+        //invalid code, words is not defined
+//        if (!Arrays.asList(words).contains(word)) {
+//            return -1;
+//        }
+<span class="nc" id="L20">        int matches = 0;</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        for (int i = 0; i &lt; secret.length(); i++) {</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">            if (secret.charAt(i) == word.charAt(i)) {</span>
+<span class="nc" id="L23">                matches++;</span>
+            }
+        }
+<span class="nc" id="L26">        return matches;</span>
+    }
+}
+
+<span class="nc" id="L30">public class Task194_OPENAI_gpt_4o {</span>
+
+    public static void findSecretWord(String[] words, Master master, int allowedGuesses) {
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        for (int i = 0; i &lt; allowedGuesses; i++) {</span>
+<span class="nc" id="L34">            String guessWord = words[new Random().nextInt(words.length)];</span>
+<span class="nc" id="L35">            int matches = master.guess(guessWord);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">            if (matches == 6) {</span>
+<span class="nc" id="L37">                System.out.println(&quot;You guessed the secret word correctly.&quot;);</span>
+<span class="nc" id="L38">                return;</span>
+            }
+<span class="nc" id="L40">            List&lt;String&gt; newWords = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            for (String word : words) {</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">                if (matchCount(word, guessWord) == matches) {</span>
+<span class="nc" id="L43">                    newWords.add(word);</span>
+                }
+            }
+<span class="nc" id="L46">            words = newWords.toArray(new String[0]);</span>
+        }
+<span class="nc" id="L48">        System.out.println(&quot;Either you took too many guesses, or you did not find the secret word.&quot;);</span>
+<span class="nc" id="L49">    }</span>
+
+    private static int matchCount(String w1, String w2) {
+<span class="nc" id="L52">        int matches = 0;</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        for (int i = 0; i &lt; w1.length(); i++) {</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">            if (w1.charAt(i) == w2.charAt(i)) {</span>
+<span class="nc" id="L55">                matches++;</span>
+            }
+        }
+<span class="nc" id="L58">        return matches;</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L62">        String secret = &quot;acckzz&quot;;</span>
+<span class="nc" id="L63">        String[] words = {&quot;acckzz&quot;, &quot;ccbazz&quot;, &quot;eiowzz&quot;, &quot;abcczz&quot;};</span>
+<span class="nc" id="L64">        int allowedGuesses = 10;</span>
+<span class="nc" id="L65">        Master master = new Master(secret);</span>
+<span class="nc" id="L66">        findSecretWord(words, master, allowedGuesses);</span>
+<span class="nc" id="L67">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

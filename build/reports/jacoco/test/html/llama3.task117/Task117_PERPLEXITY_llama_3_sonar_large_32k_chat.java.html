@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task117_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task117</a> &gt; <span class="el_source">Task117_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task117_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task117;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+<span class="nc" id="L9">public class Task117_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    public static void extractZip(String zipFile, String extractDir) throws Exception {
+<span class="nc" id="L11">        File file = new File(zipFile);</span>
+<span class="nc" id="L12">        File extractDirFile = new File(extractDir);</span>
+<span class="nc bnc" id="L13" title="All 2 branches missed.">        if (!extractDirFile.exists()) {</span>
+<span class="nc" id="L14">            extractDirFile.mkdirs();</span>
+        }
+<span class="nc" id="L16">        ZipInputStream zipIn = new ZipInputStream(new FileInputStream(file));</span>
+        ZipEntry entry;
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        while ((entry = zipIn.getNextEntry()) != null) {</span>
+<span class="nc" id="L19">            String filePath = extractDir + File.separator + entry.getName();</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">            if (!entry.isDirectory()) {</span>
+<span class="nc" id="L21">                extractFile(zipIn, filePath);</span>
+            } else {
+<span class="nc" id="L23">                File dir = new File(filePath);</span>
+<span class="nc" id="L24">                dir.mkdirs();</span>
+            }
+<span class="nc" id="L26">        }</span>
+<span class="nc" id="L27">    }</span>
+
+    private static void extractFile(ZipInputStream zipIn, String filePath) throws Exception {
+<span class="nc" id="L30">        FileOutputStream fileOut = new FileOutputStream(filePath);</span>
+<span class="nc" id="L31">        byte[] buffer = new byte[1024];</span>
+        int len;
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        while ((len = zipIn.read(buffer)) &gt; 0) {</span>
+<span class="nc" id="L34">            fileOut.write(buffer, 0, len);</span>
+        }
+<span class="nc" id="L36">        fileOut.close();</span>
+<span class="nc" id="L37">    }</span>
+
+    public static void main(String[] args) throws Exception {
+<span class="nc" id="L40">        extractZip(&quot;example.zip&quot;, &quot;extracted_zip&quot;);</span>
+<span class="nc" id="L41">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task30_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task30</a> &gt; <span class="el_source">Task30_OPENAI_gpt_4o.java</span></div><h1>Task30_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task30;
+
+import java.util.*;
+
+<span class="nc" id="L5">public class Task30_OPENAI_gpt_4o {</span>
+    public static String longest(String s1, String s2) {
+<span class="nc" id="L7">        Set&lt;Character&gt; charSet = new HashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L8" title="All 2 branches missed.">        for (char c : (s1 + s2).toCharArray()) {</span>
+<span class="nc" id="L9">            charSet.add(c);</span>
+        }
+<span class="nc" id="L11">        List&lt;Character&gt; charList = new ArrayList&lt;&gt;(charSet);</span>
+<span class="nc" id="L12">        Collections.sort(charList);</span>
+<span class="nc" id="L13">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        for (char c : charList) {</span>
+<span class="nc" id="L15">            sb.append(c);</span>
+<span class="nc" id="L16">        }</span>
+<span class="nc" id="L17">        return sb.toString();</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L21">        String a = &quot;xyaabbbccccdefww&quot;;</span>
+<span class="nc" id="L22">        String b = &quot;xxxxyyyyabklmopq&quot;;</span>
+<span class="nc" id="L23">        System.out.println(longest(a, b));</span>
+        
+<span class="nc" id="L25">        a = &quot;abcdefghijklmnopqrstuvwxyz&quot;;</span>
+<span class="nc" id="L26">        System.out.println(longest(a, a));</span>
+<span class="nc" id="L27">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task90_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task90</a> &gt; <span class="el_source">Task90_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task90_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task90;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+<span class="nc" id="L7">public class Task90_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    private static final int PORT = 9090;
+    private static final String HOST = &quot;127.0.0.1&quot;;
+    private static ServerSocket serverSocket;
+    private static Socket socket;
+<span class="nc" id="L12">    private static ArrayList&lt;Socket&gt; clients = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L13">    private static ArrayList&lt;String&gt; nicknames = new ArrayList&lt;&gt;();</span>
+
+    public static void main(String[] args) throws IOException {
+<span class="nc" id="L16">        serverSocket = new ServerSocket(PORT);</span>
+<span class="nc" id="L17">        System.out.println(&quot;Server Started!&quot;);</span>
+
+        while (true) {
+<span class="nc" id="L20">            socket = serverSocket.accept();</span>
+<span class="nc" id="L21">            System.out.println(&quot;Connected with &quot; + socket.getInetAddress());</span>
+
+<span class="nc" id="L23">            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);</span>
+<span class="nc" id="L24">            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));</span>
+
+<span class="nc" id="L26">            out.println(&quot;NICK&quot;);</span>
+<span class="nc" id="L27">            String nickname = in.readLine();</span>
+<span class="nc" id="L28">            nicknames.add(nickname);</span>
+<span class="nc" id="L29">            clients.add(socket);</span>
+
+<span class="nc" id="L31">            System.out.println(&quot;Nickname of the client is &quot; + nickname + &quot;!&quot;);</span>
+<span class="nc" id="L32">            broadcast(nickname + &quot; joined the chat!&quot;);</span>
+
+<span class="nc" id="L34">            new Thread(new HandleClient(socket, in, out)).start();</span>
+<span class="nc" id="L35">        }</span>
+    }
+
+    private static void broadcast(String message) {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        for (Socket client : clients) {</span>
+            try {
+<span class="nc" id="L41">                PrintWriter out = new PrintWriter(client.getOutputStream(), true);</span>
+<span class="nc" id="L42">                out.println(message);</span>
+<span class="nc" id="L43">            } catch (IOException e) {</span>
+<span class="nc" id="L44">                e.printStackTrace();</span>
+<span class="nc" id="L45">            }</span>
+<span class="nc" id="L46">        }</span>
+<span class="nc" id="L47">    }</span>
+
+    private static class HandleClient implements Runnable {
+        private Socket socket;
+        private BufferedReader in;
+        private PrintWriter out;
+
+<span class="nc" id="L54">        public HandleClient(Socket socket, BufferedReader in, PrintWriter out) {</span>
+<span class="nc" id="L55">            this.socket = socket;</span>
+<span class="nc" id="L56">            this.in = in;</span>
+<span class="nc" id="L57">            this.out = out;</span>
+<span class="nc" id="L58">        }</span>
+
+        @Override
+        public void run() {
+            try {
+                while (true) {
+<span class="nc" id="L64">                    String message = in.readLine();</span>
+<span class="nc" id="L65">                    broadcast(message);</span>
+<span class="nc" id="L66">                }</span>
+<span class="nc" id="L67">            } catch (IOException e) {</span>
+<span class="nc" id="L68">                int index = clients.indexOf(socket);</span>
+<span class="nc" id="L69">                clients.remove(socket);</span>
+                try {
+<span class="nc" id="L71">                    socket.close();</span>
+<span class="nc" id="L72">                } catch (IOException ex) {</span>
+<span class="nc" id="L73">                    throw new RuntimeException(ex);</span>
+<span class="nc" id="L74">                }</span>
+<span class="nc" id="L75">                String nickname = nicknames.get(index);</span>
+<span class="nc" id="L76">                broadcast(nickname + &quot; left the chat!&quot;);</span>
+<span class="nc" id="L77">                nicknames.remove(nickname);</span>
+            }
+<span class="nc" id="L79">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

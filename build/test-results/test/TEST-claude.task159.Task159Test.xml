@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task159.Task159Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.005">
+  <properties/>
+  <testcase name="testNonIntegerInputAndExit()" classname="claude.task159.Task159Test" time="0.002"/>
+  <testcase name="testValidIndicesAndExit()" classname="claude.task159.Task159Test" time="0.002"/>
+  <testcase name="testInvalidIndicesAndExit()" classname="claude.task159.Task159Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

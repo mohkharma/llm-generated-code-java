@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task149.Task149Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.003">
+  <properties/>
+  <testcase name="testEnqueueAndDequeue()" classname="claude.task149.Task149Test" time="0.0"/>
+  <testcase name="testMultipleEnqueueAndPeek()" classname="claude.task149.Task149Test" time="0.0"/>
+  <testcase name="testIsEmptyAfterOperations()" classname="claude.task149.Task149Test" time="0.001"/>
+  <testcase name="testPeekFromEmptyQueue()" classname="claude.task149.Task149Test" time="0.0"/>
+  <testcase name="testIsEmptyOnNewQueue()" classname="claude.task149.Task149Test" time="0.0"/>
+  <testcase name="testEnqueueAndPeek()" classname="claude.task149.Task149Test" time="0.0"/>
+  <testcase name="testEnqueueDequeueSequence()" classname="claude.task149.Task149Test" time="0.0"/>
+  <testcase name="testDequeueFromEmptyQueue()" classname="claude.task149.Task149Test" time="0.0"/>
+  <testcase name="testMultipleEnqueueAndDequeue()" classname="claude.task149.Task149Test" time="0.001"/>
+  <testcase name="testSizeConsistency()" classname="claude.task149.Task149Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

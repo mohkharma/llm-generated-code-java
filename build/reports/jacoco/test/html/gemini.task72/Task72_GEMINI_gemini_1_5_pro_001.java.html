@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task72_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task72</a> &gt; <span class="el_source">Task72_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task72_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task72;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Arrays;
+import javax.xml.bind.DatatypeConverter;
+
+<span class="nc" id="L9">public class Task72_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static void main(String[] args) throws Exception {
+        // Static Initialization Vector (IV) - Must be 16 bytes
+<span class="nc" id="L13">        byte[] iv = &quot;ThisIsMyStaticIV&quot;.getBytes();</span>
+<span class="nc" id="L14">        IvParameterSpec ivspec = new IvParameterSpec(iv);</span>
+
+        // Encryption Key - Must be 16, 24, or 32 bytes
+<span class="nc" id="L17">        byte[] key = &quot;ThisIsMySecretKey&quot;.getBytes();</span>
+<span class="nc" id="L18">        SecretKeySpec keySpec = new SecretKeySpec(key, &quot;AES&quot;);</span>
+
+        // Data to be encrypted
+<span class="nc" id="L21">        String data = &quot;This is some secret data.&quot;;</span>
+<span class="nc" id="L22">        System.out.println(&quot;Original Data: &quot; + data);</span>
+
+        // Encrypt the data
+<span class="nc" id="L25">        Cipher cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;);</span>
+<span class="nc" id="L26">        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivspec);</span>
+<span class="nc" id="L27">        byte[] encryptedData = cipher.doFinal(data.getBytes());</span>
+
+        // Print encrypted data in hexadecimal format
+<span class="nc" id="L30">        System.out.println(&quot;Encrypted Data (Hex): &quot; + DatatypeConverter.printHexBinary(encryptedData));</span>
+<span class="nc" id="L31">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

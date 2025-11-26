@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task106_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task106</a> &gt; <span class="el_source">Task106_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task106_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task106;
+
+import javax.crypto.Cipher;
+import java.security.*;
+import java.util.Base64;
+
+<span class="nc" id="L7">public class Task106_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static void main(String[] args) throws Exception {
+        // Generate public and private keys
+<span class="nc" id="L11">        KeyPairGenerator generator = KeyPairGenerator.getInstance(&quot;RSA&quot;);</span>
+<span class="nc" id="L12">        generator.initialize(2048);</span>
+<span class="nc" id="L13">        KeyPair pair = generator.generateKeyPair();</span>
+<span class="nc" id="L14">        PublicKey publicKey = pair.getPublic();</span>
+<span class="nc" id="L15">        PrivateKey privateKey = pair.getPrivate();</span>
+
+        // Encrypt the message
+<span class="nc" id="L18">        String message = &quot;This is a secret message&quot;;</span>
+<span class="nc" id="L19">        Cipher encryptionCipher = Cipher.getInstance(&quot;RSA/ECB/OAEPWithSHA-256AndMGF1Padding&quot;);</span>
+<span class="nc" id="L20">        encryptionCipher.init(Cipher.ENCRYPT_MODE, publicKey);</span>
+<span class="nc" id="L21">        byte[] encryptedMessage = encryptionCipher.doFinal(message.getBytes());</span>
+<span class="nc" id="L22">        String encodedEncryptedMessage = Base64.getEncoder().encodeToString(encryptedMessage);</span>
+
+        // Decrypt the message
+<span class="nc" id="L25">        Cipher decryptionCipher = Cipher.getInstance(&quot;RSA/ECB/OAEPWithSHA-256AndMGF1Padding&quot;);</span>
+<span class="nc" id="L26">        decryptionCipher.init(Cipher.DECRYPT_MODE, privateKey);</span>
+<span class="nc" id="L27">        byte[] decryptedMessage = decryptionCipher.doFinal(Base64.getDecoder().decode(encodedEncryptedMessage));</span>
+<span class="nc" id="L28">        String decryptedMessageString = new String(decryptedMessage);</span>
+
+        // Print the results
+<span class="nc" id="L31">        System.out.println(&quot;Original Message: &quot; + message);</span>
+<span class="nc" id="L32">        System.out.println(&quot;Encrypted Message: &quot; + encodedEncryptedMessage);</span>
+<span class="nc" id="L33">        System.out.println(&quot;Decrypted Message: &quot; + decryptedMessageString);</span>
+<span class="nc" id="L34">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

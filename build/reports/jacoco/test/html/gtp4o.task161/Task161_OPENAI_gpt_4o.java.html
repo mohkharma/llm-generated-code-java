@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task161_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task161</a> &gt; <span class="el_source">Task161_OPENAI_gpt_4o.java</span></div><h1>Task161_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task161;
+
+import java.util.*;
+
+<span class="nc" id="L5">public class Task161_OPENAI_gpt_4o {</span>
+    static int knapsack(int capacity, int weights[], int values[], int n) {
+<span class="nc" id="L7">        int K[][] = new int[n + 1][capacity + 1];</span>
+<span class="nc bnc" id="L8" title="All 2 branches missed.">        for (int i = 0; i &lt;= n; i++) {</span>
+<span class="nc bnc" id="L9" title="All 2 branches missed.">            for (int w = 0; w &lt;= capacity; w++) {</span>
+<span class="nc bnc" id="L10" title="All 4 branches missed.">                if (i == 0 || w == 0)</span>
+<span class="nc" id="L11">                    K[i][w] = 0;</span>
+<span class="nc bnc" id="L12" title="All 2 branches missed.">                else if (weights[i - 1] &lt;= w)</span>
+<span class="nc" id="L13">                    K[i][w] = Math.max(values[i - 1] + K[i - 1][w - weights[i - 1]], K[i - 1][w]);</span>
+                else
+<span class="nc" id="L15">                    K[i][w] = K[i - 1][w];</span>
+            }
+        }
+<span class="nc" id="L18">        return K[n][capacity];</span>
+    }
+
+    public static void main(String args[]) {
+<span class="nc" id="L22">        int values[] = new int[] { 60, 100, 120 };</span>
+<span class="nc" id="L23">        int weights[] = new int[] { 10, 20, 30 };</span>
+<span class="nc" id="L24">        int capacity = 50;</span>
+<span class="nc" id="L25">        int n = values.length;</span>
+<span class="nc" id="L26">        System.out.println(knapsack(capacity, weights, values, n));</span>
+<span class="nc" id="L27">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

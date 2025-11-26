@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task142.Task142Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.003">
+  <properties/>
+  <testcase name="testOneNumberIsOne()" classname="claude.task142.Task142Test" time="0.001"/>
+  <testcase name="testSmallAndLargeNumbers()" classname="claude.task142.Task142Test" time="0.0"/>
+  <testcase name="testPrimeNumbers()" classname="claude.task142.Task142Test" time="0.001"/>
+  <testcase name="testLargeNumbers()" classname="claude.task142.Task142Test" time="0.0"/>
+  <testcase name="testOneNumberZero()" classname="claude.task142.Task142Test" time="0.0"/>
+  <testcase name="testSameNumbers()" classname="claude.task142.Task142Test" time="0.0"/>
+  <testcase name="testIdenticalLargeNumbers()" classname="claude.task142.Task142Test" time="0.0"/>
+  <testcase name="testCoprimeNumbers()" classname="claude.task142.Task142Test" time="0.0"/>
+  <testcase name="testNegativeNumbers()" classname="claude.task142.Task142Test" time="0.0"/>
+  <testcase name="testPositiveIntegers()" classname="claude.task142.Task142Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

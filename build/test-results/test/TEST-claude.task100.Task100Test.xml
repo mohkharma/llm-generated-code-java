@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task100.Task100Test" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:10" hostname="DESKTOP-VCM60S2" time="0.019">
+  <properties/>
+  <testcase name="testMatchNothing()" classname="claude.task100.Task100Test" time="0.003"/>
+  <testcase name="testMatchFruit()" classname="claude.task100.Task100Test" time="0.003"/>
+  <testcase name="testMatchPine()" classname="claude.task100.Task100Test" time="0.003"/>
+  <testcase name="testFileNotFound()" classname="claude.task100.Task100Test" time="0.003"/>
+  <testcase name="testInvalidRegex()" classname="claude.task100.Task100Test" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

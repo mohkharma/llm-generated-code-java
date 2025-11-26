@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task83_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task83</a> &gt; <span class="el_source">Task83_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task83_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task83;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import javax.crypto.spec.IvParameterSpec;
+import java.security.Key;
+import java.util.Base64;
+
+<span class="nc" id="L9">public class Task83_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    public static void main(String[] args) throws Exception {
+<span class="nc" id="L11">        byte[] key = new byte[16];  // 16 byte key</span>
+<span class="nc" id="L12">        String plaintext = &quot;Hello, World!&quot;;</span>
+<span class="nc" id="L13">        System.out.println(encryptAESCBC(key, plaintext));</span>
+<span class="nc" id="L14">    }</span>
+
+    public static String encryptAESCBC(byte[] key, String plaintext) throws Exception {
+<span class="nc" id="L17">        Key aesKey = new SecretKeySpec(key, &quot;AES&quot;);</span>
+<span class="nc" id="L18">        Cipher cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;);</span>
+<span class="nc" id="L19">        cipher.init(Cipher.ENCRYPT_MODE, aesKey, new IvParameterSpec(new byte[16]));</span>
+<span class="nc" id="L20">        byte[] encrypted = cipher.doFinal(plaintext.getBytes());</span>
+<span class="nc" id="L21">        return Base64.getEncoder().encodeToString(encrypted);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

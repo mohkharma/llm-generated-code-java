@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task56_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task56</a> &gt; <span class="el_source">Task56_MISTRAL_codestral_latest.java</span></div><h1>Task56_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task56;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.nio.charset.StandardCharsets;
+import java.lang.System;
+
+<span class="nc" id="L8">public class Task56_MISTRAL_codestral_latest {</span>
+    public static String generateToken(String username, String password) throws NoSuchAlgorithmException {
+<span class="nc" id="L10">        String timestamp = String.valueOf(System.currentTimeMillis());</span>
+<span class="nc" id="L11">        String data = username + password + timestamp;</span>
+<span class="nc" id="L12">        MessageDigest digest = MessageDigest.getInstance(&quot;SHA-256&quot;);</span>
+<span class="nc" id="L13">        byte[] encodedhash = digest.digest(data.getBytes(StandardCharsets.UTF_8));</span>
+<span class="nc" id="L14">        return bytesToHex(encodedhash);</span>
+    }
+
+    private static String bytesToHex(byte[] hash) {
+<span class="nc" id="L18">        StringBuilder hexString = new StringBuilder(2 * hash.length);</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        for (int i = 0; i &lt; hash.length; i++) {</span>
+<span class="nc" id="L20">            String hex = Integer.toHexString(0xff &amp; hash[i]);</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">            if(hex.length() == 1) {</span>
+<span class="nc" id="L22">                hexString.append('0');</span>
+            }
+<span class="nc" id="L24">            hexString.append(hex);</span>
+        }
+<span class="nc" id="L26">        return hexString.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

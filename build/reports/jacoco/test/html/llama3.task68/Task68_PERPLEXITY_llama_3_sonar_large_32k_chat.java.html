@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task68_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task68</a> &gt; <span class="el_source">Task68_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task68_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task68;// Java code is not possible in a single file as it requires separate files for different classes.
+// However, here is an example of how you can achieve this using the UnboundID LDAP SDK:
+import com.unboundid.ldap.sdk.*;
+
+<span class="nc" id="L5">public class Task68_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    public static void main(String[] args) {
+<span class="nc bnc" id="L7" title="All 2 branches missed.">        if (args.length != 2) {</span>
+<span class="nc" id="L8">            System.out.println(&quot;Usage: java Task68_PERPLEXITY_llama_3_sonar_large_32k_chat &lt;domain_component&gt; &lt;username&gt;&quot;);</span>
+<span class="nc" id="L9">            System.exit(1);</span>
+        }
+<span class="nc" id="L11">        String dc = args[0];</span>
+<span class="nc" id="L12">        String username = args[1];</span>
+        try {
+<span class="nc" id="L14">            LDAPConnection conn = new LDAPConnection(&quot;localhost&quot;, 389);</span>
+
+            //invalid code, cannot resolve conn.bind();
+//            conn.bind();
+<span class="nc" id="L18">            String baseDN = &quot;dc=&quot; + dc.replace(&quot;.&quot;, &quot;,dc=&quot;);</span>
+<span class="nc" id="L19">            String query = &quot;(uid=&quot; + username + &quot;)&quot;;</span>
+            //invalid code, cannot resolve SUBTREE
+//            SearchResult result = conn.search(baseDN, SearchScope.SUBTREE, query);
+<span class="nc" id="L22">            SearchResult result = conn.search(baseDN, SearchScope.SUB, query);</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">            for (SearchResultEntry entry : result.getSearchEntries()) {</span>
+<span class="nc" id="L24">                System.out.println(entry.getDN() + &quot; &quot; + entry.getAttributes());</span>
+<span class="nc" id="L25">            }</span>
+<span class="nc" id="L26">        } catch (LDAPException e) {</span>
+<span class="nc" id="L27">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="nc" id="L28">        }</span>
+<span class="nc" id="L29">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task180_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task180</a> &gt; <span class="el_source">Task180_OPENAI_gpt_4o.java</span></div><h1>Task180_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task180;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class TreeNode {
+    int val;
+    List&lt;TreeNode&gt; children;
+
+<span class="nc" id="L10">    public TreeNode(int val) {</span>
+<span class="nc" id="L11">        this.val = val;</span>
+<span class="nc" id="L12">        this.children = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L13">    }</span>
+}
+
+<span class="nc" id="L16">public class Task180_OPENAI_gpt_4o {</span>
+
+    public static TreeNode reorientTree(TreeNode node, TreeNode root) {
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (root == null) root = new TreeNode(node.val);</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        for (TreeNode child : node.children) {</span>
+<span class="nc" id="L21">            TreeNode childNode = new TreeNode(child.val);</span>
+<span class="nc" id="L22">            root.children.add(childNode);</span>
+<span class="nc" id="L23">            reorientTree(child, childNode);</span>
+<span class="nc" id="L24">        }</span>
+<span class="nc" id="L25">        return root;</span>
+    }
+
+    public static void printTree(TreeNode node, int level) {
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        for (int i = 0; i &lt; level * 2; i++) System.out.print(&quot; &quot;);</span>
+<span class="nc" id="L30">        System.out.println(node.val);</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        for (TreeNode child : node.children) {</span>
+<span class="nc" id="L32">            printTree(child, level + 1);</span>
+<span class="nc" id="L33">        }</span>
+<span class="nc" id="L34">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L37">        TreeNode n0 = new TreeNode(0);</span>
+<span class="nc" id="L38">        TreeNode n1 = new TreeNode(1);</span>
+<span class="nc" id="L39">        TreeNode n2 = new TreeNode(2);</span>
+<span class="nc" id="L40">        TreeNode n3 = new TreeNode(3);</span>
+<span class="nc" id="L41">        TreeNode n4 = new TreeNode(4);</span>
+<span class="nc" id="L42">        TreeNode n5 = new TreeNode(5);</span>
+<span class="nc" id="L43">        TreeNode n6 = new TreeNode(6);</span>
+<span class="nc" id="L44">        TreeNode n7 = new TreeNode(7);</span>
+<span class="nc" id="L45">        TreeNode n8 = new TreeNode(8);</span>
+<span class="nc" id="L46">        TreeNode n9 = new TreeNode(9);</span>
+
+<span class="nc" id="L48">        n0.children.add(n1);</span>
+<span class="nc" id="L49">        n0.children.add(n2);</span>
+<span class="nc" id="L50">        n0.children.add(n3);</span>
+<span class="nc" id="L51">        n1.children.add(n4);</span>
+<span class="nc" id="L52">        n1.children.add(n5);</span>
+<span class="nc" id="L53">        n2.children.add(n6);</span>
+<span class="nc" id="L54">        n2.children.add(n7);</span>
+<span class="nc" id="L55">        n3.children.add(n8);</span>
+<span class="nc" id="L56">        n3.children.add(n9);</span>
+
+<span class="nc" id="L58">        TreeNode newRoot = reorientTree(n6, null);</span>
+<span class="nc" id="L59">        printTree(newRoot, 0);</span>
+<span class="nc" id="L60">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

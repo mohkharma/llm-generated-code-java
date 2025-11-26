@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task138_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task138</a> &gt; <span class="el_source">Task138_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task138_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task138;
+
+import java.io.*;
+import java.util.*;
+
+class PermissionManager {
+    private Map&lt;String, String&gt; users;
+    private Map&lt;String, List&lt;String&gt;&gt; roles;
+
+<span class="fc" id="L10">    public PermissionManager() {</span>
+<span class="fc" id="L11">        users = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L12">        roles = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L13">        roles.put(&quot;admin&quot;, Arrays.asList(&quot;read&quot;, &quot;write&quot;, &quot;delete&quot;, &quot;manage_users&quot;));</span>
+<span class="fc" id="L14">        roles.put(&quot;editor&quot;, Arrays.asList(&quot;read&quot;, &quot;write&quot;));</span>
+<span class="fc" id="L15">        roles.put(&quot;viewer&quot;, Arrays.asList(&quot;read&quot;));</span>
+<span class="fc" id="L16">    }</span>
+
+    public void addUser(String username, String role) {
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if (!roles.containsKey(role)) {</span>
+<span class="fc" id="L20">            throw new IllegalArgumentException(&quot;Invalid role&quot;);</span>
+        }
+<span class="fc" id="L22">        users.put(username, role);</span>
+<span class="fc" id="L23">    }</span>
+
+    public void removeUser(String username) {
+<span class="fc" id="L26">        users.remove(username);</span>
+<span class="fc" id="L27">    }</span>
+
+    public void changeUserRole(String username, String newRole) {
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (!users.containsKey(username)) {</span>
+<span class="fc" id="L31">            throw new IllegalArgumentException(&quot;User not found&quot;);</span>
+        }
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (!roles.containsKey(newRole)) {</span>
+<span class="fc" id="L34">            throw new IllegalArgumentException(&quot;Invalid role&quot;);</span>
+        }
+<span class="fc" id="L36">        users.put(username, newRole);</span>
+<span class="fc" id="L37">    }</span>
+
+    public boolean checkPermission(String username, String permission) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (!users.containsKey(username)) {</span>
+<span class="fc" id="L41">            return false;</span>
+        }
+<span class="fc" id="L43">        String userRole = users.get(username);</span>
+<span class="fc" id="L44">        return roles.get(userRole).contains(permission);</span>
+    }
+
+    public void saveToFile(String filename) throws IOException {
+<span class="fc" id="L48">        try (PrintWriter out = new PrintWriter(new FileWriter(filename))) {</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">            for (Map.Entry&lt;String, String&gt; entry : users.entrySet()) {</span>
+<span class="fc" id="L50">                out.println(entry.getKey() + &quot;,&quot; + entry.getValue());</span>
+<span class="fc" id="L51">            }</span>
+        }
+<span class="fc" id="L53">    }</span>
+
+    public void loadFromFile(String filename) throws IOException {
+<span class="fc" id="L56">        users.clear();</span>
+<span class="fc" id="L57">        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {</span>
+            String line;
+<span class="fc bfc" id="L59" title="All 2 branches covered.">            while ((line = br.readLine()) != null) {</span>
+<span class="fc" id="L60">                String[] parts = line.split(&quot;,&quot;);</span>
+<span class="fc" id="L61">                users.put(parts[0], parts[1]);</span>
+<span class="fc" id="L62">            }</span>
+        }
+<span class="fc" id="L64">    }</span>
+}
+
+<span class="nc" id="L67">public class Task138_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L69">        PermissionManager pm = new PermissionManager();</span>
+
+<span class="nc" id="L71">        pm.addUser(&quot;alice&quot;, &quot;admin&quot;);</span>
+<span class="nc" id="L72">        pm.addUser(&quot;bob&quot;, &quot;editor&quot;);</span>
+<span class="nc" id="L73">        pm.addUser(&quot;charlie&quot;, &quot;viewer&quot;);</span>
+
+<span class="nc" id="L75">        System.out.println(pm.checkPermission(&quot;alice&quot;, &quot;manage_users&quot;));  // true</span>
+<span class="nc" id="L76">        System.out.println(pm.checkPermission(&quot;bob&quot;, &quot;write&quot;));  // true</span>
+<span class="nc" id="L77">        System.out.println(pm.checkPermission(&quot;charlie&quot;, &quot;delete&quot;));  // false</span>
+
+<span class="nc" id="L79">        pm.changeUserRole(&quot;bob&quot;, &quot;admin&quot;);</span>
+<span class="nc" id="L80">        System.out.println(pm.checkPermission(&quot;bob&quot;, &quot;manage_users&quot;));  // true</span>
+
+<span class="nc" id="L82">        pm.removeUser(&quot;charlie&quot;);</span>
+<span class="nc" id="L83">        System.out.println(pm.checkPermission(&quot;charlie&quot;, &quot;read&quot;));  // false</span>
+
+        try {
+<span class="nc" id="L86">            pm.saveToFile(&quot;permissions.txt&quot;);</span>
+<span class="nc" id="L87">            pm.loadFromFile(&quot;permissions.txt&quot;);</span>
+<span class="nc" id="L88">        } catch (IOException e) {</span>
+<span class="nc" id="L89">            e.printStackTrace();</span>
+<span class="nc" id="L90">        }</span>
+<span class="nc" id="L91">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task170_CLAUDE_claude-3-5-sonnet-20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task170</a> &gt; <span class="el_source">Task170_CLAUDE_claude-3-5-sonnet-20240620.java</span></div><h1>Task170_CLAUDE_claude-3-5-sonnet-20240620.java</h1><pre class="source lang-java linenums">package claude.task170;
+
+<span class="fc" id="L3">class Solution {</span>
+    public int countRangeSum(int[] nums, int lower, int upper) {
+<span class="fc" id="L5">        long[] prefixSum = new long[nums.length + 1];</span>
+<span class="fc bfc" id="L6" title="All 2 branches covered.">        for (int i = 0; i &lt; nums.length; i++) {</span>
+<span class="fc" id="L7">            prefixSum[i + 1] = prefixSum[i] + nums[i];</span>
+        }
+<span class="fc" id="L9">        return mergeSort(prefixSum, 0, prefixSum.length - 1, lower, upper);</span>
+    }
+    
+    private int mergeSort(long[] arr, int left, int right, int lower, int upper) {
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        if (left &gt;= right) {</span>
+<span class="fc" id="L14">            return 0;</span>
+        }
+        
+<span class="fc" id="L17">        int mid = (left + right) / 2;</span>
+<span class="fc" id="L18">        int count = mergeSort(arr, left, mid, lower, upper) + mergeSort(arr, mid + 1, right, lower, upper);</span>
+        
+<span class="fc" id="L20">        int j = mid + 1, k = mid + 1;</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        for (int i = left; i &lt;= mid; i++) {</span>
+<span class="fc bfc" id="L22" title="All 4 branches covered.">            while (j &lt;= right &amp;&amp; arr[j] - arr[i] &lt; lower) {</span>
+<span class="fc" id="L23">                j++;</span>
+            }
+<span class="fc bfc" id="L25" title="All 4 branches covered.">            while (k &lt;= right &amp;&amp; arr[k] - arr[i] &lt;= upper) {</span>
+<span class="fc" id="L26">                k++;</span>
+            }
+<span class="fc" id="L28">            count += k - j;</span>
+        }
+        
+<span class="fc" id="L31">        merge(arr, left, mid, right);</span>
+<span class="fc" id="L32">        return count;</span>
+    }
+    
+    private void merge(long[] arr, int left, int mid, int right) {
+<span class="fc" id="L36">        long[] temp = new long[right - left + 1];</span>
+<span class="fc" id="L37">        int i = left, j = mid + 1, k = 0;</span>
+        
+<span class="fc bfc" id="L39" title="All 4 branches covered.">        while (i &lt;= mid &amp;&amp; j &lt;= right) {</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            if (arr[i] &lt;= arr[j]) {</span>
+<span class="fc" id="L41">                temp[k++] = arr[i++];</span>
+            } else {
+<span class="fc" id="L43">                temp[k++] = arr[j++];</span>
+            }
+        }
+        
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        while (i &lt;= mid) {</span>
+<span class="fc" id="L48">            temp[k++] = arr[i++];</span>
+        }
+        
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        while (j &lt;= right) {</span>
+<span class="fc" id="L52">            temp[k++] = arr[j++];</span>
+        }
+        
+<span class="fc" id="L55">        System.arraycopy(temp, 0, arr, left, temp.length);</span>
+<span class="fc" id="L56">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

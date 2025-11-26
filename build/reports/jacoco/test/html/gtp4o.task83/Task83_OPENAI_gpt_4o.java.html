@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task83_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task83</a> &gt; <span class="el_source">Task83_OPENAI_gpt_4o.java</span></div><h1>Task83_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task83;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import java.security.SecureRandom;
+import java.util.Arrays;
+
+<span class="nc" id="L10">public class Task83_OPENAI_gpt_4o {</span>
+    public static void main(String[] args) throws Exception {
+<span class="nc" id="L12">        KeyGenerator keyGen = KeyGenerator.getInstance(&quot;AES&quot;);</span>
+<span class="nc" id="L13">        keyGen.init(128);</span>
+<span class="nc" id="L14">        SecretKey key = keyGen.generateKey();</span>
+
+<span class="nc" id="L16">        Cipher cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;);</span>
+<span class="nc" id="L17">        SecureRandom random = new SecureRandom();</span>
+<span class="nc" id="L18">        byte[] iv = new byte[16];</span>
+<span class="nc" id="L19">        random.nextBytes(iv);</span>
+<span class="nc" id="L20">        IvParameterSpec ivParams = new IvParameterSpec(iv);</span>
+
+<span class="nc" id="L22">        cipher.init(Cipher.ENCRYPT_MODE, key, ivParams);</span>
+<span class="nc" id="L23">        byte[] plaintext = &quot;exampleplaintext&quot;.getBytes(&quot;UTF-8&quot;);</span>
+<span class="nc" id="L24">        byte[] encrypted = cipher.doFinal(plaintext);</span>
+
+<span class="nc" id="L26">        byte[] result = new byte[iv.length + encrypted.length];</span>
+<span class="nc" id="L27">        System.arraycopy(iv, 0, result, 0, iv.length);</span>
+<span class="nc" id="L28">        System.arraycopy(encrypted, 0, result, iv.length, encrypted.length);</span>
+
+<span class="nc" id="L30">        System.out.println(&quot;Encrypted Byte Array: &quot; + Arrays.toString(result));</span>
+<span class="nc" id="L31">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task81_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task81</a> &gt; <span class="el_source">Task81_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task81_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task81;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
+
+<span class="nc" id="L9">public class Task81_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static String calculateCertificateHash(String certificatePath, String hashAlgorithm) throws IOException, NoSuchAlgorithmException {
+<span class="nc" id="L12">        MessageDigest md = MessageDigest.getInstance(hashAlgorithm);</span>
+<span class="nc" id="L13">        FileInputStream fis = new FileInputStream(certificatePath);</span>
+<span class="nc" id="L14">        byte[] dataBytes = new byte[1024];</span>
+        int nread;
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        while ((nread = fis.read(dataBytes)) != -1) {</span>
+<span class="nc" id="L17">            md.update(dataBytes, 0, nread);</span>
+        }
+<span class="nc" id="L19">        byte[] mdbytes = md.digest();</span>
+
+<span class="nc" id="L21">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        for (byte mdbyte : mdbytes) {</span>
+<span class="nc" id="L23">            sb.append(Integer.toString((mdbyte &amp; 0xff) + 0x100, 16).substring(1));</span>
+        }
+<span class="nc" id="L25">        fis.close();</span>
+<span class="nc" id="L26">        return sb.toString();</span>
+    }
+
+    public static boolean verifyCertificateHash(String certificatePath, String expectedHash, String hashAlgorithm) throws IOException, NoSuchAlgorithmException {
+<span class="nc" id="L30">        String calculatedHash = calculateCertificateHash(certificatePath, hashAlgorithm);</span>
+<span class="nc" id="L31">        return calculatedHash.equalsIgnoreCase(expectedHash);</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L35">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L36">        System.out.print(&quot;Enter the path to the SSL certificate: &quot;);</span>
+<span class="nc" id="L37">        String certFile = scanner.nextLine();</span>
+<span class="nc" id="L38">        System.out.print(&quot;Enter the expected hash value: &quot;);</span>
+<span class="nc" id="L39">        String expectedHash = scanner.nextLine();</span>
+<span class="nc" id="L40">        System.out.print(&quot;Enter the hash algorithm used (e.g., SHA-256): &quot;);</span>
+<span class="nc" id="L41">        String hashAlgo = scanner.nextLine();</span>
+
+        try {
+<span class="nc bnc" id="L44" title="All 2 branches missed.">            if (verifyCertificateHash(certFile, expectedHash, hashAlgo)) {</span>
+<span class="nc" id="L45">                System.out.println(&quot;Certificate hash matches!&quot;);</span>
+            } else {
+<span class="nc" id="L47">                System.out.println(&quot;Certificate hash does not match.&quot;);</span>
+            }
+<span class="nc" id="L49">        } catch (IOException | NoSuchAlgorithmException e) {</span>
+<span class="nc" id="L50">            System.err.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="nc" id="L51">        }</span>
+<span class="nc" id="L52">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

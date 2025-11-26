@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task94_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task94</a> &gt; <span class="el_source">Task94_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task94_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task94;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+<span class="nc" id="L11">public class Task94_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static void main(String[] args) {
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        if (args.length != 1) {</span>
+<span class="nc" id="L15">            System.out.println(&quot;Usage: java Task94_GEMINI_gemini_1_5_pro_001 &lt;file_path&gt;&quot;);</span>
+<span class="nc" id="L16">            return;</span>
+        }
+
+<span class="nc" id="L19">        String filePath = args[0];</span>
+<span class="nc" id="L20">        List&lt;KeyValuePair&gt; keyValuePairs = readFileAndSort(filePath);</span>
+
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        for (KeyValuePair pair : keyValuePairs) {</span>
+<span class="nc" id="L23">            System.out.println(pair.getKey() + &quot; &quot; + pair.getValue());</span>
+<span class="nc" id="L24">        }</span>
+<span class="nc" id="L25">    }</span>
+
+    private static List&lt;KeyValuePair&gt; readFileAndSort(String filePath) {
+<span class="nc" id="L28">        List&lt;KeyValuePair&gt; keyValuePairs = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L29">        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {</span>
+            String line;
+<span class="nc bnc" id="L31" title="All 2 branches missed.">            while ((line = reader.readLine()) != null) {</span>
+<span class="nc" id="L32">                String[] parts = line.split(&quot; &quot;, 2);</span>
+<span class="nc" id="L33">                keyValuePairs.add(new KeyValuePair(parts[0], parts[1]));</span>
+<span class="nc" id="L34">            }</span>
+<span class="nc" id="L35">        } catch (IOException e) {</span>
+<span class="nc" id="L36">            System.err.println(&quot;Error reading file: &quot; + e.getMessage());</span>
+<span class="nc" id="L37">        }</span>
+
+<span class="nc" id="L39">        Collections.sort(keyValuePairs, Comparator.comparing(KeyValuePair::getKey));</span>
+<span class="nc" id="L40">        return keyValuePairs;</span>
+    }
+
+    private static class KeyValuePair {
+        private String key;
+        private String value;
+
+<span class="nc" id="L47">        public KeyValuePair(String key, String value) {</span>
+<span class="nc" id="L48">            this.key = key;</span>
+<span class="nc" id="L49">            this.value = value;</span>
+<span class="nc" id="L50">        }</span>
+
+        public String getKey() {
+<span class="nc" id="L53">            return key;</span>
+        }
+
+        public String getValue() {
+<span class="nc" id="L57">            return value;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

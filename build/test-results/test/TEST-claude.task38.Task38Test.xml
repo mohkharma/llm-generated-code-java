@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task38.Task38Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:13" hostname="DESKTOP-VCM60S2" time="2.072">
+  <properties/>
+  <testcase name="testDoPostWithNullName()" classname="claude.task38.Task38Test" time="2.06"/>
+  <testcase name="testDoPostWithEmptyName()" classname="claude.task38.Task38Test" time="0.004"/>
+  <testcase name="testDoPostWithName()" classname="claude.task38.Task38Test" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\Home\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.18\417558ea01fe9f0e8a94af28b9469d281c4e3984\byte-buddy-agent-1.14.18.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

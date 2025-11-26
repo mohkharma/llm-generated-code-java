@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task48_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task48</a> &gt; <span class="el_source">Task48_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task48_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task48;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="nc" id="L12">public class Task48_GEMINI_gemini_1_5_pro_001 {</span>
+
+    private static final int PORT = 65432;
+<span class="nc" id="L15">    private static List&lt;ClientHandler&gt; clients = new ArrayList&lt;&gt;();</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L18">        try (ServerSocket serverSocket = new ServerSocket(PORT)) {</span>
+<span class="nc" id="L19">            System.out.println(&quot;Server started on port &quot; + PORT);</span>
+
+            while (true) {
+<span class="nc" id="L22">                Socket clientSocket = serverSocket.accept();</span>
+<span class="nc" id="L23">                ClientHandler clientHandler = new ClientHandler(clientSocket);</span>
+<span class="nc" id="L24">                clients.add(clientHandler);</span>
+<span class="nc" id="L25">                new Thread(clientHandler).start();</span>
+<span class="nc" id="L26">            }</span>
+<span class="nc" id="L27">        } catch (IOException e) {</span>
+<span class="nc" id="L28">            e.printStackTrace();</span>
+        }
+<span class="nc" id="L30">    }</span>
+
+    private static class ClientHandler implements Runnable {
+        private Socket clientSocket;
+        private BufferedReader reader;
+        private PrintWriter writer;
+
+<span class="nc" id="L37">        public ClientHandler(Socket clientSocket) throws IOException {</span>
+<span class="nc" id="L38">            this.clientSocket = clientSocket;</span>
+<span class="nc" id="L39">            reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));</span>
+<span class="nc" id="L40">            writer = new PrintWriter(clientSocket.getOutputStream(), true);</span>
+<span class="nc" id="L41">        }</span>
+
+        @Override
+        public void run() {
+            try {
+                String message;
+<span class="nc bnc" id="L47" title="All 2 branches missed.">                while ((message = reader.readLine()) != null) {</span>
+<span class="nc" id="L48">                    broadcast(message, this);</span>
+                }
+<span class="nc" id="L50">            } catch (IOException e) {</span>
+<span class="nc" id="L51">                System.out.println(&quot;Client disconnected: &quot; + clientSocket.getRemoteSocketAddress());</span>
+            } finally {
+<span class="nc" id="L53">                clients.remove(this);</span>
+                try {
+<span class="nc" id="L55">                    clientSocket.close();</span>
+<span class="nc" id="L56">                } catch (IOException e) {</span>
+<span class="nc" id="L57">                    e.printStackTrace();</span>
+<span class="nc" id="L58">                }</span>
+            }
+<span class="nc" id="L60">        }</span>
+    }
+
+    private static synchronized void broadcast(String message, ClientHandler sender) {
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        for (ClientHandler client : clients) {</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">            if (client != sender) {</span>
+<span class="nc" id="L66">                client.writer.println(message);</span>
+            }
+<span class="nc" id="L68">        }</span>
+<span class="nc" id="L69">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

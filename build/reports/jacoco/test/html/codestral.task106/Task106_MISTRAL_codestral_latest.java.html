@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task106_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task106</a> &gt; <span class="el_source">Task106_MISTRAL_codestral_latest.java</span></div><h1>Task106_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task106;// Java code for RSA encryption and decryption is quite lengthy and requires external libraries.
+// This example uses Bouncy Castle library for RSA implementation.
+// Please make sure to include the Bouncy Castle library in your project.
+
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Base64;
+import javax.crypto.Cipher;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+<span class="nc" id="L13">public class Task106_MISTRAL_codestral_latest {</span>
+    public static void main(String[] args) throws Exception {
+        // Generate a new RSA key pair
+<span class="nc" id="L16">        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(&quot;RSA&quot;, new BouncyCastleProvider());</span>
+<span class="nc" id="L17">        keyPairGenerator.initialize(2048);</span>
+<span class="nc" id="L18">        KeyPair keyPair = keyPairGenerator.generateKeyPair();</span>
+<span class="nc" id="L19">        PublicKey publicKey = keyPair.getPublic();</span>
+<span class="nc" id="L20">        PrivateKey privateKey = keyPair.getPrivate();</span>
+
+        // Data to be encrypted
+<span class="nc" id="L23">        String data = &quot;Hello, World!&quot;;</span>
+
+        // Encrypt the data
+<span class="nc" id="L26">        Cipher cipher = Cipher.getInstance(&quot;RSA/None/PKCS1Padding&quot;, new BouncyCastleProvider());</span>
+<span class="nc" id="L27">        cipher.init(Cipher.ENCRYPT_MODE, publicKey);</span>
+<span class="nc" id="L28">        byte[] encryptedData = cipher.doFinal(data.getBytes());</span>
+
+        // Decrypt the data
+<span class="nc" id="L31">        cipher.init(Cipher.DECRYPT_MODE, privateKey);</span>
+<span class="nc" id="L32">        byte[] decryptedData = cipher.doFinal(encryptedData);</span>
+
+<span class="nc" id="L34">        System.out.println(&quot;Encrypted data: &quot; + Base64.getEncoder().encodeToString(encryptedData));</span>
+<span class="nc" id="L35">        System.out.println(&quot;Decrypted data: &quot; + new String(decryptedData));</span>
+<span class="nc" id="L36">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

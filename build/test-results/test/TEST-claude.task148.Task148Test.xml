@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task148.Task148Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.004">
+  <properties/>
+  <testcase name="testPushAndPeek()" classname="claude.task148.Task148Test" time="0.001"/>
+  <testcase name="testPushPopAndPeek()" classname="claude.task148.Task148Test" time="0.001"/>
+  <testcase name="testPopFromEmptyStack()" classname="claude.task148.Task148Test" time="0.0"/>
+  <testcase name="testStackSizeAfterOperations()" classname="claude.task148.Task148Test" time="0.001"/>
+  <testcase name="testPeekFromEmptyStack()" classname="claude.task148.Task148Test" time="0.0"/>
+  <testcase name="testIsEmptyOnNewStack()" classname="claude.task148.Task148Test" time="0.0"/>
+  <testcase name="testIsEmptyAfterPushAndPop()" classname="claude.task148.Task148Test" time="0.0"/>
+  <testcase name="testPushAndPop()" classname="claude.task148.Task148Test" time="0.0"/>
+  <testcase name="testPushMultipleAndPopAll()" classname="claude.task148.Task148Test" time="0.0"/>
+  <testcase name="testMixedOperations()" classname="claude.task148.Task148Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

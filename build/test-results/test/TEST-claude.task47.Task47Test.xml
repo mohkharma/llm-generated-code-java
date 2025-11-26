@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task47.Task47Test" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:16" hostname="DESKTOP-VCM60S2" time="0.258">
+  <properties/>
+  <testcase name="testStoreInDatabase()" classname="claude.task47.Task47Test" time="0.003"/>
+  <testcase name="testScrapeWebsiteMockedHtml()" classname="claude.task47.Task47Test" time="0.254"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

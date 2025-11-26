@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task97_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task97</a> &gt; <span class="el_source">Task97_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task97_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task97;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.*;
+import java.io.File;
+import java.io.IOException;
+
+<span class="nc" id="L14">public class Task97_GEMINI_gemini_1_5_pro_001 {</span>
+    public static void main(String[] args) {
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        if (args.length != 3) {</span>
+<span class="nc" id="L17">            System.out.println(&quot;Usage: java Task97_GEMINI_gemini_1_5_pro_001 &lt;xpath&gt; &lt;xml_file&gt; &lt;id_value&gt;&quot;);</span>
+<span class="nc" id="L18">            System.exit(1);</span>
+        }
+
+<span class="nc" id="L21">        String xpathExpression = args[0];</span>
+<span class="nc" id="L22">        String xmlFilePath = args[1];</span>
+<span class="nc" id="L23">        String idValue = args[2];</span>
+
+        try {
+<span class="nc" id="L26">            File xmlFile = new File(xmlFilePath);</span>
+<span class="nc" id="L27">            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();</span>
+<span class="nc" id="L28">            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();</span>
+<span class="nc" id="L29">            Document doc = dBuilder.parse(xmlFile);</span>
+<span class="nc" id="L30">            doc.getDocumentElement().normalize();</span>
+
+<span class="nc" id="L32">            XPathFactory xpathFactory = XPathFactory.newInstance();</span>
+<span class="nc" id="L33">            XPath xpath = xpathFactory.newXPath();</span>
+<span class="nc" id="L34">            xpathExpression = xpathExpression.replace(&quot;{&quot;, &quot;&quot;).replace(&quot;}&quot;, &quot;&quot;);</span>
+<span class="nc" id="L35">            XPathExpression expr = xpath.compile(xpathExpression + &quot;[@id='&quot; + idValue + &quot;']&quot;);</span>
+
+<span class="nc" id="L37">            NodeList nodeList = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">            for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="nc" id="L39">                System.out.println(nodeList.item(i).getNodeName() + &quot; &quot; + nodeList.item(i).getAttributes());</span>
+            }
+
+<span class="nc" id="L42">        } catch (ParserConfigurationException | SAXException | IOException | XPathExpressionException e) {</span>
+<span class="nc" id="L43">            e.printStackTrace();</span>
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

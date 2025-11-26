@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task151_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task151</a> &gt; <span class="el_source">Task151_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task151_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task151;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+<span class="nc" id="L6">public class Task151_GEMINI_gemini_1_5_pro_001 {</span>
+
+  private Node root;
+
+  public void insert(int data) {
+<span class="nc" id="L11">    Node newNode = new Node(data);</span>
+<span class="nc bnc" id="L12" title="All 2 branches missed.">    if (root == null) {</span>
+<span class="nc" id="L13">      root = newNode;</span>
+<span class="nc" id="L14">      return;</span>
+    }
+<span class="nc" id="L16">    Node current = root;</span>
+    while (true) {
+<span class="nc bnc" id="L18" title="All 2 branches missed.">      if (data &lt; current.data) {</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (current.left == null) {</span>
+<span class="nc" id="L20">          current.left = newNode;</span>
+<span class="nc" id="L21">          return;</span>
+        }
+<span class="nc" id="L23">        current = current.left;</span>
+      } else {
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (current.right == null) {</span>
+<span class="nc" id="L26">          current.right = newNode;</span>
+<span class="nc" id="L27">          return;</span>
+        }
+<span class="nc" id="L29">        current = current.right;</span>
+      }
+    }
+  }
+
+  public boolean search(int data) {
+<span class="nc" id="L35">    Node current = root;</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">    while (current != null) {</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">      if (data == current.data) {</span>
+<span class="nc" id="L38">        return true;</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">      } else if (data &lt; current.data) {</span>
+<span class="nc" id="L40">        current = current.left;</span>
+      } else {
+<span class="nc" id="L42">        current = current.right;</span>
+      }
+    }
+<span class="nc" id="L45">    return false;</span>
+  }
+
+  public void delete(int data) {
+<span class="nc" id="L49">    root = deleteNode(root, data);</span>
+<span class="nc" id="L50">  }</span>
+
+  private Node deleteNode(Node node, int data) {
+<span class="nc bnc" id="L53" title="All 2 branches missed.">    if (node == null) {</span>
+<span class="nc" id="L54">      return null;</span>
+    }
+<span class="nc bnc" id="L56" title="All 2 branches missed.">    if (data &lt; node.data) {</span>
+<span class="nc" id="L57">      node.left = deleteNode(node.left, data);</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">    } else if (data &gt; node.data) {</span>
+<span class="nc" id="L59">      node.right = deleteNode(node.right, data);</span>
+    } else {
+<span class="nc bnc" id="L61" title="All 2 branches missed.">      if (node.left == null) {</span>
+<span class="nc" id="L62">        return node.right;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">      } else if (node.right == null) {</span>
+<span class="nc" id="L64">        return node.left;</span>
+      }
+<span class="nc" id="L66">      node.data = findMin(node.right).data;</span>
+<span class="nc" id="L67">      node.right = deleteNode(node.right, node.data);</span>
+    }
+<span class="nc" id="L69">    return node;</span>
+  }
+
+  private Node findMin(Node node) {
+<span class="nc bnc" id="L73" title="All 2 branches missed.">    if (node == null) {</span>
+<span class="nc" id="L74">      return null;</span>
+    }
+<span class="nc bnc" id="L76" title="All 2 branches missed.">    while (node.left != null) {</span>
+<span class="nc" id="L77">      node = node.left;</span>
+    }
+<span class="nc" id="L79">    return node;</span>
+  }
+
+  public void printLevelOrder() {
+<span class="nc bnc" id="L83" title="All 2 branches missed.">    if (root == null) {</span>
+<span class="nc" id="L84">      return;</span>
+    }
+<span class="nc" id="L86">    Queue&lt;Node&gt; queue = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L87">    queue.add(root);</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">    while (!queue.isEmpty()) {</span>
+<span class="nc" id="L89">      Node current = queue.poll();</span>
+<span class="nc" id="L90">      System.out.print(current.data + &quot; &quot;);</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">      if (current.left != null) {</span>
+<span class="nc" id="L92">        queue.add(current.left);</span>
+      }
+<span class="nc bnc" id="L94" title="All 2 branches missed.">      if (current.right != null) {</span>
+<span class="nc" id="L95">        queue.add(current.right);</span>
+      }
+<span class="nc" id="L97">    }</span>
+<span class="nc" id="L98">  }</span>
+
+  private static class Node {
+    int data;
+    Node left;
+    Node right;
+
+<span class="nc" id="L105">    public Node(int data) {</span>
+<span class="nc" id="L106">      this.data = data;</span>
+<span class="nc" id="L107">      this.left = null;</span>
+<span class="nc" id="L108">      this.right = null;</span>
+<span class="nc" id="L109">    }</span>
+  }
+
+<span class="nc bnc" id="L112" title="All 2 branches missed.">  public boolean isEmpty(){return root == null;}</span>
+
+  public static void main(String[] args) {
+<span class="nc" id="L115">    Task151_GEMINI_gemini_1_5_pro_001 bst = new Task151_GEMINI_gemini_1_5_pro_001();</span>
+<span class="nc" id="L116">    int[] arr = {10, 5, 15, 2, 7, 12, 20};</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">    for (int i : arr) {</span>
+<span class="nc" id="L118">      bst.insert(i);</span>
+    }
+<span class="nc" id="L120">    bst.printLevelOrder();</span>
+<span class="nc" id="L121">    System.out.println();</span>
+<span class="nc" id="L122">    System.out.println(&quot;Searching for 15: &quot; + bst.search(15));</span>
+<span class="nc" id="L123">    System.out.println(&quot;Deleting 15:&quot;);</span>
+<span class="nc" id="L124">    bst.delete(15);</span>
+<span class="nc" id="L125">    bst.printLevelOrder();</span>
+<span class="nc" id="L126">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

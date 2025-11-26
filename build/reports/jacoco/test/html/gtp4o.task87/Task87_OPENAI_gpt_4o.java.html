@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task87_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task87</a> &gt; <span class="el_source">Task87_OPENAI_gpt_4o.java</span></div><h1>Task87_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task87;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
+import java.util.Arrays;
+
+<span class="nc" id="L8">public class Task87_OPENAI_gpt_4o {</span>
+    public static int binarySearch(int[] arr, int x) {
+<span class="nc" id="L10">        int l = 0, r = arr.length - 1;</span>
+<span class="nc bnc" id="L11" title="All 2 branches missed.">        while (l &lt;= r) {</span>
+<span class="nc" id="L12">            int mid = l + (r - l) / 2;</span>
+<span class="nc bnc" id="L13" title="All 2 branches missed.">            if (arr[mid] == x)</span>
+<span class="nc" id="L14">                return mid;</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">            if (arr[mid] &lt; x)</span>
+<span class="nc" id="L16">                l = mid + 1;</span>
+            else
+<span class="nc" id="L18">                r = mid - 1;</span>
+<span class="nc" id="L19">        }</span>
+<span class="nc" id="L20">        return -1;</span>
+    }
+
+    public static void main(String[] args) throws IOException {
+<span class="nc" id="L24">        int[] arr = { 2, 3, 4, 10, 40 };</span>
+<span class="nc" id="L25">        int x = 10;</span>
+<span class="nc" id="L26">        long startTime = System.nanoTime();</span>
+<span class="nc" id="L27">        int result = binarySearch(arr, x);</span>
+<span class="nc" id="L28">        long endTime = System.nanoTime();</span>
+<span class="nc" id="L29">        long executionTime = endTime - startTime;</span>
+
+<span class="nc" id="L31">        File tempFile = File.createTempFile(&quot;binary_search_execution_time&quot;, &quot;.txt&quot;);</span>
+<span class="nc" id="L32">        try (FileWriter writer = new FileWriter(tempFile)) {</span>
+<span class="nc" id="L33">            writer.write(&quot;Execution time: &quot; + executionTime + &quot; nanoseconds&quot;);</span>
+        }
+<span class="nc" id="L35">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

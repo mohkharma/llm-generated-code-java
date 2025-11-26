@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task63_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task63</a> &gt; <span class="el_source">Task63_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task63_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task63;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
+
+<span class="nc" id="L6">public class Task63_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static Object processRequest(String request) throws UnsupportedEncodingException {
+<span class="nc" id="L9">        byte[] rawData = request.getBytes(&quot;UTF-8&quot;);</span>
+<span class="nc" id="L10">        byte[] decodedData = Base64.getDecoder().decode(rawData);</span>
+<span class="nc" id="L11">        String decodedString = new String(decodedData, &quot;UTF-8&quot;);</span>
+        // Assuming JSON format for deserialization
+<span class="nc" id="L13">        Object deserializedData = jsonDecode(decodedString);</span>
+<span class="nc" id="L14">        return deserializedData;</span>
+    }
+
+    // Placeholder for JSON deserialization
+    private static Object jsonDecode(String decodedString) {
+        // Implement your JSON deserialization logic here
+<span class="nc" id="L20">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

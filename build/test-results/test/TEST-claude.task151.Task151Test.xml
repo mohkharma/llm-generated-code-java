@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task151.Task151Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.005">
+  <properties/>
+  <testcase name="testDeleteAllElements()" classname="claude.task151.Task151Test" time="0.001"/>
+  <testcase name="testDeleteLeafNode()" classname="claude.task151.Task151Test" time="0.0"/>
+  <testcase name="testSearchNonExistentElement()" classname="claude.task151.Task151Test" time="0.0"/>
+  <testcase name="testInsertMultipleElements()" classname="claude.task151.Task151Test" time="0.0"/>
+  <testcase name="testDeleteRootNode()" classname="claude.task151.Task151Test" time="0.001"/>
+  <testcase name="testDeleteNodeWithTwoChildren()" classname="claude.task151.Task151Test" time="0.0"/>
+  <testcase name="testSearchInEmptyTree()" classname="claude.task151.Task151Test" time="0.001"/>
+  <testcase name="testInsertSingleElement()" classname="claude.task151.Task151Test" time="0.0"/>
+  <testcase name="testDeleteNodeWithOneChild()" classname="claude.task151.Task151Test" time="0.001"/>
+  <testcase name="testInsertDuplicateElements()" classname="claude.task151.Task151Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

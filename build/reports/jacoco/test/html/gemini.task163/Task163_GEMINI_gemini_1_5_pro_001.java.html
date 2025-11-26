@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task163_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task163</a> &gt; <span class="el_source">Task163_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task163_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task163;
+
+<span class="nc" id="L3">public class Task163_GEMINI_gemini_1_5_pro_001 {</span>
+  public static int longestRun(int[] arr) {
+<span class="nc bnc" id="L5" title="All 2 branches missed.">    if (arr.length &lt;= 1) {</span>
+<span class="nc" id="L6">      return arr.length;</span>
+    }
+
+<span class="nc" id="L9">    int maxRun = 1;</span>
+<span class="nc" id="L10">    int currentRun = 1;</span>
+
+<span class="nc bnc" id="L12" title="All 2 branches missed.">    for (int i = 1; i &lt; arr.length; i++) {</span>
+<span class="nc bnc" id="L13" title="All 4 branches missed.">      if (arr[i] == arr[i - 1] + 1 || arr[i] == arr[i - 1] - 1) {</span>
+<span class="nc" id="L14">        currentRun++;</span>
+      } else {
+<span class="nc" id="L16">        currentRun = 1;</span>
+      }
+
+<span class="nc" id="L19">      maxRun = Math.max(maxRun, currentRun);</span>
+    }
+
+<span class="nc" id="L22">    return maxRun;</span>
+  }
+
+  public static void main(String[] args) {
+<span class="nc" id="L26">    int[] arr1 = {1, 2, 3, 5, 6, 7, 8, 9};</span>
+<span class="nc" id="L27">    int[] arr2 = {1, 2, 3, 10, 11, 15};</span>
+<span class="nc" id="L28">    int[] arr3 = {5, 4, 2, 1};</span>
+<span class="nc" id="L29">    int[] arr4 = {3, 5, 7, 10, 15};</span>
+
+<span class="nc" id="L31">    System.out.println(longestRun(arr1)); // Output: 5</span>
+<span class="nc" id="L32">    System.out.println(longestRun(arr2)); // Output: 3</span>
+<span class="nc" id="L33">    System.out.println(longestRun(arr3)); // Output: 2</span>
+<span class="nc" id="L34">    System.out.println(longestRun(arr4)); // Output: 1</span>
+<span class="nc" id="L35">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task139.Task139Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.002">
+  <properties/>
+  <testcase name="testRadiusLargeFloating()" classname="claude.task139.Task139Test" time="0.0"/>
+  <testcase name="testRadiusTwoPointFive()" classname="claude.task139.Task139Test" time="0.0"/>
+  <testcase name="testRadiusZero()" classname="claude.task139.Task139Test" time="0.0"/>
+  <testcase name="testRadiusOne()" classname="claude.task139.Task139Test" time="0.0"/>
+  <testcase name="testRadiusTen()" classname="claude.task139.Task139Test" time="0.0"/>
+  <testcase name="testRadiusDecimal()" classname="claude.task139.Task139Test" time="0.001"/>
+  <testcase name="testRadiusPi()" classname="claude.task139.Task139Test" time="0.0"/>
+  <testcase name="testRadiusLarge()" classname="claude.task139.Task139Test" time="0.0"/>
+  <testcase name="testRadiusSmall()" classname="claude.task139.Task139Test" time="0.0"/>
+  <testcase name="testRadiusNegative()" classname="claude.task139.Task139Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

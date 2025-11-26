@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task81_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task81</a> &gt; <span class="el_source">Task81_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task81_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task81;
+
+import javax.net.ssl.*;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateEncodingException;
+
+<span class="nc" id="L10">public class Task81_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static String getCertificateHash(String hostname, int port) throws Exception {
+<span class="fc" id="L12">        SSLSocketFactory factory = HttpsURLConnection.getDefaultSSLSocketFactory();</span>
+<span class="fc" id="L13">        SSLSocket socket = (SSLSocket) factory.createSocket(hostname, port);</span>
+        
+        try {
+<span class="fc" id="L16">            socket.startHandshake();</span>
+<span class="fc" id="L17">            Certificate[] certs = socket.getSession().getPeerCertificates();</span>
+<span class="fc" id="L18">            Certificate cert = certs[0];</span>
+<span class="fc" id="L19">            MessageDigest digest = MessageDigest.getInstance(&quot;SHA-256&quot;);</span>
+<span class="fc" id="L20">            byte[] encodedCert = cert.getEncoded();</span>
+<span class="fc" id="L21">            byte[] hashedCert = digest.digest(encodedCert);</span>
+<span class="fc" id="L22">            return bytesToHex(hashedCert);</span>
+        } finally {
+<span class="fc" id="L24">            socket.close();</span>
+        }
+    }
+
+    private static String bytesToHex(byte[] hash) {
+<span class="fc" id="L29">        StringBuilder hexString = new StringBuilder();</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for (byte b : hash) {</span>
+<span class="fc" id="L31">            String hex = Integer.toHexString(0xff &amp; b);</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            if (hex.length() == 1) hexString.append('0');</span>
+<span class="fc" id="L33">            hexString.append(hex);</span>
+        }
+<span class="fc" id="L35">        return hexString.toString();</span>
+    }
+
+    public static void checkCertificateHash(String hostname, String knownHash) {
+        try {
+<span class="nc" id="L40">            String certHash = getCertificateHash(hostname, 443);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            if (certHash.equals(knownHash)) {</span>
+<span class="nc" id="L42">                System.out.println(&quot;Certificate hash for &quot; + hostname + &quot; matches the known hash.&quot;);</span>
+            } else {
+<span class="nc" id="L44">                System.out.println(&quot;Certificate hash for &quot; + hostname + &quot; does not match the known hash.&quot;);</span>
+<span class="nc" id="L45">                System.out.println(&quot;Calculated hash: &quot; + certHash);</span>
+<span class="nc" id="L46">                System.out.println(&quot;Known hash:     &quot; + knownHash);</span>
+            }
+<span class="nc" id="L48">        } catch (Exception e) {</span>
+<span class="nc" id="L49">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="nc" id="L50">        }</span>
+<span class="nc" id="L51">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L54">        String hostname = &quot;www.example.com&quot;;</span>
+<span class="nc" id="L55">        String knownHash = &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;; // Example hash</span>
+<span class="nc" id="L56">        checkCertificateHash(hostname, knownHash);</span>
+<span class="nc" id="L57">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

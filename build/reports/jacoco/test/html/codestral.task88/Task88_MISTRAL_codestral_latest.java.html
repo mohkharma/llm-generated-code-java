@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task88_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task88</a> &gt; <span class="el_source">Task88_MISTRAL_codestral_latest.java</span></div><h1>Task88_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task88;// Java does not have built-in support for creating temporary files with UTF-8 encoding.
+// However, you can use the following code to create a temporary file, write a random string in Unicode to it, and return the path of the temporary file.
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Random;
+
+<span class="nc" id="L10">public class Task88_MISTRAL_codestral_latest {</span>
+    public static void main(String[] args) {
+        try {
+            // Create a temporary file
+<span class="nc" id="L14">            File tempFile = File.createTempFile(&quot;temp&quot;, &quot;.txt&quot;);</span>
+
+            // Generate a random string
+<span class="nc" id="L17">            String randomString = generateRandomString(10);</span>
+
+            // Convert the string to Unicode
+<span class="nc" id="L20">            String unicodeString = stringToUnicode(randomString);</span>
+
+            // Write the Unicode string to the file
+<span class="nc" id="L23">            FileWriter writer = new FileWriter(tempFile, StandardCharsets.UTF_8);</span>
+<span class="nc" id="L24">            writer.write(unicodeString);</span>
+<span class="nc" id="L25">            writer.close();</span>
+
+            // Print the path of the temporary file
+<span class="nc" id="L28">            System.out.println(tempFile.getAbsolutePath());</span>
+<span class="nc" id="L29">        } catch (IOException e) {</span>
+<span class="nc" id="L30">            e.printStackTrace();</span>
+<span class="nc" id="L31">        }</span>
+<span class="nc" id="L32">    }</span>
+
+    private static String generateRandomString(int length) {
+<span class="nc" id="L35">        String characters = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&quot;;</span>
+<span class="nc" id="L36">        StringBuilder sb = new StringBuilder(length);</span>
+<span class="nc" id="L37">        Random random = new Random();</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="nc" id="L39">            sb.append(characters.charAt(random.nextInt(characters.length())));</span>
+        }
+<span class="nc" id="L41">        return sb.toString();</span>
+    }
+
+    private static String stringToUnicode(String input) {
+<span class="nc" id="L45">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        for (char c : input.toCharArray()) {</span>
+<span class="nc" id="L47">            sb.append(String.format(&quot;\\u%04x&quot;, (int) c));</span>
+        }
+<span class="nc" id="L49">        return sb.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task109.Task109Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:11" hostname="DESKTOP-VCM60S2" time="0.006">
+  <properties/>
+  <testcase name="testValidPassword()" classname="claude.task109.Task109Test" time="0.001"/>
+  <testcase name="testValidPhoneWithDashes()" classname="claude.task109.Task109Test" time="0.0"/>
+  <testcase name="testInvalidPhoneWithLetters()" classname="claude.task109.Task109Test" time="0.0"/>
+  <testcase name="testInvalidPasswordNoUppercase()" classname="claude.task109.Task109Test" time="0.001"/>
+  <testcase name="testValidEmail()" classname="claude.task109.Task109Test" time="0.001"/>
+  <testcase name="testValidPhone()" classname="claude.task109.Task109Test" time="0.0"/>
+  <testcase name="testInvalidEmailMissingAtSymbol()" classname="claude.task109.Task109Test" time="0.001"/>
+  <testcase name="testInvalidEmailMissingUsername()" classname="claude.task109.Task109Test" time="0.0"/>
+  <testcase name="testValidEmailWithSubdomain()" classname="claude.task109.Task109Test" time="0.0"/>
+  <testcase name="testInvalidPhoneWithExtraDigits()" classname="claude.task109.Task109Test" time="0.001"/>
+  <testcase name="testInvalidPasswordNoDigit()" classname="claude.task109.Task109Test" time="0.0"/>
+  <testcase name="testInvalidEmail()" classname="claude.task109.Task109Test" time="0.0"/>
+  <testcase name="testInvalidPasswordTooShort()" classname="claude.task109.Task109Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

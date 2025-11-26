@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task136_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task136</a> &gt; <span class="el_source">Task136_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task136_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task136;
+
+import java.util.HashMap;
+import java.util.Scanner;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+<span class="nc" id="L8">public class Task136_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+<span class="fc" id="L9">    private static HashMap&lt;String, String&gt; users = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L10">    private static Scanner scanner = new Scanner(System.in);</span>
+
+    public static boolean register(String username, String password) {
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        if (users.containsKey(username)) {</span>
+<span class="fc" id="L14">            return false;</span>
+        }
+<span class="fc" id="L16">        String hashedPassword = hashPassword(password);</span>
+<span class="fc" id="L17">        users.put(username, hashedPassword);</span>
+<span class="fc" id="L18">        return true;</span>
+    }
+
+    public static boolean login(String username, String password) {
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (!users.containsKey(username)) {</span>
+<span class="fc" id="L23">            return false;</span>
+        }
+<span class="fc" id="L25">        String hashedPassword = hashPassword(password);</span>
+<span class="fc" id="L26">        return users.get(username).equals(hashedPassword);</span>
+    }
+
+    private static String hashPassword(String password) {
+        try {
+<span class="fc" id="L31">            MessageDigest md = MessageDigest.getInstance(&quot;SHA-256&quot;);</span>
+<span class="fc" id="L32">            byte[] hashedBytes = md.digest(password.getBytes());</span>
+<span class="fc" id="L33">            StringBuilder sb = new StringBuilder();</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">            for (byte b : hashedBytes) {</span>
+<span class="fc" id="L35">                sb.append(String.format(&quot;%02x&quot;, b));</span>
+            }
+<span class="fc" id="L37">            return sb.toString();</span>
+<span class="nc" id="L38">        } catch (NoSuchAlgorithmException e) {</span>
+<span class="nc" id="L39">            e.printStackTrace();</span>
+<span class="nc" id="L40">            return null;</span>
+        }
+    }
+
+    public static void main(String[] args) {
+        while (true) {
+<span class="nc" id="L46">            System.out.println(&quot;1. Register\\n2. Login\\n3. Exit&quot;);</span>
+<span class="nc" id="L47">            System.out.print(&quot;Choose an option: &quot;);</span>
+<span class="nc" id="L48">            int choice = scanner.nextInt();</span>
+<span class="nc" id="L49">            scanner.nextLine(); // Consume newline</span>
+
+<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (choice == 1) {</span>
+<span class="nc" id="L52">                System.out.print(&quot;Enter username: &quot;);</span>
+<span class="nc" id="L53">                String username = scanner.nextLine();</span>
+<span class="nc" id="L54">                System.out.print(&quot;Enter password: &quot;);</span>
+<span class="nc" id="L55">                String password = scanner.nextLine();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                if (register(username, password)) {</span>
+<span class="nc" id="L57">                    System.out.println(&quot;Registration successful&quot;);</span>
+                } else {
+<span class="nc" id="L59">                    System.out.println(&quot;Username already exists&quot;);</span>
+                }
+<span class="nc bnc" id="L61" title="All 2 branches missed.">            } else if (choice == 2) {</span>
+<span class="nc" id="L62">                System.out.print(&quot;Enter username: &quot;);</span>
+<span class="nc" id="L63">                String username = scanner.nextLine();</span>
+<span class="nc" id="L64">                System.out.print(&quot;Enter password: &quot;);</span>
+<span class="nc" id="L65">                String password = scanner.nextLine();</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">                if (login(username, password)) {</span>
+<span class="nc" id="L67">                    System.out.println(&quot;Login successful&quot;);</span>
+                } else {
+<span class="nc" id="L69">                    System.out.println(&quot;Invalid credentials&quot;);</span>
+                }
+<span class="nc bnc" id="L71" title="All 2 branches missed.">            } else if (choice == 3) {</span>
+<span class="nc" id="L72">                break;</span>
+            } else {
+<span class="nc" id="L74">                System.out.println(&quot;Invalid choice&quot;);</span>
+            }
+<span class="nc" id="L76">        }</span>
+<span class="nc" id="L77">        scanner.close();</span>
+<span class="nc" id="L78">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task112_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task112</a> &gt; <span class="el_source">Task112_MISTRAL_codestral_latest.java</span></div><h1>Task112_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task112;// Java
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+
+<span class="nc" id="L10">public class Task112_MISTRAL_codestral_latest {</span>
+    public static void main(String[] args) {
+        // Create a connection
+<span class="nc" id="L13">        MongoClient mongoClient = MongoClients.create(&quot;mongodb://localhost:27017&quot;);</span>
+
+        // Create a database
+<span class="nc" id="L16">        MongoDatabase database = mongoClient.getDatabase(&quot;test-database&quot;);</span>
+
+        // Create a collection
+<span class="nc" id="L19">        MongoCollection&lt;Document&gt; collection = database.getCollection(&quot;test-collection&quot;);</span>
+
+        // Insert a document
+<span class="nc" id="L22">        Document document = new Document(&quot;name&quot;, &quot;John&quot;).append(&quot;age&quot;, 30);</span>
+<span class="nc" id="L23">        collection.insertOne(document);</span>
+
+        // Read a document
+<span class="nc" id="L26">        System.out.println(collection.find(Filters.eq(&quot;name&quot;, &quot;John&quot;)).first());</span>
+
+        // Update a document
+<span class="nc" id="L29">        collection.updateOne(Filters.eq(&quot;name&quot;, &quot;John&quot;), Updates.set(&quot;age&quot;, 31));</span>
+
+        // Delete a document
+<span class="nc" id="L32">        collection.deleteOne(Filters.eq(&quot;name&quot;, &quot;John&quot;));</span>
+
+        // Close the connection
+<span class="nc" id="L35">        mongoClient.close();</span>
+<span class="nc" id="L36">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

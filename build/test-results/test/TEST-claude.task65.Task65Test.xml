@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task65.Task65Test" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:22" hostname="DESKTOP-VCM60S2" time="0.01">
+  <properties/>
+  <testcase name="testNoArgument()" classname="claude.task65.Task65Test" time="0.002"/>
+  <testcase name="testFileDoesNotExist()" classname="claude.task65.Task65Test" time="0.001"/>
+  <testcase name="testValidTextFile()" classname="claude.task65.Task65Test" time="0.005"/>
+  <testcase name="testFileWithWrongExtension()" classname="claude.task65.Task65Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

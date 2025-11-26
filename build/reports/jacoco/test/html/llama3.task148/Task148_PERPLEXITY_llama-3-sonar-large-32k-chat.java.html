@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task148_PERPLEXITY_llama-3-sonar-large-32k-chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task148</a> &gt; <span class="el_source">Task148_PERPLEXITY_llama-3-sonar-large-32k-chat.java</span></div><h1>Task148_PERPLEXITY_llama-3-sonar-large-32k-chat.java</h1><pre class="source lang-java linenums">package llama3.task148;
+
+class Stack {
+    private int maxSize;
+    private int top;
+    private int[] stackArray;
+
+<span class="nc" id="L8">    public Stack(int size) {</span>
+<span class="nc" id="L9">        maxSize = size;</span>
+<span class="nc" id="L10">        stackArray = new int[maxSize];</span>
+<span class="nc" id="L11">        top = -1;</span>
+<span class="nc" id="L12">    }</span>
+
+    public void push(int item) {
+<span class="nc bnc" id="L15" title="All 2 branches missed.">        if (top &gt;= maxSize - 1) {</span>
+<span class="nc" id="L16">            System.out.println(&quot;Stack is full. Can't push &quot; + item);</span>
+<span class="nc" id="L17">            return;</span>
+        }
+<span class="nc" id="L19">        stackArray[++top] = item;</span>
+<span class="nc" id="L20">    }</span>
+
+    public int pop() {
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if (top &lt; 0) {</span>
+<span class="nc" id="L24">            System.out.println(&quot;Stack is empty. Can't pop.&quot;);</span>
+<span class="nc" id="L25">            return -1;</span>
+        }
+<span class="nc" id="L27">        return stackArray[top--];</span>
+    }
+
+    public int peek() {
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        if (top &lt; 0) {</span>
+<span class="nc" id="L32">            System.out.println(&quot;Stack is empty.&quot;);</span>
+<span class="nc" id="L33">            return -1;</span>
+        }
+<span class="nc" id="L35">        return stackArray[top];</span>
+    }
+
+<span class="nc" id="L38">    public int size(){return top + 1;}</span>
+    public boolean isEmpty() {
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        return (top == -1);</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L44">        Stack stack = new Stack(3);</span>
+<span class="nc" id="L45">        stack.push(1);</span>
+<span class="nc" id="L46">        stack.push(2);</span>
+<span class="nc" id="L47">        stack.push(3);</span>
+<span class="nc" id="L48">        System.out.println(stack.pop());  // Output: 3</span>
+<span class="nc" id="L49">        System.out.println(stack.peek());  // Output: 2</span>
+<span class="nc" id="L50">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task91_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task91</a> &gt; <span class="el_source">Task91_MISTRAL_codestral_latest.java</span></div><h1>Task91_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task91;// Java doesn't have built-in UDP DNS server, so a library like dnsjava is required.
+// This is a simplified example and doesn't include error handling or DNS record resolution.
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import org.xbill.DNS.*;
+
+<span class="nc" id="L9">public class Task91_MISTRAL_codestral_latest {</span>
+    public static void main(String[] args) throws Exception {
+<span class="nc" id="L11">        DatagramSocket socket = new DatagramSocket(53);</span>
+<span class="nc" id="L12">        byte[] buf = new byte[512];</span>
+
+        while (true) {
+<span class="nc" id="L15">            DatagramPacket packet = new DatagramPacket(buf, buf.length);</span>
+<span class="nc" id="L16">            socket.receive(packet);</span>
+
+<span class="nc" id="L18">            Message request = new Message(packet.getData());</span>
+<span class="nc" id="L19">            Message response = resolveDNS(request);</span>
+
+<span class="nc" id="L21">            byte[] responseData = response.toWire();</span>
+<span class="nc" id="L22">            DatagramPacket responsePacket = new DatagramPacket(responseData, responseData.length, packet.getAddress(), packet.getPort());</span>
+<span class="nc" id="L23">            socket.send(responsePacket);</span>
+<span class="nc" id="L24">        }</span>
+    }
+
+    private static Message resolveDNS(Message request) {
+<span class="nc" id="L28">        Header header = request.getHeader();</span>
+<span class="nc" id="L29">        header.setFlag(Flags.QR);</span>
+<span class="nc" id="L30">        header.setFlag(Flags.AA);</span>
+<span class="nc" id="L31">        header.setFlag(Flags.RA);</span>
+
+        //invalid code, incomplete code and after we added the dependancy also its not resolving
+//        Message response = new Message(header);
+//        response.addRecord(request.getQuestion(), Section.QUESTION);
+//
+//        // Resolve DNS records (this part is not implemented)
+//
+//        // Add a DNS answer (replace with actual resolution)
+//        Record answer = new SimpleRecord(request.getQuestion().getName(), Type.A, DClass.IN, 60, new ARecord(&quot;192.168.1.1&quot;));
+//        response.addRecord(answer, Section.ANSWER);
+//
+//        return response;
+<span class="nc" id="L44">        return request;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

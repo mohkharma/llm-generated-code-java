@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task161.Task161Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.004">
+  <properties/>
+  <testcase name="Items with zero values should yield zero" classname="claude.task161.Task161Test" time="0.001"/>
+  <testcase name="Zero weight item should be included once" classname="claude.task161.Task161Test" time="0.0"/>
+  <testcase name="Exact fit with all items" classname="claude.task161.Task161Test" time="0.0"/>
+  <testcase name="Zero capacity should yield zero value" classname="claude.task161.Task161Test" time="0.0"/>
+  <testcase name="Multiple items: optimal combination selection" classname="claude.task161.Task161Test" time="0.001"/>
+  <testcase name="Single item that fits should return its value" classname="claude.task161.Task161Test" time="0.0"/>
+  <testcase name="Random moderate case" classname="claude.task161.Task161Test" time="0.0"/>
+  <testcase name="Multiple optimal subsets with same capacity" classname="claude.task161.Task161Test" time="0.001"/>
+  <testcase name="No items should yield zero value" classname="claude.task161.Task161Test" time="0.0"/>
+  <testcase name="Single item too heavy should yield zero value" classname="claude.task161.Task161Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

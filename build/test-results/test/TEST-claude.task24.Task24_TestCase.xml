@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task24.Task24_TestCase" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:13" hostname="DESKTOP-VCM60S2" time="0.007">
+  <properties/>
+  <testcase name="testInvalidLengthPINTooLong()" classname="claude.task24.Task24_TestCase" time="0.002"/>
+  <testcase name="testInvalidPINWithSpaces()" classname="claude.task24.Task24_TestCase" time="0.0"/>
+  <testcase name="testInvalidLengthPINTooShort()" classname="claude.task24.Task24_TestCase" time="0.001"/>
+  <testcase name="testValid4DigitPIN()" classname="claude.task24.Task24_TestCase" time="0.0"/>
+  <testcase name="testInvalidPINWithLetters()" classname="claude.task24.Task24_TestCase" time="0.001"/>
+  <testcase name="testValid6DigitPIN()" classname="claude.task24.Task24_TestCase" time="0.0"/>
+  <testcase name="testInvalidPINWithSpecialCharacters()" classname="claude.task24.Task24_TestCase" time="0.001"/>
+  <testcase name="testValid4DigitPINWithLeadingZeros()" classname="claude.task24.Task24_TestCase" time="0.0"/>
+  <testcase name="testValid6DigitPINWithLeadingZeros()" classname="claude.task24.Task24_TestCase" time="0.001"/>
+  <testcase name="testEmptyPIN()" classname="claude.task24.Task24_TestCase" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

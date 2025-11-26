@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task77_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task77</a> &gt; <span class="el_source">Task77_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task77_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task77;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import org.apache.commons.net.ftp.FTPClient;
+
+<span class="nc" id="L8">public class Task77_GEMINI_gemini_1_5_pro_001 {</span>
+    public static void main(String[] args) {
+<span class="nc bnc" id="L10" title="All 2 branches missed.">        if (args.length != 4) {</span>
+<span class="nc" id="L11">            System.out.println(&quot;Usage: java Task77_GEMINI_gemini_1_5_pro_001 &lt;hostname&gt; &lt;username&gt; &lt;password&gt; &lt;remote_filename&gt;&quot;);</span>
+<span class="nc" id="L12">            return;</span>
+        }
+
+<span class="nc" id="L15">        String hostname = args[0];</span>
+<span class="nc" id="L16">        String username = args[1];</span>
+<span class="nc" id="L17">        String password = args[2];</span>
+<span class="nc" id="L18">        String remoteFilename = args[3];</span>
+
+        //invalid code, fix by adding lines 22,23 and the finally close
+//        try (FTPClient ftpClient = new FTPClient()) {
+<span class="nc" id="L22">        FTPClient ftpClient = new FTPClient();</span>
+        try {
+<span class="nc" id="L24">            ftpClient.connect(hostname);</span>
+<span class="nc" id="L25">            ftpClient.login(username, password);</span>
+
+<span class="nc" id="L27">            try (InputStream inputStream = ftpClient.retrieveFileStream(remoteFilename);</span>
+<span class="nc" id="L28">                 FileOutputStream fileOutputStream = new FileOutputStream(remoteFilename)) {</span>
+<span class="nc" id="L29">                byte[] buffer = new byte[1024];</span>
+                int bytesRead;
+<span class="nc bnc" id="L31" title="All 2 branches missed.">                while ((bytesRead = inputStream.read(buffer)) != -1) {</span>
+<span class="nc" id="L32">                    fileOutputStream.write(buffer, 0, bytesRead);</span>
+                }
+            }
+
+<span class="nc" id="L36">            boolean success = ftpClient.completePendingCommand();</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">            if (success) {</span>
+<span class="nc" id="L38">                System.out.println(&quot;File '&quot; + remoteFilename + &quot;' downloaded successfully.&quot;);</span>
+            } else {
+<span class="nc" id="L40">                System.err.println(&quot;Error downloading file: &quot; + ftpClient.getReplyString());</span>
+            }
+
+<span class="nc" id="L43">        } catch (IOException e) {</span>
+<span class="nc" id="L44">            System.err.println(&quot;FTP error: &quot; + e.getMessage());</span>
+        }finally {
+<span class="nc bnc" id="L46" title="All 2 branches missed.">            if (ftpClient.isConnected()) {</span>
+                try {
+<span class="nc" id="L48">                    ftpClient.logout();</span>
+<span class="nc" id="L49">                    ftpClient.disconnect();</span>
+<span class="nc" id="L50">                } catch (IOException e) {</span>
+<span class="nc" id="L51">                    System.err.println(&quot;Error disconnecting: &quot; + e.getMessage());</span>
+<span class="nc" id="L52">                }</span>
+            }
+        }
+<span class="nc" id="L55">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

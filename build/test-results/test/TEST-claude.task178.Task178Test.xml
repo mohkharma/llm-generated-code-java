@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task178.Task178Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.027">
+  <properties/>
+  <testcase name="testLargeArrayWithPositiveNumbers()" classname="claude.task178.Task178Test" time="0.014"/>
+  <testcase name="testSubarrayWithNegativeAndPositiveNumbers()" classname="claude.task178.Task178Test" time="0.0"/>
+  <testcase name="testMultipleElementsWithSubarrayAtEnd()" classname="claude.task178.Task178Test" time="0.0"/>
+  <testcase name="testSubarrayWithExactMatch()" classname="claude.task178.Task178Test" time="0.0"/>
+  <testcase name="testThreeElementsExactlyEqualSum()" classname="claude.task178.Task178Test" time="0.0"/>
+  <testcase name="testLargeArrayWithMixedNumbers()" classname="claude.task178.Task178Test" time="0.008"/>
+  <testcase name="testTwoElementsNotEnoughSum()" classname="claude.task178.Task178Test" time="0.001"/>
+  <testcase name="testNegativeNumbersWithPositiveK()" classname="claude.task178.Task178Test" time="0.0"/>
+  <testcase name="testSingleElementEqualToK()" classname="claude.task178.Task178Test" time="0.001"/>
+  <testcase name="testAllElementsNegative()" classname="claude.task178.Task178Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

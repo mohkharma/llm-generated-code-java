@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task52_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task52</a> &gt; <span class="el_source">Task52_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task52_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task52;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.io.*;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.Scanner;
+
+<span class="nc" id="L12">public class Task52_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    private static final String ALGORITHM = &quot;AES&quot;;
+    private static final String TRANSFORMATION = &quot;AES&quot;;
+
+    public static void encrypt(String key, File inputFile, File outputFile) throws Exception {
+<span class="fc" id="L17">        doCrypto(Cipher.ENCRYPT_MODE, key, inputFile, outputFile);</span>
+<span class="fc" id="L18">    }</span>
+
+    public static void decrypt(String key, File inputFile, File outputFile) throws Exception {
+<span class="fc" id="L21">        doCrypto(Cipher.DECRYPT_MODE, key, inputFile, outputFile);</span>
+<span class="fc" id="L22">    }</span>
+
+    private static void doCrypto(int cipherMode, String key, File inputFile, File outputFile) throws Exception {
+<span class="fc" id="L25">        SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), ALGORITHM);</span>
+<span class="fc" id="L26">        Cipher cipher = Cipher.getInstance(TRANSFORMATION);</span>
+<span class="fc" id="L27">        cipher.init(cipherMode, secretKey);</span>
+
+<span class="fc" id="L29">        FileInputStream inputStream = new FileInputStream(inputFile);</span>
+<span class="fc" id="L30">        byte[] inputBytes = new byte[(int) inputFile.length()];</span>
+<span class="fc" id="L31">        inputStream.read(inputBytes);</span>
+
+<span class="fc" id="L33">        byte[] outputBytes = cipher.doFinal(inputBytes);</span>
+
+<span class="fc" id="L35">        FileOutputStream outputStream = new FileOutputStream(outputFile);</span>
+<span class="fc" id="L36">        outputStream.write(outputBytes);</span>
+
+<span class="fc" id="L38">        inputStream.close();</span>
+<span class="fc" id="L39">        outputStream.close();</span>
+<span class="fc" id="L40">    }</span>
+
+    public static String generateKey() throws NoSuchAlgorithmException {
+<span class="fc" id="L43">        KeyGenerator keyGen = KeyGenerator.getInstance(ALGORITHM);</span>
+<span class="fc" id="L44">        keyGen.init(128);</span>
+<span class="fc" id="L45">        SecretKey secretKey = keyGen.generateKey();</span>
+<span class="fc" id="L46">        return Base64.getEncoder().encodeToString(secretKey.getEncoded());</span>
+    }
+
+    public static void main(String[] args) {
+        try {
+<span class="nc" id="L51">            Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L52">            String key = generateKey();</span>
+<span class="nc" id="L53">            System.out.println(&quot;Generated key: &quot; + key);</span>
+
+<span class="nc" id="L55">            System.out.print(&quot;Enter the file path to encrypt: &quot;);</span>
+<span class="nc" id="L56">            String filePath = scanner.nextLine();</span>
+
+<span class="nc" id="L58">            File inputFile = new File(filePath);</span>
+<span class="nc" id="L59">            File encryptedFile = new File(filePath + &quot;.encrypted&quot;);</span>
+
+<span class="nc" id="L61">            encrypt(key, inputFile, encryptedFile);</span>
+<span class="nc" id="L62">            System.out.println(&quot;File encrypted: &quot; + encryptedFile.getPath());</span>
+
+<span class="nc" id="L64">            System.out.print(&quot;Do you want to decrypt the file? (y/n): &quot;);</span>
+<span class="nc" id="L65">            String decryptChoice = scanner.nextLine();</span>
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            if (decryptChoice.equalsIgnoreCase(&quot;y&quot;)) {</span>
+<span class="nc" id="L68">                File decryptedFile = new File(filePath + &quot;.decrypted&quot;);</span>
+<span class="nc" id="L69">                decrypt(key, encryptedFile, decryptedFile);</span>
+<span class="nc" id="L70">                System.out.println(&quot;File decrypted: &quot; + decryptedFile.getPath());</span>
+            }
+
+<span class="nc" id="L73">            scanner.close();</span>
+<span class="nc" id="L74">        } catch (Exception ex) {</span>
+<span class="nc" id="L75">            System.out.println(&quot;Error: &quot; + ex.getMessage());</span>
+<span class="nc" id="L76">            ex.printStackTrace();</span>
+<span class="nc" id="L77">        }</span>
+<span class="nc" id="L78">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

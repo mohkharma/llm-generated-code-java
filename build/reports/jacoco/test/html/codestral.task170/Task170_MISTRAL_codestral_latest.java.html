@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task170_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task170</a> &gt; <span class="el_source">Task170_MISTRAL_codestral_latest.java</span></div><h1>Task170_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task170;
+
+// Java code
+<span class="nc" id="L4">public class Task170_MISTRAL_codestral_latest {</span>
+    public int countRangeSum(int[] nums, int lower, int upper) {
+<span class="nc" id="L6">        long[] prefixSum = new long[nums.length + 1];</span>
+<span class="nc bnc" id="L7" title="All 2 branches missed.">        for (int i = 0; i &lt; nums.length; i++) {</span>
+<span class="nc" id="L8">            prefixSum[i + 1] = prefixSum[i] + nums[i];</span>
+        }
+<span class="nc" id="L10">        return countWhileMergeSort(prefixSum, 0, prefixSum.length - 1, lower, upper);</span>
+    }
+
+    private int countWhileMergeSort(long[] prefixSum, int start, int end, int lower, int upper) {
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        if (end &lt;= start) {</span>
+<span class="nc" id="L15">            return 0;</span>
+        }
+<span class="nc" id="L17">        int mid = start + (end - start) / 2;</span>
+<span class="nc" id="L18">        int count = countWhileMergeSort(prefixSum, start, mid, lower, upper) + countWhileMergeSort(prefixSum, mid + 1, end, lower, upper);</span>
+<span class="nc" id="L19">        int j = mid + 1, k = mid + 1, lowerBound = mid + 1, upperBound = mid + 1;</span>
+<span class="nc" id="L20">        long[] cache = new long[end - start + 1];</span>
+<span class="nc" id="L21">        int idx = 0;</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        for (int i = start; i &lt;= mid; i++) {</span>
+<span class="nc bnc" id="L23" title="All 4 branches missed.">            while (j &lt;= end &amp;&amp; prefixSum[j] - prefixSum[i] &lt; lower) {</span>
+<span class="nc" id="L24">                j++;</span>
+            }
+<span class="nc bnc" id="L26" title="All 4 branches missed.">            while (k &lt;= end &amp;&amp; prefixSum[k] - prefixSum[i] &lt;= upper) {</span>
+<span class="nc" id="L27">                k++;</span>
+            }
+<span class="nc" id="L29">            count += k - j;</span>
+<span class="nc bnc" id="L30" title="All 4 branches missed.">            while (lowerBound &lt;= end &amp;&amp; prefixSum[lowerBound] &lt;= prefixSum[i]) {</span>
+<span class="nc" id="L31">                lowerBound++;</span>
+            }
+<span class="nc bnc" id="L33" title="All 4 branches missed.">            while (upperBound &lt;= end &amp;&amp; prefixSum[upperBound] &lt; prefixSum[i]) {</span>
+<span class="nc" id="L34">                upperBound++;</span>
+            }
+<span class="nc" id="L36">            count -= upperBound - lowerBound;</span>
+<span class="nc bnc" id="L37" title="All 4 branches missed.">            while (start + idx &lt;= mid &amp;&amp; prefixSum[start + idx] &lt;= prefixSum[i]) {</span>
+<span class="nc" id="L38">                cache[idx++] = prefixSum[start + idx];</span>
+            }
+        }
+<span class="nc" id="L41">        System.arraycopy(prefixSum, start + idx, cache, idx, mid - start + 1 - idx);</span>
+<span class="nc" id="L42">        System.arraycopy(cache, 0, prefixSum, start, mid - start + 1);</span>
+<span class="nc" id="L43">        return count;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

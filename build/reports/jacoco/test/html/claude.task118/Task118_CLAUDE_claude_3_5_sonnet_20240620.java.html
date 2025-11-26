@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task118_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task118</a> &gt; <span class="el_source">Task118_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task118_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task118;
+
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+<span class="nc" id="L6">public class Task118_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static boolean validateIP(String ip) {
+<span class="fc" id="L8">        String pattern = &quot;^(\\\\d{1,3}\\\\.){3}\\\\d{1,3}$&quot;;</span>
+<span class="pc bpc" id="L9" title="1 of 2 branches missed.">        if (!Pattern.matches(pattern, ip)) {</span>
+<span class="fc" id="L10">            return false;</span>
+        }
+<span class="nc" id="L12">        String[] octets = ip.split(&quot;\\\\.&quot;);</span>
+<span class="nc bnc" id="L13" title="All 2 branches missed.">        for (String octet : octets) {</span>
+<span class="nc" id="L14">            int value = Integer.parseInt(octet);</span>
+<span class="nc bnc" id="L15" title="All 4 branches missed.">            if (value &lt; 0 || value &gt; 255) {</span>
+<span class="nc" id="L16">                return false;</span>
+            }
+        }
+<span class="nc" id="L19">        return true;</span>
+    }
+
+    public static void processIP(String ip) {
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        if (validateIP(ip)) {</span>
+<span class="nc" id="L24">            String[] octets = ip.split(&quot;\\\\.&quot;);</span>
+<span class="nc" id="L25">            int firstOctet = Integer.parseInt(octets[0]);</span>
+<span class="nc" id="L26">            String classType = &quot;&quot;;</span>
+<span class="nc bnc" id="L27" title="All 4 branches missed.">            if (firstOctet &gt;= 1 &amp;&amp; firstOctet &lt;= 126) {</span>
+<span class="nc" id="L28">                classType = &quot;A&quot;;</span>
+<span class="nc bnc" id="L29" title="All 4 branches missed.">            } else if (firstOctet &gt;= 128 &amp;&amp; firstOctet &lt;= 191) {</span>
+<span class="nc" id="L30">                classType = &quot;B&quot;;</span>
+<span class="nc bnc" id="L31" title="All 4 branches missed.">            } else if (firstOctet &gt;= 192 &amp;&amp; firstOctet &lt;= 223) {</span>
+<span class="nc" id="L32">                classType = &quot;C&quot;;</span>
+<span class="nc bnc" id="L33" title="All 4 branches missed.">            } else if (firstOctet &gt;= 224 &amp;&amp; firstOctet &lt;= 239) {</span>
+<span class="nc" id="L34">                classType = &quot;D&quot;;</span>
+<span class="nc bnc" id="L35" title="All 4 branches missed.">            } else if (firstOctet &gt;= 240 &amp;&amp; firstOctet &lt;= 255) {</span>
+<span class="nc" id="L36">                classType = &quot;E&quot;;</span>
+            }
+<span class="nc" id="L38">            System.out.println(&quot;Valid IP address. Class: &quot; + classType);</span>
+<span class="nc" id="L39">        } else {</span>
+<span class="fc" id="L40">            System.out.println(&quot;Invalid IP address&quot;);</span>
+        }
+<span class="fc" id="L42">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L45">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L46">        System.out.print(&quot;Enter an IP address: &quot;);</span>
+<span class="nc" id="L47">        String ip = scanner.nextLine();</span>
+<span class="nc" id="L48">        processIP(ip);</span>
+<span class="nc" id="L49">        scanner.close();</span>
+<span class="nc" id="L50">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task36.Task36Test" tests="8" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:13" hostname="DESKTOP-VCM60S2" time="0.025">
+  <properties/>
+  <testcase name="testSpecialCharacters()" classname="claude.task36.Task36Test" time="0.004"/>
+  <testcase name="testTrailingSpaces()" classname="claude.task36.Task36Test" time="0.003"/>
+  <testcase name="testReadEmptyFile()" classname="claude.task36.Task36Test" time="0.002"/>
+  <testcase name="testMultilineContent()" classname="claude.task36.Task36Test" time="0.003"/>
+  <testcase name="testContentWithNewlines()" classname="claude.task36.Task36Test" time="0.002"/>
+  <testcase name="testReadFileSuccess()" classname="claude.task36.Task36Test" time="0.002"/>
+  <testcase name="testNumericContent()" classname="claude.task36.Task36Test" time="0.003"/>
+  <testcase name="testFileNotFound()" classname="claude.task36.Task36Test" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

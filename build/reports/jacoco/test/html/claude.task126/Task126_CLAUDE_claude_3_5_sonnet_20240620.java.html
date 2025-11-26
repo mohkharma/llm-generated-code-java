@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task126_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task126</a> &gt; <span class="el_source">Task126_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task126_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task126;
+
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Scanner;
+
+<span class="nc" id="L9">public class Task126_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static void main(String[] args) {
+<span class="fc" id="L11">        System.out.println(&quot;Select a destination:&quot;);</span>
+<span class="fc" id="L12">        System.out.println(&quot;1. Google&quot;);</span>
+<span class="fc" id="L13">        System.out.println(&quot;2. YouTube&quot;);</span>
+<span class="fc" id="L14">        System.out.println(&quot;3. Wikipedia&quot;);</span>
+
+<span class="fc" id="L16">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L17">        System.out.print(&quot;Enter your choice (1-3): &quot;);</span>
+<span class="fc" id="L18">        String choice = scanner.nextLine();</span>
+
+        String url;
+<span class="fc bfc" id="L21" title="All 4 branches covered.">        switch (choice) {</span>
+            case &quot;1&quot;:
+<span class="fc" id="L23">                url = &quot;https://www.google.com&quot;;</span>
+<span class="fc" id="L24">                break;</span>
+            case &quot;2&quot;:
+<span class="fc" id="L26">                url = &quot;https://www.youtube.com&quot;;</span>
+<span class="fc" id="L27">                break;</span>
+            case &quot;3&quot;:
+<span class="fc" id="L29">                url = &quot;https://www.wikipedia.org&quot;;</span>
+<span class="fc" id="L30">                break;</span>
+            default:
+<span class="fc" id="L32">                System.out.println(&quot;Invalid choice. Please try again.&quot;);</span>
+<span class="fc" id="L33">                return;</span>
+        }
+
+        try {
+<span class="fc" id="L37">            Desktop.getDesktop().browse(new URI(url));</span>
+<span class="nc" id="L38">        } catch (IOException | URISyntaxException e) {</span>
+<span class="nc" id="L39">            e.printStackTrace();</span>
+<span class="fc" id="L40">        }</span>
+
+<span class="fc" id="L42">        scanner.close();</span>
+<span class="fc" id="L43">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

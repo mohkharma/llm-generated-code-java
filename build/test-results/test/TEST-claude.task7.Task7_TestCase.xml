@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task7.Task7_TestCase" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:23" hostname="DESKTOP-VCM60S2" time="0.039">
+  <properties/>
+  <testcase name="testServerProcessesSimultaneousLogins()" classname="claude.task7.Task7_TestCase" time="0.01"/>
+  <testcase name="testValidLogin()" classname="claude.task7.Task7_TestCase" time="0.002"/>
+  <testcase name="testInvalidPortConnection()" classname="claude.task7.Task7_TestCase" time="0.001"/>
+  <testcase name="testMultipleClientsLogin()" classname="claude.task7.Task7_TestCase" time="0.004"/>
+  <testcase name="testServerRejectsEmptyLoginRequest()" classname="claude.task7.Task7_TestCase" time="0.002"/>
+  <testcase name="testEmptyPasswordLogin()" classname="claude.task7.Task7_TestCase" time="0.003"/>
+  <testcase name="testClientDisconnectsGracefully()" classname="claude.task7.Task7_TestCase" time="0.004"/>
+  <testcase name="testClientAfterInvalidLogin()" classname="claude.task7.Task7_TestCase" time="0.004"/>
+  <testcase name="testEmptyUsernameLogin()" classname="claude.task7.Task7_TestCase" time="0.003"/>
+  <testcase name="testInvalidLogin()" classname="claude.task7.Task7_TestCase" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Unexpected token END OF FILE at position 0.
+	at org.json.simple.parser.JSONParser.parse(Unknown Source)
+	at org.json.simple.parser.JSONParser.parse(Unknown Source)
+	at org.json.simple.parser.JSONParser.parse(Unknown Source)
+	at claude.task7.Server$ClientHandler.run(Task7_CLAUDE_claude_3_5_sonnet_20240620.java:42)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+]]></system-err>
+</testsuite>

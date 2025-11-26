@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task71.Task71Test" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:24" hostname="DESKTOP-VCM60S2" time="0.717">
+  <properties/>
+  <testcase name="testEmptyInput()" classname="claude.task71.Task71Test" time="0.223"/>
+  <testcase name="testFloatInput()" classname="claude.task71.Task71Test" time="0.122"/>
+  <testcase name="testValidIntegerInput()" classname="claude.task71.Task71Test" time="0.123"/>
+  <testcase name="testNegativeIntegerInput()" classname="claude.task71.Task71Test" time="0.124"/>
+  <testcase name="testInvalidInputString()" classname="claude.task71.Task71Test" time="0.123"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

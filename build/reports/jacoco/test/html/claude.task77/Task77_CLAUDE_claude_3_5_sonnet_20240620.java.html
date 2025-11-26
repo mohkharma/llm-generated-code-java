@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task77_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task77</a> &gt; <span class="el_source">Task77_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task77_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task77;
+
+import java.io.*;
+import org.apache.commons.net.ftp.FTPClient;
+
+<span class="nc" id="L6">public class Task77_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static void main(String[] args) {
+<span class="nc bnc" id="L8" title="All 2 branches missed.">        if (args.length != 4) {</span>
+<span class="nc" id="L9">            System.out.println(&quot;Usage: java Task77_CLAUDE_claude_3_5_sonnet_20240620 &lt;hostname&gt; &lt;username&gt; &lt;password&gt; &lt;filename&gt;&quot;);</span>
+<span class="nc" id="L10">            System.exit(1);</span>
+        }
+
+<span class="nc" id="L13">        String hostname = args[0];</span>
+<span class="nc" id="L14">        String username = args[1];</span>
+<span class="nc" id="L15">        String password = args[2];</span>
+<span class="nc" id="L16">        String filename = args[3];</span>
+
+<span class="nc" id="L18">        FTPClient ftpClient = new FTPClient();</span>
+        try {
+<span class="nc" id="L20">            ftpClient.connect(hostname);</span>
+<span class="nc" id="L21">            ftpClient.login(username, password);</span>
+            
+<span class="nc" id="L23">            File downloadFile = new File(filename);</span>
+<span class="nc" id="L24">            OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(downloadFile));</span>
+<span class="nc" id="L25">            boolean success = ftpClient.retrieveFile(filename, outputStream);</span>
+<span class="nc" id="L26">            outputStream.close();</span>
+
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            if (success) {</span>
+<span class="nc" id="L29">                System.out.println(&quot;File &quot; + filename + &quot; downloaded successfully.&quot;);</span>
+            } else {
+<span class="nc" id="L31">                System.out.println(&quot;Failed to download the file.&quot;);</span>
+            }
+
+<span class="nc" id="L34">        } catch (IOException e) {</span>
+<span class="nc" id="L35">            System.out.println(&quot;An error occurred: &quot; + e.getMessage());</span>
+        } finally {
+            try {
+<span class="nc bnc" id="L38" title="All 2 branches missed.">                if (ftpClient.isConnected()) {</span>
+<span class="nc" id="L39">                    ftpClient.logout();</span>
+<span class="nc" id="L40">                    ftpClient.disconnect();</span>
+                }
+<span class="nc" id="L42">            } catch (IOException e) {</span>
+<span class="nc" id="L43">                e.printStackTrace();</span>
+<span class="nc" id="L44">            }</span>
+        }
+<span class="nc" id="L46">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

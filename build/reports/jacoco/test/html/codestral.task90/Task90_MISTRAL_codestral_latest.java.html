@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task90_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task90</a> &gt; <span class="el_source">Task90_MISTRAL_codestral_latest.java</span></div><h1>Task90_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task90;// Java
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+<span class="nc" id="L6">public class Task90_MISTRAL_codestral_latest {</span>
+    private static final int PORT = 12345;
+<span class="nc" id="L8">    private static HashSet&lt;String&gt; names = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L9">    private static HashSet&lt;PrintWriter&gt; writers = new HashSet&lt;&gt;();</span>
+
+    public static void main(String[] args) throws Exception {
+<span class="nc" id="L12">        System.out.println(&quot;The chat server is running.&quot;);</span>
+<span class="nc" id="L13">        try (ServerSocket listener = new ServerSocket(PORT)) {</span>
+            while (true) {
+<span class="nc" id="L15">                new Handler(listener.accept()).start();</span>
+            }
+        }
+    }
+
+    private static class Handler extends Thread {
+        private String name;
+        private Socket socket;
+        private BufferedReader in;
+        private PrintWriter out;
+
+<span class="nc" id="L26">        public Handler(Socket socket) {</span>
+<span class="nc" id="L27">            this.socket = socket;</span>
+<span class="nc" id="L28">        }</span>
+
+        public void run() {
+            try {
+<span class="nc" id="L32">                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));</span>
+<span class="nc" id="L33">                out = new PrintWriter(socket.getOutputStream(), true);</span>
+
+                while (true) {
+<span class="nc" id="L36">                    out.println(&quot;SUBMITNAME&quot;);</span>
+<span class="nc" id="L37">                    name = in.readLine();</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">                    if (name == null) {</span>
+<span class="nc" id="L39">                        return;</span>
+                    }
+<span class="nc" id="L41">                    synchronized (names) {</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">                        if (!names.contains(name)) {</span>
+<span class="nc" id="L43">                            names.add(name);</span>
+<span class="nc" id="L44">                            break;</span>
+                        }
+<span class="nc" id="L46">                    }</span>
+                }
+
+<span class="nc" id="L49">                out.println(&quot;NAMEACCEPTED&quot;);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">                for (PrintWriter writer : writers) {</span>
+<span class="nc" id="L51">                    writer.println(&quot;MESSAGE &quot; + name + &quot; has joined&quot;);</span>
+<span class="nc" id="L52">                }</span>
+<span class="nc" id="L53">                writers.add(out);</span>
+
+                while (true) {
+<span class="nc" id="L56">                    String input = in.readLine();</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">                    if (input.toLowerCase().startsWith(&quot;/quit&quot;)) {</span>
+<span class="nc" id="L58">                        return;</span>
+                    }
+<span class="nc bnc" id="L60" title="All 2 branches missed.">                    for (PrintWriter writer : writers) {</span>
+<span class="nc" id="L61">                        writer.println(&quot;MESSAGE &quot; + name + &quot;: &quot; + input);</span>
+<span class="nc" id="L62">                    }</span>
+<span class="nc" id="L63">                }</span>
+<span class="nc" id="L64">            } catch (IOException e) {</span>
+<span class="nc" id="L65">                System.out.println(e);</span>
+            } finally {
+<span class="nc bnc" id="L67" title="All 2 branches missed.">                if (name != null) {</span>
+<span class="nc" id="L68">                    names.remove(name);</span>
+                }
+<span class="nc bnc" id="L70" title="All 2 branches missed.">                if (out != null) {</span>
+<span class="nc" id="L71">                    writers.remove(out);</span>
+                }
+                try {
+<span class="nc" id="L74">                    socket.close();</span>
+<span class="nc" id="L75">                } catch (IOException e) {</span>
+<span class="nc" id="L76">                }</span>
+            }
+<span class="nc" id="L78">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

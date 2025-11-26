@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task49_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task49</a> &gt; <span class="el_source">Task49_OPENAI_gpt_4o.java</span></div><h1>Task49_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task49;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.PostConstruct;
+@SpringBootApplication
+<span class="nc" id="L11">public class Task49_OPENAI_gpt_4o {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L14">        SpringApplication.run(Task49_OPENAI_gpt_4o.class, args);</span>
+<span class="nc" id="L15">    }</span>
+}
+
+@RestController
+@RequestMapping(&quot;/api&quot;)
+<span class="nc" id="L20">class UserController {</span>
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @PostConstruct
+    public void init() {
+<span class="nc" id="L26">        jdbcTemplate.execute(&quot;CREATE TABLE IF NOT EXISTS users (id SERIAL, name VARCHAR(255), email VARCHAR(255))&quot;);</span>
+<span class="nc" id="L27">    }</span>
+
+    @PostMapping(&quot;/add_user&quot;)
+    public String addUser(@RequestBody User user) {
+<span class="nc" id="L31">        jdbcTemplate.update(&quot;INSERT INTO users (name, email) VALUES (?, ?)&quot;, user.getName(), user.getEmail());</span>
+<span class="nc" id="L32">        return &quot;User added successfully!&quot;;</span>
+    }
+}
+
+<span class="nc" id="L36">class User {</span>
+    private String name;
+    private String email;
+
+    public String getName() {
+<span class="nc" id="L41">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L45">        this.name = name;</span>
+<span class="nc" id="L46">    }</span>
+
+    public String getEmail() {
+<span class="nc" id="L49">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="nc" id="L53">        this.email = email;</span>
+<span class="nc" id="L54">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

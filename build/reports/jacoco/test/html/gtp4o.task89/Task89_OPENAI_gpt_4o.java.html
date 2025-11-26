@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task89_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task89</a> &gt; <span class="el_source">Task89_OPENAI_gpt_4o.java</span></div><h1>Task89_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task89;
+
+import java.io.*;
+import java.util.Scanner;
+
+<span class="nc" id="L6">public class Task89_OPENAI_gpt_4o {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L8">        String password = &quot;correctpassword&quot;;</span>
+<span class="nc" id="L9">        try (BufferedWriter writer = new BufferedWriter(new FileWriter(&quot;password.txt&quot;))) {</span>
+<span class="nc" id="L10">            writer.write(password);</span>
+<span class="nc" id="L11">        } catch (IOException e) {</span>
+<span class="nc" id="L12">            e.printStackTrace();</span>
+<span class="nc" id="L13">        }</span>
+        
+<span class="nc" id="L15">        Scanner input = new Scanner(System.in);</span>
+<span class="nc" id="L16">        System.out.print(&quot;Enter your password: &quot;);</span>
+<span class="nc" id="L17">        String userInput = input.nextLine();</span>
+        
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (checkPassword(userInput)) {</span>
+<span class="nc" id="L20">            System.out.println(&quot;Password is correct&quot;);</span>
+        } else {
+<span class="nc" id="L22">            System.out.println(&quot;Password is incorrect&quot;);</span>
+        }
+<span class="nc" id="L24">        input.close();</span>
+<span class="nc" id="L25">    }</span>
+
+    public static boolean checkPassword(String inputPassword) {
+<span class="nc" id="L28">        String storedPassword = &quot;&quot;;</span>
+<span class="nc" id="L29">        try (BufferedReader br = new BufferedReader(new FileReader(&quot;password.txt&quot;))) {</span>
+<span class="nc" id="L30">            storedPassword = br.readLine();</span>
+<span class="nc" id="L31">        } catch (IOException e) {</span>
+<span class="nc" id="L32">            e.printStackTrace();</span>
+<span class="nc" id="L33">        }</span>
+        
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (storedPassword.length() != inputPassword.length()) {</span>
+<span class="nc" id="L36">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        for (int i = 0; i &lt; storedPassword.length(); i++) {</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            if (storedPassword.charAt(i) != inputPassword.charAt(i)) {</span>
+<span class="nc" id="L41">                return false;</span>
+            }
+        }
+<span class="nc" id="L44">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

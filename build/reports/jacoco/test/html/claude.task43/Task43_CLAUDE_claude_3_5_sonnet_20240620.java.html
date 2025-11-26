@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task43_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task43</a> &gt; <span class="el_source">Task43_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task43_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task43;
+
+import io.javalin.Javalin;
+import io.javalin.http.Context;
+import org.mindrot.jbcrypt.BCrypt;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+<span class="nc" id="L11">public class Task43_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+<span class="nc" id="L12">    private static final Map&lt;String, String&gt; users = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L13">    private static final Map&lt;String, Session&gt; sessions = new HashMap&lt;&gt;();</span>
+    private static final long SESSION_TIMEOUT = 1800000; // 30 minutes
+
+    public static void main(String[] args) {
+<span class="nc" id="L17">        Javalin app = Javalin.create().start(7000);</span>
+
+<span class="nc" id="L19">        app.post(&quot;/register&quot;, Task43_CLAUDE_claude_3_5_sonnet_20240620::register);</span>
+<span class="nc" id="L20">        app.post(&quot;/login&quot;, Task43_CLAUDE_claude_3_5_sonnet_20240620::login);</span>
+<span class="nc" id="L21">        app.post(&quot;/logout&quot;, Task43_CLAUDE_claude_3_5_sonnet_20240620::logout);</span>
+<span class="nc" id="L22">        app.get(&quot;/protected&quot;, Task43_CLAUDE_claude_3_5_sonnet_20240620::protectedRoute);</span>
+<span class="nc" id="L23">    }</span>
+
+    private static void register(Context ctx) {
+<span class="nc" id="L26">        String username = ctx.formParam(&quot;username&quot;);</span>
+<span class="nc" id="L27">        String password = ctx.formParam(&quot;password&quot;);</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if (users.containsKey(username)) {</span>
+<span class="nc" id="L29">            ctx.status(400).json(Map.of(&quot;error&quot;, &quot;Username already exists&quot;));</span>
+        } else {
+<span class="nc" id="L31">            users.put(username, BCrypt.hashpw(password, BCrypt.gensalt()));</span>
+<span class="nc" id="L32">            ctx.status(201).json(Map.of(&quot;message&quot;, &quot;User registered successfully&quot;));</span>
+        }
+<span class="nc" id="L34">    }</span>
+
+    private static void login(Context ctx) {
+<span class="nc" id="L37">        String username = ctx.formParam(&quot;username&quot;);</span>
+<span class="nc" id="L38">        String password = ctx.formParam(&quot;password&quot;);</span>
+<span class="nc bnc" id="L39" title="All 4 branches missed.">        if (users.containsKey(username) &amp;&amp; BCrypt.checkpw(password, users.get(username))) {</span>
+<span class="nc" id="L40">            String sessionId = UUID.randomUUID().toString();</span>
+<span class="nc" id="L41">            sessions.put(sessionId, new Session(username, System.currentTimeMillis()));</span>
+<span class="nc" id="L42">            ctx.cookie(&quot;sessionId&quot;, sessionId);</span>
+<span class="nc" id="L43">            ctx.status(200).json(Map.of(&quot;message&quot;, &quot;Logged in successfully&quot;));</span>
+<span class="nc" id="L44">        } else {</span>
+<span class="nc" id="L45">            ctx.status(401).json(Map.of(&quot;error&quot;, &quot;Invalid credentials&quot;));</span>
+        }
+<span class="nc" id="L47">    }</span>
+
+    private static void logout(Context ctx) {
+<span class="nc" id="L50">        String sessionId = ctx.cookie(&quot;sessionId&quot;);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if (sessionId != null) {</span>
+<span class="nc" id="L52">            sessions.remove(sessionId);</span>
+<span class="nc" id="L53">            ctx.removeCookie(&quot;sessionId&quot;);</span>
+        }
+<span class="nc" id="L55">        ctx.status(200).json(Map.of(&quot;message&quot;, &quot;Logged out successfully&quot;));</span>
+<span class="nc" id="L56">    }</span>
+
+    private static void protectedRoute(Context ctx) {
+<span class="nc" id="L59">        String sessionId = ctx.cookie(&quot;sessionId&quot;);</span>
+<span class="nc bnc" id="L60" title="All 4 branches missed.">        if (sessionId != null &amp;&amp; sessions.containsKey(sessionId)) {</span>
+<span class="nc" id="L61">            Session session = sessions.get(sessionId);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">            if (System.currentTimeMillis() - session.getLoginTime() &gt; SESSION_TIMEOUT) {</span>
+<span class="nc" id="L63">                sessions.remove(sessionId);</span>
+<span class="nc" id="L64">                ctx.removeCookie(&quot;sessionId&quot;);</span>
+<span class="nc" id="L65">                ctx.status(401).json(Map.of(&quot;error&quot;, &quot;Session expired&quot;));</span>
+            } else {
+<span class="nc" id="L67">                ctx.status(200).json(Map.of(&quot;message&quot;, &quot;Hello, &quot; + session.getUsername() + &quot;!&quot;));</span>
+            }
+<span class="nc" id="L69">        } else {</span>
+<span class="nc" id="L70">            ctx.status(401).json(Map.of(&quot;error&quot;, &quot;Unauthorized&quot;));</span>
+        }
+<span class="nc" id="L72">    }</span>
+
+    private static class Session {
+        private final String username;
+        private final long loginTime;
+
+<span class="nc" id="L78">        public Session(String username, long loginTime) {</span>
+<span class="nc" id="L79">            this.username = username;</span>
+<span class="nc" id="L80">            this.loginTime = loginTime;</span>
+<span class="nc" id="L81">        }</span>
+
+        public String getUsername() {
+<span class="nc" id="L84">            return username;</span>
+        }
+
+        public long getLoginTime() {
+<span class="nc" id="L88">            return loginTime;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

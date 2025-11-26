@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task138.Task138Test" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.008">
+  <properties/>
+  <testcase name="testChangeUserRole()" classname="claude.task138.Task138Test" time="0.002"/>
+  <testcase name="testSaveAndLoadFromFile()" classname="claude.task138.Task138Test" time="0.004"/>
+  <testcase name="testRemoveUser()" classname="claude.task138.Task138Test" time="0.0"/>
+  <testcase name="testAddUserAndCheckPermission()" classname="claude.task138.Task138Test" time="0.0"/>
+  <testcase name="testChangeRoleForNonExistentUser()" classname="claude.task138.Task138Test" time="0.001"/>
+  <testcase name="testInvalidRoleAddUser()" classname="claude.task138.Task138Test" time="0.0"/>
+  <testcase name="testInvalidRoleChangeUserRole()" classname="claude.task138.Task138Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

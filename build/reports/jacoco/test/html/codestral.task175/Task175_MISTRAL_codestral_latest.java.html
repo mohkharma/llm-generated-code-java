@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task175_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task175</a> &gt; <span class="el_source">Task175_MISTRAL_codestral_latest.java</span></div><h1>Task175_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task175;
+
+// Java
+//invalid code, missing MountainArray interface
+interface MountainArray {
+    public  int get(int index) ;
+    public  int length() ;
+}
+
+<span class="nc" id="L10">public class Task175_MISTRAL_codestral_latest {</span>
+    public int findInMountainArray(int target, MountainArray mountainArr) {
+<span class="nc" id="L12">        int peak = findPeak(mountainArr);</span>
+<span class="nc" id="L13">        int left = binarySearch(mountainArr, target, 0, peak, true);</span>
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        if (left != -1) return left;</span>
+<span class="nc" id="L15">        return binarySearch(mountainArr, target, peak + 1, mountainArr.length() - 1, false);</span>
+    }
+
+    private int findPeak(MountainArray mountainArr) {
+<span class="nc" id="L19">        int left = 0, right = mountainArr.length() - 1;</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        while (left &lt; right) {</span>
+<span class="nc" id="L21">            int mid = left + (right - left) / 2;</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">            if (mountainArr.get(mid) &lt; mountainArr.get(mid + 1)) {</span>
+<span class="nc" id="L23">                left = mid + 1;</span>
+            } else {
+<span class="nc" id="L25">                right = mid;</span>
+            }
+<span class="nc" id="L27">        }</span>
+<span class="nc" id="L28">        return left;</span>
+    }
+
+    private int binarySearch(MountainArray mountainArr, int target, int left, int right, boolean isAscending) {
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        while (left &lt;= right) {</span>
+<span class="nc" id="L33">            int mid = left + (right - left) / 2;</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">            if (mountainArr.get(mid) == target) {</span>
+<span class="nc" id="L35">                return mid;</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">            } else if (mountainArr.get(mid) &lt; target) {</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">                if (isAscending) {</span>
+<span class="nc" id="L38">                    left = mid + 1;</span>
+                } else {
+<span class="nc" id="L40">                    right = mid - 1;</span>
+                }
+            } else {
+<span class="nc bnc" id="L43" title="All 2 branches missed.">                if (isAscending) {</span>
+<span class="nc" id="L44">                    right = mid - 1;</span>
+                } else {
+<span class="nc" id="L46">                    left = mid + 1;</span>
+                }
+            }
+<span class="nc" id="L49">        }</span>
+<span class="nc" id="L50">        return -1;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

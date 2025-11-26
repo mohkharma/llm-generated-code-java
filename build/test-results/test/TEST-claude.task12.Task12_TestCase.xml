@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task12.Task12_TestCase" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:11" hostname="DESKTOP-VCM60S2" time="0.004">
+  <properties/>
+  <testcase name="testBasicExample1()" classname="claude.task12.Task12_TestCase" time="0.001"/>
+  <testcase name="testBasicExample2()" classname="claude.task12.Task12_TestCase" time="0.0"/>
+  <testcase name="testBasicExample3()" classname="claude.task12.Task12_TestCase" time="0.0"/>
+  <testcase name="testWordsWithSpecialCharacters()" classname="claude.task12.Task12_TestCase" time="0.0"/>
+  <testcase name="testMultipleWordsSameScore()" classname="claude.task12.Task12_TestCase" time="0.0"/>
+  <testcase name="testWordsWithOneLetter()" classname="claude.task12.Task12_TestCase" time="0.001"/>
+  <testcase name="testDifferentScores()" classname="claude.task12.Task12_TestCase" time="0.0"/>
+  <testcase name="testSingleWord()" classname="claude.task12.Task12_TestCase" time="0.0"/>
+  <testcase name="testEmptyString()" classname="claude.task12.Task12_TestCase" time="0.0"/>
+  <testcase name="testLongWords()" classname="claude.task12.Task12_TestCase" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

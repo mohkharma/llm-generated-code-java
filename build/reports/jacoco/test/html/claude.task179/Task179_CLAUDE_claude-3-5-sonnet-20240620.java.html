@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task179_CLAUDE_claude-3-5-sonnet-20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task179</a> &gt; <span class="el_source">Task179_CLAUDE_claude-3-5-sonnet-20240620.java</span></div><h1>Task179_CLAUDE_claude-3-5-sonnet-20240620.java</h1><pre class="source lang-java linenums">package claude.task179;
+
+import java.util.*;
+
+<span class="fc" id="L5">class Solution {</span>
+    public int[] maxSlidingWindow(int[] nums, int k) {
+<span class="pc bpc" id="L7" title="3 of 6 branches missed.">        if (nums == null || nums.length == 0 || k &lt;= 0) {</span>
+<span class="nc" id="L8">            return new int[0];</span>
+        }
+        
+<span class="fc" id="L11">        int n = nums.length;</span>
+<span class="fc" id="L12">        int[] result = new int[n - k + 1];</span>
+<span class="fc" id="L13">        int ri = 0;</span>
+        
+<span class="fc" id="L15">        Deque&lt;Integer&gt; deque = new ArrayDeque&lt;&gt;();</span>
+        
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="fc bfc" id="L18" title="All 4 branches covered.">            while (!deque.isEmpty() &amp;&amp; deque.peekFirst() &lt; i - k + 1) {</span>
+<span class="fc" id="L19">                deque.pollFirst();</span>
+            }
+            
+<span class="fc bfc" id="L22" title="All 4 branches covered.">            while (!deque.isEmpty() &amp;&amp; nums[deque.peekLast()] &lt; nums[i]) {</span>
+<span class="fc" id="L23">                deque.pollLast();</span>
+            }
+            
+<span class="fc" id="L26">            deque.offerLast(i);</span>
+            
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (i &gt;= k - 1) {</span>
+<span class="fc" id="L29">                result[ri++] = nums[deque.peekFirst()];</span>
+            }
+        }
+        
+<span class="fc" id="L33">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

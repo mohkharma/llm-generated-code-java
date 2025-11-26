@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task121_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task121</a> &gt; <span class="el_source">Task121_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task121_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task121;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
+<span class="nc" id="L10">public class Task121_GEMINI_gemini_1_5_pro_001 {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L13">        EventQueue.invokeLater(() -&gt; {</span>
+<span class="nc" id="L14">            JFrame frame = new JFrame(&quot;File Upload&quot;);</span>
+<span class="nc" id="L15">            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L16">            frame.setSize(400, 200);</span>
+<span class="nc" id="L17">            frame.setLayout(new FlowLayout());</span>
+
+<span class="nc" id="L19">            JButton uploadButton = new JButton(&quot;Upload File&quot;);</span>
+<span class="nc" id="L20">            uploadButton.addActionListener(e -&gt; {</span>
+<span class="nc" id="L21">                JFileChooser fileChooser = new JFileChooser();</span>
+<span class="nc" id="L22">                fileChooser.setDialogTitle(&quot;Choose a file to upload&quot;);</span>
+<span class="nc" id="L23">                FileNameExtensionFilter filter = new FileNameExtensionFilter(&quot;All Files&quot;, &quot;*.*&quot;);</span>
+<span class="nc" id="L24">                fileChooser.setFileFilter(filter);</span>
+
+<span class="nc" id="L26">                int userSelection = fileChooser.showOpenDialog(frame);</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">                if (userSelection == JFileChooser.APPROVE_OPTION) {</span>
+<span class="nc" id="L28">                    File selectedFile = fileChooser.getSelectedFile();</span>
+                    try {
+<span class="nc" id="L30">                        byte[] fileContent = Files.readAllBytes(selectedFile.toPath());</span>
+                        // Process the uploaded file here
+                        // ...
+<span class="nc" id="L33">                        JOptionPane.showMessageDialog(frame, &quot;File uploaded successfully!&quot;);</span>
+<span class="nc" id="L34">                    } catch (IOException ex) {</span>
+<span class="nc" id="L35">                        JOptionPane.showMessageDialog(frame, &quot;Error uploading file: &quot; + ex.getMessage(), &quot;Error&quot;, JOptionPane.ERROR_MESSAGE);</span>
+<span class="nc" id="L36">                    }</span>
+                }
+<span class="nc" id="L38">            });</span>
+
+<span class="nc" id="L40">            frame.add(uploadButton);</span>
+<span class="nc" id="L41">            frame.setVisible(true);</span>
+<span class="nc" id="L42">        });</span>
+<span class="nc" id="L43">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task117.Task117Test" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:11" hostname="DESKTOP-VCM60S2" time="0.015">
+  <properties/>
+  <testcase name="testExtractZipArchive()" classname="claude.task117.Task117Test" time="0.005"/>
+  <testcase name="testExtractTarArchive()" classname="claude.task117.Task117Test" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

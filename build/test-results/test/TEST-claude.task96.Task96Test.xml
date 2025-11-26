@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task96.Task96Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:26" hostname="DESKTOP-VCM60S2" time="1.007">
+  <properties/>
+  <testcase name="testEchoServerResponse()" classname="claude.task96.Task96Test" time="1.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

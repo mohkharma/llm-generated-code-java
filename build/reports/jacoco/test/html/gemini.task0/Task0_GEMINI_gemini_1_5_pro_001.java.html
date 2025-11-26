@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task0_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task0</a> &gt; <span class="el_source">Task0_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task0_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task0;
+
+import java.io.File;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+<span class="nc" id="L9">public class Task0_GEMINI_gemini_1_5_pro_001 {</span>
+
+<span class="nc" id="L11">    private static ConcurrentHashMap&lt;String, Object&gt; fileLocks = new ConcurrentHashMap&lt;&gt;();</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L14">        String directoryPath = &quot;path/to/your/directory&quot;; // Replace with your directory path</span>
+<span class="nc" id="L15">        File directory = new File(directoryPath);</span>
+
+<span class="nc" id="L17">        ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());</span>
+
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        for (File file : directory.listFiles()) {</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">            if (file.isFile()) {</span>
+<span class="nc" id="L21">                fileLocks.putIfAbsent(file.getAbsolutePath(), new Object());</span>
+<span class="nc" id="L22">                executor.execute(() -&gt; processFile(file));</span>
+            }
+        }
+
+<span class="nc" id="L26">        executor.shutdown();</span>
+        try {
+<span class="nc" id="L28">            executor.awaitTermination(1, TimeUnit.HOURS);</span>
+<span class="nc" id="L29">        } catch (InterruptedException e) {</span>
+<span class="nc" id="L30">            System.err.println(&quot;Executor termination interrupted: &quot; + e.getMessage());</span>
+<span class="nc" id="L31">        }</span>
+<span class="nc" id="L32">    }</span>
+
+    private static void processFile(File file) {
+<span class="nc" id="L35">        synchronized (fileLocks.get(file.getAbsolutePath())) {</span>
+            // Simulate file processing
+<span class="nc" id="L37">            System.out.println(&quot;Thread &quot; + Thread.currentThread().getName() + &quot; is processing file: &quot; + file.getAbsolutePath());</span>
+            // Add your file processing logic here
+<span class="nc" id="L39">        }</span>
+<span class="nc" id="L40">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

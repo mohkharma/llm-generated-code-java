@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task13_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task13</a> &gt; <span class="el_source">Task13_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task13_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task13;
+
+<span class="nc" id="L3">public class Task13_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static boolean isValidWalk(char[] walk) {
+<span class="fc bfc" id="L5" title="All 2 branches covered.">        if (walk.length != 10) {</span>
+<span class="fc" id="L6">            return false;</span>
+        }
+        
+<span class="fc" id="L9">        int x = 0, y = 0;</span>
+<span class="fc bfc" id="L10" title="All 2 branches covered.">        for (char direction : walk) {</span>
+<span class="pc bpc" id="L11" title="1 of 5 branches missed.">            switch (direction) {</span>
+<span class="fc" id="L12">                case 'n': y++; break;</span>
+<span class="fc" id="L13">                case 's': y--; break;</span>
+<span class="fc" id="L14">                case 'e': x++; break;</span>
+<span class="fc" id="L15">                case 'w': x--; break;</span>
+            }
+        }
+        
+<span class="pc bpc" id="L19" title="1 of 4 branches missed.">        return x == 0 &amp;&amp; y == 0;</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L23">        System.out.println(isValidWalk(new char[] {'n','s','n','s','n','s','n','s','n','s'}));  // true</span>
+<span class="nc" id="L24">        System.out.println(isValidWalk(new char[] {'w','e','w','e','w','e','w','e','w','e','w','e'}));  // false</span>
+<span class="nc" id="L25">        System.out.println(isValidWalk(new char[] {'w'}));  // false</span>
+<span class="nc" id="L26">        System.out.println(isValidWalk(new char[] {'n','n','n','s','n','s','n','s','n','s'}));  // false</span>
+<span class="nc" id="L27">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

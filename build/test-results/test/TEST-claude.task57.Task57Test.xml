@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task57.Task57Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:21" hostname="DESKTOP-VCM60S2" time="0.011">
+  <properties/>
+  <testcase name="testFactorialLargeNumber()" classname="claude.task57.Task57Test" time="0.002"/>
+  <testcase name="testFactorialStringInput()" classname="claude.task57.Task57Test" time="0.002"/>
+  <testcase name="testFactorialFive()" classname="claude.task57.Task57Test" time="0.001"/>
+  <testcase name="testFactorialFour()" classname="claude.task57.Task57Test" time="0.0"/>
+  <testcase name="testFactorialZero()" classname="claude.task57.Task57Test" time="0.0"/>
+  <testcase name="testFactorialOne()" classname="claude.task57.Task57Test" time="0.001"/>
+  <testcase name="testFactorialSix()" classname="claude.task57.Task57Test" time="0.001"/>
+  <testcase name="testFactorialTwo()" classname="claude.task57.Task57Test" time="0.0"/>
+  <testcase name="testFactorialNegativeNumber()" classname="claude.task57.Task57Test" time="0.004"/>
+  <testcase name="testFactorialThree()" classname="claude.task57.Task57Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

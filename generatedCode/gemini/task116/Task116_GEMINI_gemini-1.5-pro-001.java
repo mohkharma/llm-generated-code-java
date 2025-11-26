@@ -1,2 +1,0 @@
-package gemini.task116;// Java is not suitable for directly interacting with system-level operations like changing passwords in a secure and platform-independent way.
-// This is best handled by scripting languages or languages with closer OS integration.

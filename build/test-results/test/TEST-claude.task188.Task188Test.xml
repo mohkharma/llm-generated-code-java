@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task188.Task188Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.204">
+  <properties/>
+  <testcase name="testFooBarWithNEquals1000()" classname="claude.task188.Task188Test" time="0.049"/>
+  <testcase name="testFooBarWithNEquals10()" classname="claude.task188.Task188Test" time="0.015"/>
+  <testcase name="testFooBarWithNEquals1()" classname="claude.task188.Task188Test" time="0.014"/>
+  <testcase name="testFooBarWithNEquals2()" classname="claude.task188.Task188Test" time="0.015"/>
+  <testcase name="testFooBarWithNEquals3()" classname="claude.task188.Task188Test" time="0.016"/>
+  <testcase name="testFooBarWithNEquals4()" classname="claude.task188.Task188Test" time="0.015"/>
+  <testcase name="testFooBarWithNEquals5()" classname="claude.task188.Task188Test" time="0.015"/>
+  <testcase name="testFooBarWithNEquals100()" classname="claude.task188.Task188Test" time="0.015"/>
+  <testcase name="testFooBarWithNEquals500()" classname="claude.task188.Task188Test" time="0.015"/>
+  <testcase name="testFooBarWithNEquals750()" classname="claude.task188.Task188Test" time="0.031"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

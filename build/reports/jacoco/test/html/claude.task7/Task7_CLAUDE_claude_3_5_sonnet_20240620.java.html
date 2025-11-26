@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task7_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task7</a> &gt; <span class="el_source">Task7_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task7_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task7;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import org.json.simple.*;
+import org.json.simple.parser.*;
+
+// Server
+class Server {
+    private ServerSocket serverSocket;
+<span class="fc" id="L12">    private List&lt;Socket&gt; clients = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L14">    public Server(int port) throws IOException {</span>
+<span class="fc" id="L15">        serverSocket = new ServerSocket(port);</span>
+<span class="fc" id="L16">    }</span>
+
+    public void start() throws IOException {
+<span class="fc" id="L19">        System.out.println(&quot;Server listening on port &quot; + serverSocket.getLocalPort());</span>
+        while (true) {
+<span class="fc" id="L21">            Socket clientSocket = serverSocket.accept();</span>
+<span class="fc" id="L22">            clients.add(clientSocket);</span>
+<span class="fc" id="L23">            new Thread(new ClientHandler(clientSocket)).start();</span>
+<span class="fc" id="L24">        }</span>
+    }
+
+    private class ClientHandler implements Runnable {
+        private Socket clientSocket;
+        private BufferedReader in;
+        private PrintWriter out;
+
+<span class="fc" id="L32">        public ClientHandler(Socket socket) throws IOException {</span>
+<span class="fc" id="L33">            this.clientSocket = socket;</span>
+<span class="fc" id="L34">            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));</span>
+<span class="fc" id="L35">            out = new PrintWriter(clientSocket.getOutputStream(), true);</span>
+<span class="fc" id="L36">        }</span>
+
+        public void run() {
+            try {
+                String inputLine;
+<span class="fc bfc" id="L41" title="All 2 branches covered.">                while ((inputLine = in.readLine()) != null) {</span>
+<span class="fc" id="L42">                    JSONObject request = (JSONObject) new JSONParser().parse(inputLine);</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">                    if (request.get(&quot;action&quot;).equals(&quot;login&quot;)) {</span>
+<span class="fc" id="L44">                        JSONObject response = authenticate((String) request.get(&quot;username&quot;), (String) request.get(&quot;password&quot;));</span>
+<span class="fc" id="L45">                        out.println(response.toJSONString());</span>
+                    }
+<span class="fc" id="L47">                }</span>
+<span class="fc" id="L48">            } catch (IOException | ParseException e) {</span>
+<span class="fc" id="L49">                e.printStackTrace();</span>
+            } finally {
+                try {
+<span class="fc" id="L52">                    clientSocket.close();</span>
+<span class="nc" id="L53">                } catch (IOException e) {</span>
+<span class="nc" id="L54">                    e.printStackTrace();</span>
+<span class="fc" id="L55">                }</span>
+            }
+<span class="fc" id="L57">        }</span>
+
+        private JSONObject authenticate(String username, String password) {
+<span class="fc" id="L60">            JSONObject response = new JSONObject();</span>
+<span class="fc" id="L61">            try (BufferedReader fileReader = new BufferedReader(new FileReader(&quot;users.txt&quot;))) {</span>
+                String line;
+<span class="fc bfc" id="L63" title="All 2 branches covered.">                while ((line = fileReader.readLine()) != null) {</span>
+<span class="fc" id="L64">                    String[] parts = line.split(&quot;:&quot;);</span>
+<span class="fc bfc" id="L65" title="All 4 branches covered.">                    if (parts[0].equals(username) &amp;&amp; parts[1].equals(password)) {</span>
+<span class="fc" id="L66">                        response.put(&quot;status&quot;, &quot;success&quot;);</span>
+<span class="fc" id="L67">                        response.put(&quot;message&quot;, &quot;Login successful&quot;);</span>
+<span class="fc" id="L68">                        return response;</span>
+                    }
+<span class="fc" id="L70">                }</span>
+<span class="pc" id="L71">            } catch (IOException e) {</span>
+<span class="nc" id="L72">                e.printStackTrace();</span>
+<span class="fc" id="L73">            }</span>
+<span class="fc" id="L74">            response.put(&quot;status&quot;, &quot;failure&quot;);</span>
+<span class="fc" id="L75">            response.put(&quot;message&quot;, &quot;Invalid credentials&quot;);</span>
+<span class="fc" id="L76">            return response;</span>
+        }
+    }
+}
+
+// Client
+<span class="fc" id="L82">class Client {</span>
+    private Socket clientSocket;
+    public PrintWriter out;
+    public BufferedReader in;
+
+    public void startConnection(String ip, int port) throws IOException {
+<span class="fc" id="L88">        clientSocket = new Socket(ip, port);</span>
+<span class="fc" id="L89">        out = new PrintWriter(clientSocket.getOutputStream(), true);</span>
+<span class="fc" id="L90">        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));</span>
+<span class="fc" id="L91">    }</span>
+
+    public void login() throws IOException, ParseException {
+<span class="nc" id="L94">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L95">        System.out.print(&quot;Enter username: &quot;);</span>
+<span class="nc" id="L96">        String username = scanner.nextLine();</span>
+<span class="nc" id="L97">        System.out.print(&quot;Enter password: &quot;);</span>
+<span class="nc" id="L98">        String password = scanner.nextLine();</span>
+
+<span class="nc" id="L100">        JSONObject request = new JSONObject();</span>
+<span class="nc" id="L101">        request.put(&quot;action&quot;, &quot;login&quot;);</span>
+<span class="nc" id="L102">        request.put(&quot;username&quot;, username);</span>
+<span class="nc" id="L103">        request.put(&quot;password&quot;, password);</span>
+
+<span class="nc" id="L105">        out.println(request.toJSONString());</span>
+<span class="nc" id="L106">        String response = in.readLine();</span>
+<span class="nc" id="L107">        JSONObject jsonResponse = (JSONObject) new JSONParser().parse(response);</span>
+<span class="nc" id="L108">        System.out.println(jsonResponse.get(&quot;message&quot;));</span>
+<span class="nc" id="L109">    }</span>
+
+    public void stopConnection() throws IOException {
+<span class="fc" id="L112">        in.close();</span>
+<span class="fc" id="L113">        out.close();</span>
+<span class="fc" id="L114">        clientSocket.close();</span>
+<span class="fc" id="L115">    }</span>
+}
+
+<span class="nc" id="L118">public class Task7_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static void main(String[] args) throws IOException, ParseException {
+<span class="nc" id="L120">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L121">        System.out.print(&quot;Enter 's' for server, 'c' for client: &quot;);</span>
+<span class="nc" id="L122">        String choice = scanner.nextLine().toLowerCase();</span>
+
+<span class="nc bnc" id="L124" title="All 2 branches missed.">        if (choice.equals(&quot;s&quot;)) {</span>
+<span class="nc" id="L125">            Server server = new Server(5000);</span>
+<span class="nc" id="L126">            server.start();</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">        } else if (choice.equals(&quot;c&quot;)) {</span>
+<span class="nc" id="L128">            Client client = new Client();</span>
+<span class="nc" id="L129">            client.startConnection(&quot;localhost&quot;, 5000);</span>
+<span class="nc" id="L130">            client.login();</span>
+<span class="nc" id="L131">            client.stopConnection();</span>
+<span class="nc" id="L132">        } else {</span>
+<span class="nc" id="L133">            System.out.println(&quot;Invalid choice&quot;);</span>
+        }
+<span class="nc" id="L135">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task151_PERPLEXITY_llama-3-sonar-large-32k-chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task151</a> &gt; <span class="el_source">Task151_PERPLEXITY_llama-3-sonar-large-32k-chat.java</span></div><h1>Task151_PERPLEXITY_llama-3-sonar-large-32k-chat.java</h1><pre class="source lang-java linenums">package llama3.task151;
+
+class Node {
+    int val;
+    Node left, right;
+
+<span class="nc" id="L7">    Node(int item) {</span>
+<span class="nc" id="L8">        val = item;</span>
+<span class="nc" id="L9">        left = right = null;</span>
+<span class="nc" id="L10">    }</span>
+}
+
+<span class="nc" id="L13">class BinaryTree {</span>
+    Node root;
+
+    Node insert(Node node, int val) {
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        if (node == null) {</span>
+<span class="nc" id="L18">            return new Node(val);</span>
+        }
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (val &lt; node.val) {</span>
+<span class="nc" id="L21">            node.left = insert(node.left, val);</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        } else if (val &gt; node.val) {</span>
+<span class="nc" id="L23">            node.right = insert(node.right, val);</span>
+        }
+<span class="nc" id="L25">        return node;</span>
+    }
+
+    Node minValueNode(Node node) {
+<span class="nc" id="L29">        Node current = node;</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        while (current.left != null) {</span>
+<span class="nc" id="L31">            current = current.left;</span>
+        }
+<span class="nc" id="L33">        return current;</span>
+    }
+
+    Node deleteNode(Node node, int val) {
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (node == null) {</span>
+<span class="nc" id="L38">            return node;</span>
+        }
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (val &lt; node.val) {</span>
+<span class="nc" id="L41">            node.left = deleteNode(node.left, val);</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        } else if (val &gt; node.val) {</span>
+<span class="nc" id="L43">            node.right = deleteNode(node.right, val);</span>
+        } else {
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (node.left == null) {</span>
+<span class="nc" id="L46">                Node temp = node.right;</span>
+<span class="nc" id="L47">                node = null;</span>
+<span class="nc" id="L48">                return temp;</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">            } else if (node.right == null) {</span>
+<span class="nc" id="L50">                Node temp = node.left;</span>
+<span class="nc" id="L51">                node = null;</span>
+<span class="nc" id="L52">                return temp;</span>
+            }
+<span class="nc" id="L54">            Node temp = minValueNode(node.right);</span>
+<span class="nc" id="L55">            node.val = temp.val;</span>
+<span class="nc" id="L56">            node.right = deleteNode(node.right, temp.val);</span>
+        }
+<span class="nc" id="L58">        return node;</span>
+    }
+
+    Node searchNode(Node node, int val) {
+<span class="nc bnc" id="L62" title="All 4 branches missed.">        if (node == null || node.val == val) {</span>
+<span class="nc" id="L63">            return node;</span>
+        }
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if (node.val &lt; val) {</span>
+<span class="nc" id="L66">            return searchNode(node.right, val);</span>
+        } else {
+<span class="nc" id="L68">            return searchNode(node.left, val);</span>
+        }
+    }
+
+    void inorder(Node node) {
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (node != null) {</span>
+<span class="nc" id="L74">            inorder(node.left);</span>
+<span class="nc" id="L75">            System.out.print(node.val + &quot; &quot;);</span>
+<span class="nc" id="L76">            inorder(node.right);</span>
+        }
+<span class="nc" id="L78">    }</span>
+
+    public static void main(String args[]) {
+<span class="nc" id="L81">        BinaryTree tree = new BinaryTree();</span>
+<span class="nc" id="L82">        tree.root = tree.insert(tree.root, 50);</span>
+<span class="nc" id="L83">        tree.root = tree.insert(tree.root, 30);</span>
+<span class="nc" id="L84">        tree.root = tree.insert(tree.root, 20);</span>
+<span class="nc" id="L85">        tree.root = tree.insert(tree.root, 40);</span>
+<span class="nc" id="L86">        tree.root = tree.insert(tree.root, 70);</span>
+<span class="nc" id="L87">        tree.root = tree.insert(tree.root, 60);</span>
+<span class="nc" id="L88">        tree.root = tree.insert(tree.root, 80);</span>
+
+<span class="nc" id="L90">        System.out.println(&quot;Inorder traversal of the given tree&quot;);</span>
+<span class="nc" id="L91">        tree.inorder(tree.root);</span>
+
+<span class="nc" id="L93">        System.out.println(&quot;\nDelete 20&quot;);</span>
+<span class="nc" id="L94">        tree.root = tree.deleteNode(tree.root, 20);</span>
+<span class="nc" id="L95">        System.out.println(&quot;Inorder traversal of the modified tree&quot;);</span>
+<span class="nc" id="L96">        tree.inorder(tree.root);</span>
+
+<span class="nc" id="L98">        System.out.println(&quot;\nSearch for 40&quot;);</span>
+<span class="nc" id="L99">        Node res = tree.searchNode(tree.root, 40);</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        if (res != null) {</span>
+<span class="nc" id="L101">            System.out.println(&quot;Found&quot;);</span>
+        } else {
+<span class="nc" id="L103">            System.out.println(&quot;Not Found&quot;);</span>
+        }
+<span class="nc" id="L105">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

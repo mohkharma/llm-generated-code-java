@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task87_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task87</a> &gt; <span class="el_source">Task87_MISTRAL_codestral_latest.java</span></div><h1>Task87_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task87;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+<span class="nc" id="L6">public class Task87_MISTRAL_codestral_latest {</span>
+    int binarySearch(int arr[], int l, int r, int x) {
+<span class="nc bnc" id="L8" title="All 2 branches missed.">        if (r &gt;= l) {</span>
+<span class="nc" id="L9">            int mid = l + (r - l) / 2;</span>
+<span class="nc bnc" id="L10" title="All 2 branches missed.">            if (arr[mid] == x)</span>
+<span class="nc" id="L11">                return mid;</span>
+<span class="nc bnc" id="L12" title="All 2 branches missed.">            if (arr[mid] &gt; x)</span>
+<span class="nc" id="L13">                return binarySearch(arr, l, mid - 1, x);</span>
+<span class="nc" id="L14">            return binarySearch(arr, mid + 1, r, x);</span>
+        }
+<span class="nc" id="L16">        return -1;</span>
+    }
+
+    public static void main(String args[]) throws IOException {
+<span class="nc" id="L20">        Task87_MISTRAL_codestral_latest ob = new Task87_MISTRAL_codestral_latest();</span>
+<span class="nc" id="L21">        int arr[] = {1, 3, 4, 10, 12, 90};</span>
+<span class="nc" id="L22">        int n = arr.length;</span>
+<span class="nc" id="L23">        int x = 10;</span>
+<span class="nc" id="L24">        long startTime = System.nanoTime();</span>
+<span class="nc" id="L25">        int result = ob.binarySearch(arr, 0, n - 1, x);</span>
+<span class="nc" id="L26">        long endTime = System.nanoTime();</span>
+<span class="nc" id="L27">        long executionTime = endTime - startTime;</span>
+<span class="nc" id="L28">        FileWriter myWriter = new FileWriter(&quot;execution_time.txt&quot;);</span>
+<span class="nc" id="L29">        myWriter.write(String.valueOf(executionTime));</span>
+<span class="nc" id="L30">        myWriter.close();</span>
+<span class="nc" id="L31">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

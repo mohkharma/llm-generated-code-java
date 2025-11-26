@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task176.Task176Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:12" hostname="DESKTOP-VCM60S2" time="0.006">
+  <properties/>
+  <testcase name="testCase7_addZeroAndGet()" classname="claude.task176.Task176Test" time="0.001"/>
+  <testcase name="testCase4_addAfterZero()" classname="claude.task176.Task176Test" time="0.0"/>
+  <testcase name="testCase5_getLastThreeAfterMoreAdds()" classname="claude.task176.Task176Test" time="0.0"/>
+  <testcase name="testCase10_zeroAfterMany()" classname="claude.task176.Task176Test" time="0.001"/>
+  <testcase name="testCase9_noZeros()" classname="claude.task176.Task176Test" time="0.0"/>
+  <testcase name="testCase8_lastFourAfterZero()" classname="claude.task176.Task176Test" time="0.001"/>
+  <testcase name="testCase1_basicAddAndGet()" classname="claude.task176.Task176Test" time="0.0"/>
+  <testcase name="testCase2_getLastThree()" classname="claude.task176.Task176Test" time="0.0"/>
+  <testcase name="testCase3_getLastFourIncludesZero()" classname="claude.task176.Task176Test" time="0.0"/>
+  <testcase name="testCase6_singleAdd()" classname="claude.task176.Task176Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

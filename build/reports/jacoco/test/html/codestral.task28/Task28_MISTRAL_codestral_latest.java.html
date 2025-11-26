@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task28_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task28</a> &gt; <span class="el_source">Task28_MISTRAL_codestral_latest.java</span></div><h1>Task28_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task28;
+
+<span class="nc" id="L3">public class Task28_MISTRAL_codestral_latest {</span>
+    public static String likes(String[] names) {
+<span class="nc bnc" id="L5" title="All 5 branches missed.">        switch (names.length) {</span>
+<span class="nc" id="L6">            case 0: return &quot;no one likes this&quot;;</span>
+<span class="nc" id="L7">            case 1: return names[0] + &quot; likes this&quot;;</span>
+<span class="nc" id="L8">            case 2: return names[0] + &quot; and &quot; + names[1] + &quot; like this&quot;;</span>
+<span class="nc" id="L9">            case 3: return names[0] + &quot;, &quot; + names[1] + &quot; and &quot; + names[2] + &quot; like this&quot;;</span>
+<span class="nc" id="L10">            default: return names[0] + &quot;, &quot; + names[1] + &quot; and &quot; + (names.length - 2) + &quot; others like this&quot;;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

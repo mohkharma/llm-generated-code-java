@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task91_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task91</a> &gt; <span class="el_source">Task91_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task91_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task91;
+
+import java.net.*;
+import java.io.*;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="nc" id="L9">public class Task91_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    private static final int PORT = 53;
+    private static final String SERVER_IP = &quot;127.0.0.1&quot;;
+
+    public static void main(String[] args) throws IOException {
+<span class="nc" id="L14">        DatagramSocket socket = new DatagramSocket(PORT, InetAddress.getByName(SERVER_IP));</span>
+<span class="nc" id="L15">        byte[] receiveData = new byte[512];</span>
+
+<span class="nc" id="L17">        System.out.println(&quot;DNS server listening on &quot; + SERVER_IP + &quot;:&quot; + PORT);</span>
+
+        while (true) {
+<span class="nc" id="L20">            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);</span>
+<span class="nc" id="L21">            socket.receive(receivePacket);</span>
+
+<span class="nc" id="L23">            byte[] data = receivePacket.getData();</span>
+<span class="nc" id="L24">            InetAddress clientAddress = receivePacket.getAddress();</span>
+<span class="nc" id="L25">            int clientPort = receivePacket.getPort();</span>
+
+<span class="nc" id="L27">            DNSMessage query = parseDNSQuery(data);</span>
+<span class="nc" id="L28">            System.out.println(&quot;Received DNS query for &quot; + query.domain);</span>
+
+<span class="nc" id="L30">            List&lt;String&gt; answers = resolveDNS(query.domain, query.qtype);</span>
+<span class="nc" id="L31">            byte[] response = createDNSResponse(query, answers);</span>
+
+<span class="nc" id="L33">            DatagramPacket sendPacket = new DatagramPacket(response, response.length, clientAddress, clientPort);</span>
+<span class="nc" id="L34">            socket.send(sendPacket);</span>
+<span class="nc" id="L35">            System.out.println(&quot;Sent DNS response to &quot; + clientAddress.getHostAddress() + &quot;:&quot; + clientPort);</span>
+<span class="nc" id="L36">        }</span>
+    }
+
+    public static DNSMessage parseDNSQuery(byte[] data) {
+<span class="fc" id="L40">        ByteBuffer buffer = ByteBuffer.wrap(data);</span>
+<span class="fc" id="L41">        short id = buffer.getShort();</span>
+<span class="fc" id="L42">        buffer.getShort(); // flags</span>
+<span class="fc" id="L43">        short qdcount = buffer.getShort();</span>
+
+<span class="fc" id="L45">        StringBuilder domain = new StringBuilder();</span>
+        int length;
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        while ((length = buffer.get()) &gt; 0) {</span>
+<span class="nc" id="L48">            byte[] label = new byte[length];</span>
+<span class="nc" id="L49">            buffer.get(label);</span>
+<span class="nc" id="L50">            domain.append(new String(label)).append(&quot;.&quot;);</span>
+<span class="nc" id="L51">        }</span>
+<span class="nc" id="L52">        domain.setLength(domain.length() - 1);</span>
+
+<span class="nc" id="L54">        short qtype = buffer.getShort();</span>
+<span class="nc" id="L55">        short qclass = buffer.getShort();</span>
+
+<span class="nc" id="L57">        return new DNSMessage(id, domain.toString(), qtype, qclass);</span>
+    }
+
+    public static List&lt;String&gt; resolveDNS(String domain, short qtype) {
+        // Implement DNS resolution logic here
+<span class="nc" id="L62">        List&lt;String&gt; answers = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L63">        answers.add(&quot;93.184.216.34&quot;); // Example IP for example.com</span>
+<span class="nc" id="L64">        return answers;</span>
+    }
+
+    public static byte[] createDNSResponse(DNSMessage query, List&lt;String&gt; answers) {
+<span class="fc" id="L68">        ByteBuffer response = ByteBuffer.allocate(512);</span>
+<span class="fc" id="L69">        response.putShort(query.id);</span>
+<span class="fc" id="L70">        response.putShort((short) 0x8180); // Flags</span>
+<span class="fc" id="L71">        response.putShort((short) 1); // QDCOUNT</span>
+<span class="fc" id="L72">        response.putShort((short) answers.size()); // ANCOUNT</span>
+<span class="fc" id="L73">        response.putShort((short) 0); // NSCOUNT</span>
+<span class="fc" id="L74">        response.putShort((short) 0); // ARCOUNT</span>
+
+        // Question section
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        for (String label : query.domain.split(&quot;\\\\.&quot;)) {</span>
+<span class="fc" id="L78">            response.put((byte) label.length());</span>
+<span class="fc" id="L79">            response.put(label.getBytes());</span>
+        }
+<span class="fc" id="L81">        response.put((byte) 0);</span>
+<span class="fc" id="L82">        response.putShort(query.qtype);</span>
+<span class="fc" id="L83">        response.putShort(query.qclass);</span>
+
+        // Answer section
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        for (String answer : answers) {</span>
+<span class="fc" id="L87">            response.putShort((short) 0xc00c); // Pointer to domain name</span>
+<span class="fc" id="L88">            response.putShort(query.qtype);</span>
+<span class="fc" id="L89">            response.putShort(query.qclass);</span>
+<span class="fc" id="L90">            response.putInt(300); // TTL</span>
+<span class="fc" id="L91">            response.putShort((short) answer.length());</span>
+<span class="fc" id="L92">            response.put(answer.getBytes());</span>
+<span class="fc" id="L93">        }</span>
+
+<span class="fc" id="L95">        byte[] result = new byte[response.position()];</span>
+<span class="fc" id="L96">        response.flip();</span>
+<span class="fc" id="L97">        response.get(result);</span>
+<span class="fc" id="L98">        return result;</span>
+    }
+
+    public static class DNSMessage {
+        short id;
+        String domain;
+        short qtype;
+        short qclass;
+
+<span class="fc" id="L107">        DNSMessage(short id, String domain, short qtype, short qclass) {</span>
+<span class="fc" id="L108">            this.id = id;</span>
+<span class="fc" id="L109">            this.domain = domain;</span>
+<span class="fc" id="L110">            this.qtype = qtype;</span>
+<span class="fc" id="L111">            this.qclass = qclass;</span>
+<span class="fc" id="L112">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

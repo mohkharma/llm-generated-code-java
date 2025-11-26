@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task172_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task172</a> &gt; <span class="el_source">Task172_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task172_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task172;
+
+import java.util.HashSet;
+import java.util.Set;
+
+<span class="nc" id="L6">public class Task172_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    public int distinctEchoSubstrings(String text) {
+<span class="nc" id="L8">        int n = text.length();</span>
+<span class="nc" id="L9">        Set&lt;String&gt; res = new HashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L10" title="All 2 branches missed.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="nc bnc" id="L11" title="All 2 branches missed.">            for (int j = i + 1; j &lt;= n; j++) {</span>
+<span class="nc" id="L12">                String s = text.substring(i, j);</span>
+<span class="nc bnc" id="L13" title="All 2 branches missed.">                if (isPalindrome(s)) {</span>
+<span class="nc" id="L14">                    res.add(s);</span>
+                }
+            }
+        }
+<span class="nc" id="L18">        return res.size();</span>
+    }
+
+    private boolean isPalindrome(String s) {
+<span class="nc" id="L22">        int i = 0, j = s.length() - 1;</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        while (i &lt; j) {</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">            if (s.charAt(i) != s.charAt(j)) {</span>
+<span class="nc" id="L25">                return false;</span>
+            }
+<span class="nc" id="L27">            i++;</span>
+<span class="nc" id="L28">            j--;</span>
+        }
+<span class="nc" id="L30">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

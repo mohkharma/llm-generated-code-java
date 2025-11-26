@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task35.Task35Test" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:13" hostname="DESKTOP-VCM60S2" time="0.009">
+  <properties/>
+  <testcase name="testOnePersonLeft()" classname="claude.task35.Task35Test" time="0.003"/>
+  <testcase name="testSameNumberGetOnAndOff()" classname="claude.task35.Task35Test" time="0.001"/>
+  <testcase name="testAllGetOff()" classname="claude.task35.Task35Test" time="0.0"/>
+  <testcase name="testSingleStop()" classname="claude.task35.Task35Test" time="0.0"/>
+  <testcase name="testComplexScenario()" classname="claude.task35.Task35Test" time="0.001"/>
+  <testcase name="testLargeNumbers()" classname="claude.task35.Task35Test" time="0.0"/>
+  <testcase name="testAllGetOnAtOnce()" classname="claude.task35.Task35Test" time="0.0"/>
+  <testcase name="testDecreasingPassengers()" classname="claude.task35.Task35Test" time="0.001"/>
+  <testcase name="testEmptyBusStops()" classname="claude.task35.Task35Test" time="0.0"/>
+  <testcase name="testMoreGetOnThanOff()" classname="claude.task35.Task35Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

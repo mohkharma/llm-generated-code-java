@@ -1,1 +1,0 @@
-package codestral.task64;// Java code is not provided as it requires external libraries for JSON parsing and URL handling.

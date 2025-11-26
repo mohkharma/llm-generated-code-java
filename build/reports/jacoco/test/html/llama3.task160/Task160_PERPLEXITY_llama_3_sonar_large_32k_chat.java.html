@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task160_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task160</a> &gt; <span class="el_source">Task160_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task160_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task160;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+<span class="nc" id="L9">public class Task160_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    public static void main(String[] args) throws IOException {
+<span class="nc" id="L11">        System.out.print(&quot;Enter a URL: &quot;);</span>
+<span class="nc" id="L12">        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L13">        String url = reader.readLine();</span>
+
+<span class="nc" id="L15">        URL obj = new URL(url);</span>
+<span class="nc" id="L16">        HttpURLConnection con = (HttpURLConnection) obj.openConnection();</span>
+
+<span class="nc" id="L18">        int responseCode = con.getResponseCode();</span>
+<span class="nc" id="L19">        System.out.println(&quot;Status Code: &quot; + responseCode);</span>
+
+<span class="nc" id="L21">        System.out.println(&quot;Headers:&quot;);</span>
+<span class="nc" id="L22">        con.getHeaderFields().forEach((key, value) -&gt; System.out.println(key + &quot;: &quot; + value));</span>
+
+<span class="nc" id="L24">        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));</span>
+        String inputLine;
+<span class="nc" id="L26">        StringBuffer response = new StringBuffer();</span>
+
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        while ((inputLine = in.readLine()) != null) {</span>
+<span class="nc" id="L29">            response.append(inputLine);</span>
+        }
+<span class="nc" id="L31">        in.close();</span>
+
+<span class="nc" id="L33">        System.out.println(&quot;Content: &quot; + response.toString());</span>
+<span class="nc" id="L34">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task161_PERPLEXITY_llama_3_sonar_large_32k_chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task161</a> &gt; <span class="el_source">Task161_PERPLEXITY_llama_3_sonar_large_32k_chat.java</span></div><h1>Task161_PERPLEXITY_llama_3_sonar_large_32k_chat.java</h1><pre class="source lang-java linenums">package llama3.task161;
+
+import java.util.Scanner;
+
+<span class="nc" id="L5">public class Task161_PERPLEXITY_llama_3_sonar_large_32k_chat {</span>
+    public static int knapsack(int capacity, int[] weights, int[] values) {
+<span class="nc" id="L7">        int n = values.length;</span>
+<span class="nc" id="L8">        int[][] dp = new int[n + 1][capacity + 1];</span>
+
+<span class="nc bnc" id="L10" title="All 2 branches missed.">        for (int i = 0; i &lt;= n; i++) {</span>
+<span class="nc bnc" id="L11" title="All 2 branches missed.">            for (int w = 0; w &lt;= capacity; w++) {</span>
+<span class="nc bnc" id="L12" title="All 4 branches missed.">                if (i == 0 || w == 0) {</span>
+<span class="nc" id="L13">                    dp[i][w] = 0;</span>
+<span class="nc bnc" id="L14" title="All 2 branches missed.">                } else if (weights[i - 1] &lt;= w) {</span>
+<span class="nc" id="L15">                    dp[i][w] = Math.max(values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w]);</span>
+                } else {
+<span class="nc" id="L17">                    dp[i][w] = dp[i - 1][w];</span>
+                }
+            }
+        }
+
+<span class="nc" id="L22">        return dp[n][capacity];</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L26">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L27">        System.out.print(&quot;Enter the capacity of the knapsack: &quot;);</span>
+<span class="nc" id="L28">        int capacity = scanner.nextInt();</span>
+<span class="nc" id="L29">        System.out.print(&quot;Enter the number of items: &quot;);</span>
+<span class="nc" id="L30">        int n = scanner.nextInt();</span>
+<span class="nc" id="L31">        int[] weights = new int[n];</span>
+<span class="nc" id="L32">        int[] values = new int[n];</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="nc" id="L34">            System.out.print(&quot;Enter the weight of item &quot; + (i + 1) + &quot;: &quot;);</span>
+<span class="nc" id="L35">            weights[i] = scanner.nextInt();</span>
+<span class="nc" id="L36">            System.out.print(&quot;Enter the value of item &quot; + (i + 1) + &quot;: &quot;);</span>
+<span class="nc" id="L37">            values[i] = scanner.nextInt();</span>
+        }
+
+<span class="nc" id="L40">        int maxValue = knapsack(capacity, weights, values);</span>
+<span class="nc" id="L41">        System.out.println(&quot;Maximum value that can be put into the knapsack: &quot; + maxValue);</span>
+<span class="nc" id="L42">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

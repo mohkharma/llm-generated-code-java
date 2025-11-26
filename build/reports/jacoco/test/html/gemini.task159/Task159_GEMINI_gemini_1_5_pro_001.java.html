@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task159_GEMINI_gemini_1_5_pro_001.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gemini.task159</a> &gt; <span class="el_source">Task159_GEMINI_gemini_1_5_pro_001.java</span></div><h1>Task159_GEMINI_gemini_1_5_pro_001.java</h1><pre class="source lang-java linenums">package gemini.task159;
+
+import java.util.Scanner;
+
+<span class="nc" id="L5">public class Task159_GEMINI_gemini_1_5_pro_001 {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L7">        Scanner scanner = new Scanner(System.in);</span>
+
+        try {
+<span class="nc" id="L10">            System.out.print(&quot;Enter the size of the buffer: &quot;);</span>
+<span class="nc" id="L11">            int size = scanner.nextInt();</span>
+
+<span class="nc" id="L13">            String[] buffer = new String[size];</span>
+
+<span class="nc bnc" id="L15" title="All 2 branches missed.">            for (int i = 0; i &lt; size; i++) {</span>
+<span class="nc" id="L16">                System.out.print(&quot;Enter data for index &quot; + i + &quot;: &quot;);</span>
+<span class="nc" id="L17">                buffer[i] = scanner.next();</span>
+            }
+
+            while (true) {
+<span class="nc" id="L21">                System.out.print(&quot;Enter an index to read data (or -1 to exit): &quot;);</span>
+<span class="nc" id="L22">                int index = scanner.nextInt();</span>
+
+<span class="nc bnc" id="L24" title="All 2 branches missed.">                if (index == -1) {</span>
+<span class="nc" id="L25">                    break;</span>
+<span class="nc bnc" id="L26" title="All 4 branches missed.">                } else if (index &gt;= 0 &amp;&amp; index &lt; size) {</span>
+<span class="nc" id="L27">                    System.out.println(&quot;Data at index &quot; + index + &quot;: &quot; + buffer[index]);</span>
+                } else {
+<span class="nc" id="L29">                    System.out.println(&quot;Index out of range.&quot;);</span>
+                }
+<span class="nc" id="L31">            }</span>
+<span class="nc" id="L32">        } catch (Exception e) {</span>
+<span class="nc" id="L33">            System.out.println(&quot;Invalid input. Please enter integers only.&quot;);</span>
+<span class="nc" id="L34">        }</span>
+<span class="nc" id="L35">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

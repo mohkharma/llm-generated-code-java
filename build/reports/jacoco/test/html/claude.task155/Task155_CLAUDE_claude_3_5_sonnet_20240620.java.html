@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task155_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task155</a> &gt; <span class="el_source">Task155_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task155_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task155;
+
+import java.util.Scanner;
+
+<span class="nc" id="L5">public class Task155_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static void heapify(int arr[], int n, int i) {
+<span class="fc" id="L7">        int largest = i;</span>
+<span class="fc" id="L8">        int l = 2 * i + 1;</span>
+<span class="fc" id="L9">        int r = 2 * i + 2;</span>
+<span class="fc bfc" id="L10" title="All 4 branches covered.">        if (l &lt; n &amp;&amp; arr[l] &gt; arr[largest])</span>
+<span class="fc" id="L11">            largest = l;</span>
+<span class="fc bfc" id="L12" title="All 4 branches covered.">        if (r &lt; n &amp;&amp; arr[r] &gt; arr[largest])</span>
+<span class="fc" id="L13">            largest = r;</span>
+<span class="fc bfc" id="L14" title="All 2 branches covered.">        if (largest != i) {</span>
+<span class="fc" id="L15">            int swap = arr[i];</span>
+<span class="fc" id="L16">            arr[i] = arr[largest];</span>
+<span class="fc" id="L17">            arr[largest] = swap;</span>
+<span class="fc" id="L18">            heapify(arr, n, largest);</span>
+        }
+<span class="fc" id="L20">    }</span>
+
+    public static void heapSort(int arr[]) {
+<span class="fc" id="L23">        int n = arr.length;</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        for (int i = n / 2 - 1; i &gt;= 0; i--)</span>
+<span class="fc" id="L25">            heapify(arr, n, i);</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for (int i = n - 1; i &gt; 0; i--) {</span>
+<span class="fc" id="L27">            int temp = arr[0];</span>
+<span class="fc" id="L28">            arr[0] = arr[i];</span>
+<span class="fc" id="L29">            arr[i] = temp;</span>
+<span class="fc" id="L30">            heapify(arr, i, 0);</span>
+        }
+<span class="fc" id="L32">    }</span>
+
+    public static void main(String args[]) {
+<span class="nc" id="L35">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L36">        String[] input = scanner.nextLine().split(&quot; &quot;);</span>
+<span class="nc" id="L37">        int[] arr = new int[input.length];</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        for (int i = 0; i &lt; input.length; i++) {</span>
+<span class="nc" id="L39">            arr[i] = Integer.parseInt(input[i]);</span>
+        }
+<span class="nc" id="L41">        heapSort(arr);</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        for (int i : arr) {</span>
+<span class="nc" id="L43">            System.out.print(i + &quot; &quot;);</span>
+        }
+<span class="nc" id="L45">        scanner.close();</span>
+<span class="nc" id="L46">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

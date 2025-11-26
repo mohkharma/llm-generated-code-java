@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task180_CLAUDE_claude_3_5_sonnet_20240620.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">claude.task180</a> &gt; <span class="el_source">Task180_CLAUDE_claude_3_5_sonnet_20240620.java</span></div><h1>Task180_CLAUDE_claude_3_5_sonnet_20240620.java</h1><pre class="source lang-java linenums">package claude.task180;
+
+import java.util.*;
+
+class Node {
+    int data;
+    List&lt;Node&gt; children;
+
+<span class="nc" id="L9">    Node(int data) {</span>
+<span class="nc" id="L10">        this.data = data;</span>
+<span class="nc" id="L11">        this.children = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L12">    }</span>
+}
+
+<span class="nc" id="L15">public class Task180_CLAUDE_claude_3_5_sonnet_20240620 {</span>
+    public static Node reparent(Node root, int newRootData) {
+<span class="nc" id="L17">        Node newRoot = findNode(root, newRootData);</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        if (newRoot == null) {</span>
+<span class="nc" id="L19">            return root;</span>
+        }
+
+<span class="nc" id="L22">        reparentHelper(newRoot, null);</span>
+<span class="nc" id="L23">        return newRoot;</span>
+    }
+
+    private static Node findNode(Node node, int data) {
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        if (node.data == data) {</span>
+<span class="nc" id="L28">            return node;</span>
+        }
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        for (Node child : node.children) {</span>
+<span class="nc" id="L31">            Node result = findNode(child, data);</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">            if (result != null) {</span>
+<span class="nc" id="L33">                return result;</span>
+            }
+<span class="nc" id="L35">        }</span>
+<span class="nc" id="L36">        return null;</span>
+    }
+
+    private static void reparentHelper(Node node, Node parent) {
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (parent != null) {</span>
+<span class="nc" id="L41">            node.children.remove(parent);</span>
+<span class="nc" id="L42">            node.children.add(parent);</span>
+        }
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        for (Node child : new ArrayList&lt;&gt;(node.children)) {</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (child != parent) {</span>
+<span class="nc" id="L46">                reparentHelper(child, node);</span>
+            }
+<span class="nc" id="L48">        }</span>
+<span class="nc" id="L49">    }</span>
+
+    public static void printTree(Node node, int level) {
+<span class="nc" id="L52">        System.out.println(&quot;  &quot;.repeat(level) + node.data);</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        for (Node child : node.children) {</span>
+<span class="nc" id="L54">            printTree(child, level + 1);</span>
+<span class="nc" id="L55">        }</span>
+<span class="nc" id="L56">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L59">        Node root = new Node(0);</span>
+<span class="nc" id="L60">        root.children.add(new Node(1));</span>
+<span class="nc" id="L61">        root.children.add(new Node(2));</span>
+<span class="nc" id="L62">        root.children.add(new Node(3));</span>
+<span class="nc" id="L63">        root.children.get(0).children.add(new Node(4));</span>
+<span class="nc" id="L64">        root.children.get(0).children.add(new Node(5));</span>
+<span class="nc" id="L65">        root.children.get(1).children.add(new Node(6));</span>
+<span class="nc" id="L66">        root.children.get(1).children.add(new Node(7));</span>
+<span class="nc" id="L67">        root.children.get(2).children.add(new Node(8));</span>
+<span class="nc" id="L68">        root.children.get(2).children.add(new Node(9));</span>
+
+<span class="nc" id="L70">        System.out.println(&quot;Original tree:&quot;);</span>
+<span class="nc" id="L71">        printTree(root, 0);</span>
+
+<span class="nc" id="L73">        Node newRoot = reparent(root, 6);</span>
+<span class="nc" id="L74">        System.out.println(&quot;\\nReparented tree with 6 as root:&quot;);</span>
+<span class="nc" id="L75">        printTree(newRoot, 0);</span>
+<span class="nc" id="L76">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

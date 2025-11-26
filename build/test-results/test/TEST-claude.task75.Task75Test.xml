@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task75.Task75Test" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:25" hostname="DESKTOP-VCM60S2" time="0.385">
+  <properties/>
+  <testcase name="testTerminateDummyProcess()" classname="claude.task75.Task75Test" time="0.242"/>
+  <testcase name="testNoArguments()" classname="claude.task75.Task75Test" time="0.0"/>
+  <testcase name="testNonExistentPID()" classname="claude.task75.Task75Test" time="0.143"/>
+  <testcase name="testInvalidPID()" classname="claude.task75.Task75Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

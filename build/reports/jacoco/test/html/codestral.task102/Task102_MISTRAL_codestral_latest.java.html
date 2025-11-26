@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task102_MISTRAL_codestral_latest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">codestral.task102</a> &gt; <span class="el_source">Task102_MISTRAL_codestral_latest.java</span></div><h1>Task102_MISTRAL_codestral_latest.java</h1><pre class="source lang-java linenums">package codestral.task102;// Java code using java.sql for database operations and java.security for password hashing
+import java.sql.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
+
+<span class="nc" id="L7">public class Task102_MISTRAL_codestral_latest {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L9">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L10">        System.out.println(&quot;Enter your username: &quot;);</span>
+<span class="nc" id="L11">        String username = scanner.nextLine();</span>
+<span class="nc" id="L12">        System.out.println(&quot;Enter your new password: &quot;);</span>
+<span class="nc" id="L13">        String newPassword = scanner.nextLine();</span>
+
+        try {
+<span class="nc" id="L16">            updatePassword(username, newPassword);</span>
+<span class="nc" id="L17">        } catch (SQLException | NoSuchAlgorithmException e) {</span>
+<span class="nc" id="L18">            e.printStackTrace();</span>
+<span class="nc" id="L19">        }</span>
+<span class="nc" id="L20">    }</span>
+
+    static void updatePassword(String username, String newPassword) throws SQLException, NoSuchAlgorithmException {
+        // Connect to the SQLite database
+<span class="nc" id="L24">        Connection conn = DriverManager.getConnection(&quot;jdbc:sqlite:user_database.db&quot;);</span>
+
+        // Hash the new password
+<span class="nc" id="L27">        MessageDigest md = MessageDigest.getInstance(&quot;SHA-256&quot;);</span>
+<span class="nc" id="L28">        byte[] hash = md.digest(newPassword.getBytes());</span>
+<span class="nc" id="L29">        StringBuffer sb = new StringBuffer();</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        for (byte b : hash) {</span>
+<span class="nc" id="L31">            sb.append(String.format(&quot;%02x&quot;, b));</span>
+        }
+<span class="nc" id="L33">        String hashedPassword = sb.toString();</span>
+
+        // Update the password in the database
+<span class="nc" id="L36">        PreparedStatement pstmt = conn.prepareStatement(&quot;UPDATE users SET password = ? WHERE username = ?&quot;);</span>
+<span class="nc" id="L37">        pstmt.setString(1, hashedPassword);</span>
+<span class="nc" id="L38">        pstmt.setString(2, username);</span>
+<span class="nc" id="L39">        pstmt.executeUpdate();</span>
+
+<span class="nc" id="L41">        conn.close();</span>
+<span class="nc" id="L42">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

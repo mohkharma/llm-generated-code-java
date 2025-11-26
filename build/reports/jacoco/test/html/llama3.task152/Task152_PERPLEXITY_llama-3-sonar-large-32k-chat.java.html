@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task152_PERPLEXITY_llama-3-sonar-large-32k-chat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">llama3.task152</a> &gt; <span class="el_source">Task152_PERPLEXITY_llama-3-sonar-large-32k-chat.java</span></div><h1>Task152_PERPLEXITY_llama-3-sonar-large-32k-chat.java</h1><pre class="source lang-java linenums">package llama3.task152;
+
+class HashTable {
+    private int size;
+    private int[] slots;
+    private String[] data;
+
+<span class="nc" id="L8">    public HashTable(int size) {</span>
+<span class="nc" id="L9">        this.size = size;</span>
+<span class="nc" id="L10">        this.slots = new int[size];</span>
+<span class="nc" id="L11">        this.data = new String[size];</span>
+<span class="nc" id="L12">    }</span>
+
+    public void put(int key, String value) {
+<span class="nc" id="L15">        int hashValue = hashFunction(key, size);</span>
+
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        if (slots[hashValue] == 0) {</span>
+<span class="nc" id="L18">            slots[hashValue] = key;</span>
+<span class="nc" id="L19">            data[hashValue] = value;</span>
+        } else {
+<span class="nc bnc" id="L21" title="All 2 branches missed.">            if (slots[hashValue] == key) {</span>
+<span class="nc" id="L22">                data[hashValue] = value; // replace</span>
+            } else {
+<span class="nc" id="L24">                int nextSlot = rehash(hashValue, size);</span>
+<span class="nc bnc" id="L25" title="All 4 branches missed.">                while (slots[nextSlot] != 0 &amp;&amp; slots[nextSlot] != key) {</span>
+<span class="nc" id="L26">                    nextSlot = rehash(nextSlot, size);</span>
+                }
+
+<span class="nc bnc" id="L29" title="All 2 branches missed.">                if (slots[nextSlot] == 0) {</span>
+<span class="nc" id="L30">                    slots[nextSlot] = key;</span>
+<span class="nc" id="L31">                    data[nextSlot] = value;</span>
+                } else {
+<span class="nc" id="L33">                    data[nextSlot] = value; // replace</span>
+                }
+            }
+        }
+<span class="nc" id="L37">    }</span>
+
+    public int hashFunction(int key, int size) {
+<span class="nc" id="L40">        return key % size;</span>
+    }
+
+    public int rehash(int oldHash, int size) {
+<span class="nc" id="L44">        return (oldHash + 1) % size;</span>
+    }
+
+    public String get(int key) {
+<span class="nc" id="L48">        int startSlot = hashFunction(key, size);</span>
+
+<span class="nc" id="L50">        String value = null;</span>
+<span class="nc" id="L51">        boolean stop = false;</span>
+<span class="nc" id="L52">        boolean found = false;</span>
+<span class="nc" id="L53">        int position = startSlot;</span>
+<span class="nc bnc" id="L54" title="All 6 branches missed.">        while (slots[position] != 0 &amp;&amp; !found &amp;&amp; !stop) {</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">            if (slots[position] == key) {</span>
+<span class="nc" id="L56">                found = true;</span>
+<span class="nc" id="L57">                value = data[position];</span>
+            } else {
+<span class="nc" id="L59">                position = rehash(position, size);</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">                if (position == startSlot) {</span>
+<span class="nc" id="L61">                    stop = true;</span>
+                }
+            }
+        }
+<span class="nc" id="L65">        return value;</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L69">        HashTable h = new HashTable(11);</span>
+<span class="nc" id="L70">        h.put(54, &quot;cat&quot;);</span>
+<span class="nc" id="L71">        h.put(26, &quot;dog&quot;);</span>
+<span class="nc" id="L72">        h.put(93, &quot;lion&quot;);</span>
+<span class="nc" id="L73">        h.put(17, &quot;tiger&quot;);</span>
+<span class="nc" id="L74">        h.put(77, &quot;bird&quot;);</span>
+<span class="nc" id="L75">        h.put(31, &quot;cow&quot;);</span>
+<span class="nc" id="L76">        h.put(44, &quot;goat&quot;);</span>
+<span class="nc" id="L77">        h.put(55, &quot;pig&quot;);</span>
+<span class="nc" id="L78">        h.put(20, &quot;chicken&quot;);</span>
+
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        for (int i = 0; i &lt; h.slots.length; i++) {</span>
+<span class="nc" id="L81">            System.out.print(h.slots[i] + &quot; &quot;);</span>
+        }
+<span class="nc" id="L83">        System.out.println();</span>
+
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        for (int i = 0; i &lt; h.data.length; i++) {</span>
+<span class="nc" id="L86">            System.out.print(h.data[i] + &quot; &quot;);</span>
+        }
+<span class="nc" id="L88">        System.out.println();</span>
+
+<span class="nc" id="L90">        System.out.println(h.get(20));</span>
+
+<span class="nc" id="L92">        System.out.println(h.get(17));</span>
+<span class="nc" id="L93">        h.put(20, &quot;duck&quot;);</span>
+<span class="nc" id="L94">        System.out.println(h.get(20));</span>
+<span class="nc" id="L95">        System.out.println(h.get(99));</span>
+<span class="nc" id="L96">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

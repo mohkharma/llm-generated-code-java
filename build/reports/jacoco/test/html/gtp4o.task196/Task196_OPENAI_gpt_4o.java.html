@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task196_OPENAI_gpt_4o.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">llm-generated-code-java</a> &gt; <a href="index.source.html" class="el_package">gtp4o.task196</a> &gt; <span class="el_source">Task196_OPENAI_gpt_4o.java</span></div><h1>Task196_OPENAI_gpt_4o.java</h1><pre class="source lang-java linenums">package gtp4o.task196;
+
+import java.util.concurrent.Semaphore;
+//invalid code, missing import for import java.util.function.IntConsumer; in ZeroEvenOdd class
+import java.util.function.IntConsumer;
+class ZeroEvenOdd {
+    private int n;
+<span class="nc" id="L8">    private Semaphore zeroSemaphore = new Semaphore(1);</span>
+<span class="nc" id="L9">    private Semaphore evenSemaphore = new Semaphore(0);</span>
+<span class="nc" id="L10">    private Semaphore oddSemaphore = new Semaphore(0);</span>
+    
+<span class="nc" id="L12">    public ZeroEvenOdd(int n) {</span>
+<span class="nc" id="L13">        this.n = n;</span>
+<span class="nc" id="L14">    }</span>
+
+    public void zero(IntConsumer printNumber) throws InterruptedException {
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        for (int i = 1; i &lt;= n; i++) {</span>
+<span class="nc" id="L18">            zeroSemaphore.acquire();</span>
+<span class="nc" id="L19">            printNumber.accept(0);</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">            if (i % 2 == 0) {</span>
+<span class="nc" id="L21">                evenSemaphore.release();</span>
+            } else {
+<span class="nc" id="L23">                oddSemaphore.release();</span>
+            }
+        }
+<span class="nc" id="L26">    }</span>
+
+    public void even(IntConsumer printNumber) throws InterruptedException {
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        for (int i = 2; i &lt;= n; i += 2) {</span>
+<span class="nc" id="L30">            evenSemaphore.acquire();</span>
+<span class="nc" id="L31">            printNumber.accept(i);</span>
+<span class="nc" id="L32">            zeroSemaphore.release();</span>
+        }
+<span class="nc" id="L34">    }</span>
+
+    public void odd(IntConsumer printNumber) throws InterruptedException {
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        for (int i = 1; i &lt;= n; i += 2) {</span>
+<span class="nc" id="L38">            oddSemaphore.acquire();</span>
+<span class="nc" id="L39">            printNumber.accept(i);</span>
+<span class="nc" id="L40">            zeroSemaphore.release();</span>
+        }
+<span class="nc" id="L42">    }</span>
+}
+
+//import java.util.function.IntConsumer;
+
+<span class="nc" id="L47">public class Task196_OPENAI_gpt_4o {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L49">        ZeroEvenOdd zeroEvenOdd = new ZeroEvenOdd(5);</span>
+
+<span class="nc" id="L51">        IntConsumer printNumber = System.out::print;</span>
+
+<span class="nc" id="L53">        Thread threadA = new Thread(() -&gt; {</span>
+            try {
+<span class="nc" id="L55">                zeroEvenOdd.zero(printNumber);</span>
+<span class="nc" id="L56">            } catch (InterruptedException e) {</span>
+<span class="nc" id="L57">                e.printStackTrace();</span>
+<span class="nc" id="L58">            }</span>
+<span class="nc" id="L59">        });</span>
+
+<span class="nc" id="L61">        Thread threadB = new Thread(() -&gt; {</span>
+            try {
+<span class="nc" id="L63">                zeroEvenOdd.even(printNumber);</span>
+<span class="nc" id="L64">            } catch (InterruptedException e) {</span>
+<span class="nc" id="L65">                e.printStackTrace();</span>
+<span class="nc" id="L66">            }</span>
+<span class="nc" id="L67">        });</span>
+
+<span class="nc" id="L69">        Thread threadC = new Thread(() -&gt; {</span>
+            try {
+<span class="nc" id="L71">                zeroEvenOdd.odd(printNumber);</span>
+<span class="nc" id="L72">            } catch (InterruptedException e) {</span>
+<span class="nc" id="L73">                e.printStackTrace();</span>
+<span class="nc" id="L74">            }</span>
+<span class="nc" id="L75">        });</span>
+
+<span class="nc" id="L77">        threadA.start();</span>
+<span class="nc" id="L78">        threadB.start();</span>
+<span class="nc" id="L79">        threadC.start();</span>
+<span class="nc" id="L80">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

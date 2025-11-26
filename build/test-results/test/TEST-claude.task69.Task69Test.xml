@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="claude.task69.Task69Test" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-07-08T22:40:22" hostname="DESKTOP-VCM60S2" time="0.635">
+  <properties/>
+  <testcase name="testMissingArgument()" classname="claude.task69.Task69Test" time="0.23"/>
+  <testcase name="testDeleteDirectory()" classname="claude.task69.Task69Test" time="0.141"/>
+  <testcase name="testDeleteNonExistingFile()" classname="claude.task69.Task69Test" time="0.137"/>
+  <testcase name="testDeleteExistingFile()" classname="claude.task69.Task69Test" time="0.125"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
