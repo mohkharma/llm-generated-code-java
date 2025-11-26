@@ -3,8 +3,64 @@ plugins {
     id "org.sonarqube" version "4.4.1.3373"
     id 'org.springframework.boot' version '3.3.2'
     id 'io.spring.dependency-management' version '1.1.6'
+    id 'jacoco'
+}
+jacoco {
+    toolVersion = "0.8.10"
 }
 
+test {
+    useJUnitPlatform() // or useJUnit() for JUnit 4
+    ignoreFailures = true
+    maxParallelForks = 1
+    forkEvery = 0
+    enableAssertions = true
+    finalizedBy jacocoTestReport
+    include 'claude/**'
+
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "short"
+        showStandardStreams = false
+    }
+
+    // Ensure socket crash doesn't break the daemon
+    afterSuite { desc, result ->
+        if (!desc.parent && result.failedTestCount > 0) {
+            println "\n⚠️ WARNING: ${result.failedTestCount} test(s) failed, continuing to generate coverage report.\n"
+        }
+    }
+    doLast {
+        println "Coverage report: file://${buildDir}/reports/jacoco/test/html/index.html"
+    }
+
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        html.required = true
+        xml.required = true
+    }
+
+    // 🔍 Adjust these if you're using custom paths
+    afterEvaluate {
+        classDirectories.setFrom(fileTree(
+                dir: "build/classes/java/main",
+                includes: ["**/*.class"]
+        ))
+
+        sourceDirectories.setFrom(files("src/main/java"))
+        executionData.setFrom(fileTree(
+                dir: "build",
+                includes: [
+                        "jacoco/test.exec",
+                        "jacoco/*.exec",
+                        "jacocoTestReport.exec"
+                ]
+        ))
+    }
+}
 group = 'edu.bzu.llm'
 version = '1.0-SNAPSHOT'
 
@@ -30,13 +86,13 @@ dependencies {
     testImplementation 'org.mockito:mockito-inline:5.2.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-     implementation 'org.postgresql:postgresql:42.7.3'
+    implementation 'org.postgresql:postgresql:42.7.3'
     implementation 'io.javalin:javalin:5.6.2'
     implementation 'org.eclipse.jetty:jetty-servlet:11.0.17'
-     implementation 'org.eclipse.jetty:jetty-io:11.0.17'
+    implementation 'org.eclipse.jetty:jetty-io:11.0.17'
     implementation 'org.eclipse.jetty:jetty-util:11.0.17'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
-     implementation 'org.eclipse.jetty:jetty-servlet:11.0.15'
+    implementation 'org.eclipse.jetty:jetty-servlet:11.0.15'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
 // https://mvnrepository.com/artifact/javax.validation/validation-api
@@ -59,7 +115,7 @@ dependencies {
 // https://mvnrepository.com/artifact/org.apache.commons/commons-compress
     implementation group: 'org.apache.commons', name: 'commons-compress', version: '1.26.2'
 // https://mvnrepository.com/artifact/io.javalin/javalin
-  implementation group: 'io.javalin', name: 'javalin', version: '6.1.6'
+    implementation group: 'io.javalin', name: 'javalin', version: '6.1.6'
 
     // https://mvnrepository.com/artifact/org.mindrot/jbcrypt
     implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
